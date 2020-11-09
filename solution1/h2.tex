@@ -1,0 +1,22 @@
+\section{Two-dimensional gravity}
+To show that in two dimension the energy momentum tensor vanishes identically, one needs to show $T_{\mu\nu} \propto R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} = 0$.
+
+In two dimension, Riemann tensor $R_{\mu\nu\alpha\beta}$ can only have one non-zero component because of its symmetries. Its skew symmetry makes the Riemann tensor to be zero, if its indices are not combination of two $0$s and two $1$s. Reason is simple: otherwise one could use the skew symmetry, so that $R_{\mu\nu\alpha \beta} = -R_{\mu\nu\alpha\beta} = 0$. As a matter of fact, the only non-vanishing components are $R_{0101} = -R_{1001} = -R_{0110} = R_{1010}$, i.e.~first and second pair indices must contain $0$ and $1$. Then the Ricci tensor is
+\begin{align*}
+	R_{\mu\nu} &= g^{\alpha \beta }R_{\alpha\mu\beta\nu}  \\
+				  &= g^{00} R_{0\mu0\nu} + g^{11} R_{1\mu1\nu} + g^{01} R_{0\mu1\nu} + g^{10} R_{1\mu0\nu}\\
+				  &= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101}
+\end{align*}
+
+The Ricci scalar is then
+\begin{equation*}
+	R = g^{\mu\nu} R_{\mu\nu} = (g^{00} g^{11} + g^{11} g^{00} - g^{01} g^{01} - g^{01}g^{01}) R_{0101} = 2 (g^{00}g^{11} - g^{01}g^{01}) R_{0101}
+\end{equation*}
+
+Thus
+\begin{align*}
+	R_{\mu \nu} - \frac{1}{2} R g_{\mu\nu} &= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101} - g_{\mu\nu} (g^{00} g^{11} - g^{01} g^{01}) R_{0101} \\
+														&= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101} - \begin{pmatrix} g^{11} - g_{00} g^{01} g^{01} & g_{01} g^{00} g^{11}  \\ g_{01} g^{00} g^{11} & g^{00} - g_{11}g^{01}g^{01} \end{pmatrix} R_{0101}\\
+														&= 0
+\end{align*}
+because $g_{ik}g^{kj} = \delta_i^{j}$: $g_{00} g^{01} g^{01} = -g_{01}g^{11} g^{01} = 0$, $g_{11} g^{01} g^{01} = - g_{10} g^{00} g^{01} = 0$, and $g_{01} g^{00} g^{11} = -g_{11}g^{10} g^{11} = -g^{10}$. In the end, we have vanishing energy momentum tensor.

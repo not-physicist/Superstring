@@ -1,0 +1,79 @@
+\section{Symmetries of the Polyakov action}
+The Polyakov action is given by 
+\begin{equation}
+	S_p = -\frac{T}{2} \int \dd[2]{\sigma} \sqrt{-h} \left( h^{\alpha \beta} \partial_\alpha X^\mu \partial_\beta X^\nu \eta_{\mu\nu} \right)
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+	\item Polyakov action is Poincaré-invariant.
+	
+		Poincaré transformation is given by
+		\begin{equation*}
+			X^\mu \mapsto \Lambda^{\mu}_{\ \nu} X^\nu + b^\mu
+		\end{equation*}
+		The derivative in the action transforms like
+		\begin{equation*}
+			\partial_\alpha X^\mu \mapsto \Lambda^\mu_{\ \nu} \left( \partial_\alpha X^\nu \right)
+		\end{equation*}
+		since the shift $b^\mu$ doesn't depend on space-time coordinates.
+
+		The intrinsic metric $h_{\alpha\beta} = h_{\alpha \beta} (\sigma, \tau)$ doesn't transform. Thus the only "changable" terms in the action are
+		\begin{align}
+			\partial_\alpha X^\mu \partial_\beta X^\nu \eta_{\mu\nu} &\mapsto \Lambda^\mu_{\ \rho} \left( \partial_\alpha X^\rho \right) \Lambda^\nu_{\ \sigma} \left( \partial_\beta X^\sigma \right) \eta_{\mu\nu} \notag \\
+																						&= \Lambda^{\mu }_{\ \rho} \Lambda^\nu_{\ \sigma} \eta_{\mu\nu} \left( \partial_\alpha X^\rho \right) \left( \partial_\beta X^\sigma \right) \notag \\
+																						&= \eta_{\rho\sigma} \left( \partial_\alpha X^\rho \right) \left( \partial_\beta X^\sigma \right)
+		\end{align}
+		where the defining property of Lorentz transformation is used: $\eta = \Lambda^T \eta \Lambda$. Then the action is indeed invariant.
+
+	\item The infinitesimal Poincaré transformations are
+		\begin{equation*}
+			X^\mu \mapsto X^\mu + \epsilon a^{\mu}_{\ \nu} X^\nu, \quad X^\mu \mapsto X^\mu + \epsilon^\mu
+		\end{equation*}
+		As hinted on the sheet, $h_{\alpha \beta} = \eta_{\alpha\beta}$ can be used and thus $\sqrt{-h} = 1$.
+		\begin{itemize}
+			\item With respect to the first transformation
+				\begin{align*}
+					\left( \epsilon a^{\mu}_{\ \nu} \right) j^{\alpha \ \nu}_{\mu} &= \pdv{L}{(\partial_\alpha X^a)} \delta X^a \\
+																										&= - \frac{T}{2} \eta^{\rho \sigma} \left( \pdv{(\partial_\alpha X^a)} \partial_\rho X^\beta \partial_\sigma X^\gamma \right) \eta_{\beta\gamma} \delta X^a \\
+																										&= - T \partial^\alpha X_a \delta X^a  \\
+																										&= -T \partial^\alpha X_a \epsilon a^{a}_{\ \beta} X^\beta
+				\end{align*}
+				Since tensor $a_{\mu\nu}$ is totally anti-symmetric, there are two ways to "cancel" the $a$'s on both sides. In the end, we have
+				\begin{align}
+					j^{\alpha \ \nu}_{\mu} &= - T \partial^\alpha X_a X^\beta \left( - \delta^{a}_\mu \delta_{\beta}^\nu + \eta_{\mu \beta} \eta^{a\nu} \right) \notag \\
+												  &= -T \left( - X^\nu \partial^\alpha X_\mu + X_\mu \partial^\alpha X^\nu \right)
+				\end{align}
+				The sign arises by exchanging the order of indices of $a$. One can properly do this by multiplying $a^{-1}$ to both sides and keep $g^{ik}g_{kj} = \delta^{i}_j$.
+
+			\item With respect to the second transformation
+				\begin{align}
+					\epsilon^\mu j^\alpha_\mu &= -T \partial^\alpha X_a \delta X^a \notag \\
+													  &= -T \partial^\alpha X_a \epsilon^a  \notag \\
+													 j^\alpha_\mu &= -T \partial^\alpha X_\mu
+				\end{align}
+		\end{itemize}
+	\item The action is invariant under reparametrization transformation $\sigma^\alpha \mapsto \sigma'^\alpha (\sigma^\beta)$. Here "everything" transforms like a tensor (with weight $w=0$)
+		\begin{align*}
+			X^\mu (\sigma^\alpha) &\mapsto X^\mu (\sigma'^\alpha) \\
+			\partial_\alpha &\mapsto \pdv{\sigma'^\beta}{\sigma^\alpha} \partial_\beta \\
+			h_{\alpha \beta} &\mapsto h_{\mu\nu} \pdv{\sigma^\mu}{\sigma'^\alpha} \pdv{\sigma^\nu}{\sigma'^\beta} \\
+			\dd[2]{\sigma}\sqrt{-h} &\mapsto \dd[2]{\sigma'} \pdv{\sigma^{'\alpha}}{\sigma^\beta} \pdv{\sigma^{' \beta}}{\sigma^\alpha}  \sqrt{- h}  \det \left(\pdv{\sigma}{\sigma'} \right)^2 = \dd[2]{\sigma'} \sqrt{-h}
+		\end{align*}
+		The last expression is the usual invariant measure for arbitrary continous coordinate transformation (diffeomorphism).
+
+		Plug all these transformation in and we have
+		\begin{align}
+			S_p \mapsto S'_p &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h}  h_{\rho\sigma} \pdv{\sigma^\rho}{\sigma'^\alpha} \pdv{\sigma^\sigma}{\sigma'^\beta} \pdv{\sigma'^\tau}{\sigma^\alpha} \partial_\tau X^\nu \pdv{\sigma'^\omega}{\sigma^\beta} \partial_\omega X^\mu \eta_{\mu\nu} \notag \\
+								  &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h}  h_{\rho\sigma}  \delta^\rho_\alpha \delta^\tau_\alpha \partial_\tau X^\nu  \delta^\sigma_{\beta} \delta^\omega_\beta \partial_\omega X^\mu  \eta_{\mu\nu} \notag \\
+								  &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h} h_{\alpha\beta} \partial_\alpha X^\nu \partial_\beta X^\mu  \eta_{\mu\nu} = S_p
+		\end{align}
+	\item The action is invariant under Weyl transformation $h_{\alpha\beta} \mapsto e^{\phi(\sigma^\alpha)} h_{\alpha\beta}$ (I think there is no summing over $\alpha$ here). This is quite simple. Tranformation of $\sqrt{-h}$ introduce $e^{\phi}$ and since it lies inside sqaure root and determinant: $\sqrt{-h} \mapsto e^{\phi}\sqrt{-h}$. This factor gets cancelled by the transformation of $h^{-1}$. Thus the action is again invariant.
+	\item 
+		Because of the reparametrization symmetry, we can transform our metric into certain form. Since there are three independant entries of the metric and the reparametrization cointains two equations, we are left with
+		\begin{equation}
+			h_{\alpha \beta} = \Omega^2(\sigma, \tau) \eta_{\alpha\beta}
+		\end{equation}
+		Then with the Weyl transformation, we can make the $h_{\alpha \beta} $ locally flat.
+
+		This cannot be done to all points on the world sheet at the same time (i.e.~globally). Since these transformations are diffeomorphism, one can visualize them as stretching a curved two-dimensional plane. It is always possible to make the plane so that at one point, it resembles flat space. But if now one looks at somewhere else, it is not flat anymore, since the plane in the beginning can have different structure at different points.
+\end{enumerate}
