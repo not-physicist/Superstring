@@ -5,18 +5,21 @@ In two dimension, Riemann tensor $R_{\mu\nu\alpha\beta}$ can only have one non-z
 \begin{align*}
 	R_{\mu\nu} &= g^{\alpha \beta }R_{\alpha\mu\beta\nu}  \\
 				  &= g^{00} R_{0\mu0\nu} + g^{11} R_{1\mu1\nu} + g^{01} R_{0\mu1\nu} + g^{10} R_{1\mu0\nu}\\
-				  &= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101}
+				  &= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101} \\
+				  &= g g_{\mu\nu} R_{0101}
 \end{align*}
+Here we express the metric with its inverse metric
+\begin{equation*}
+	g_{\mu\nu} = \frac{1}{\det g^{\mu\nu}}  \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix}
+\end{equation*}
 
 The Ricci scalar is then
 \begin{equation*}
-	R = g^{\mu\nu} R_{\mu\nu} = (g^{00} g^{11} + g^{11} g^{00} - g^{01} g^{01} - g^{01}g^{01}) R_{0101} = 2 (g^{00}g^{11} - g^{01}g^{01}) R_{0101}
+	R = g^{\mu\nu} R_{\mu\nu}  = 2 g R_{0101}
 \end{equation*}
 
 Thus
-\begin{align*}
-	R_{\mu \nu} - \frac{1}{2} R g_{\mu\nu} &= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101} - g_{\mu\nu} (g^{00} g^{11} - g^{01} g^{01}) R_{0101} \\
-														&= \begin{pmatrix} g^{11} & -g^{01} \\ -g^{01} & g^{00} \end{pmatrix} R_{0101} - \begin{pmatrix} g^{11} - g_{00} g^{01} g^{01} & g_{01} g^{00} g^{11}  \\ g_{01} g^{00} g^{11} & g^{00} - g_{11}g^{01}g^{01} \end{pmatrix} R_{0101}\\
-														&= 0
-\end{align*}
-because $g_{ik}g^{kj} = \delta_i^{j}$: $g_{00} g^{01} g^{01} = -g_{01}g^{11} g^{01} = 0$, $g_{11} g^{01} g^{01} = - g_{10} g^{00} g^{01} = 0$, and $g_{01} g^{00} g^{11} = -g_{11}g^{10} g^{11} = -g^{10}$. In the end, we have vanishing energy momentum tensor.
+\begin{equation}
+	R_{\mu \nu} - \frac{1}{2} R g_{\mu\nu} = g g_{\mu\nu} R_{0101} - gg_{\mu\nu} R_{0101} = 0
+\end{equation}
+Then the energy momentm tensor vanishes identically.
