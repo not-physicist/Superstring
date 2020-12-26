@@ -1,0 +1,67 @@
+\section{Worldsheet light-cone coordinates}
+Worldsheet light-cone coordinates are defined as
+\begin{equation}
+	\sigma^{\pm} = \tau \pm \sigma
+\end{equation}
+Equivalently,
+\begin{equation}
+	\tau = \frac{1}{2} \left( \sigma^+ + \sigma^- \right) ,\quad \sigma = \frac{1}{2 } \left( \sigma^+ - \sigma^- \right)
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+	\item
+		\begin{align}
+			\partial_+ &= \pdv{\sigma^+} = \pdv{\tau}{\sigma^+} \pdv{\tau} +  \pdv{\sigma}{\sigma^+} \pdv{\sigma} = \frac{1}{2} \left( \partial_\tau + \partial_\sigma \right) \\
+			\partial_- &= \frac{1}{2} \left( \partial_\tau - \partial_\sigma \right)
+		\end{align}
+	\item Written in matrix form we have the $\eta^{\alpha\beta}$ in light-cone coordinates
+		\begin{equation*}
+			\eta^{\alpha\beta} = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}^{T} \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix} = \begin{pmatrix} 0 & -2 \\ -2 & 0 \end{pmatrix}
+		\end{equation*}
+		Its inverse is
+		\begin{equation}
+			\eta_{\alpha\beta} = - \frac{1}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+		\end{equation}
+
+	\item Energy momentum tensor is defined as 
+		\begin{align}
+			T_{\alpha\beta} &= \frac{4\pi}{\sqrt{-h}} \frac{\delta S_p}{\delta h^{\alpha\beta}} \notag \\
+								 &= \frac{4\pi}{\sqrt{-h}} \left( - \frac{T}{2} \right) \int \dd[2]{\sigma} \Gamma_{\mu\nu} \frac{\delta}{\delta h_{\alpha\beta}} \sqrt{-h} h^{\mu\nu} \notag \\
+								 &= \frac{4\pi}{\sqrt{-h}} \left( - \frac{T}{2} \right) \Gamma_{\mu\nu} \left( - \frac{1}{2\sqrt{-h}} h_{\alpha\beta} h  h^{\mu\nu}     + \sqrt{-h} \delta^\mu_\alpha \delta^\nu_\beta \right) \notag \\
+								 &= - 2 \pi T \left( - \frac{1}{2} \Gamma_{\mu\nu} h_{\alpha\beta} h^{\mu\nu} + \Gamma_{\alpha\beta} \right) 
+		\end{align}
+		Explicitely
+		\begin{align*}
+			T_{00} &= T_{11} = - \pi T (\dot{X}^2 + X'^2)\\
+			T_{01} &= T_{10} = -2\pi T (\dot{X} \cdot X')
+		\end{align*}
+
+		The energy momentum tensor corresponds to the change of the metric. We know from previous homework that in two dimension, there is no gravity. Thus this energy momemtum tensor must vanish. Alternatively, inserting equation of motion reveals that the energy-momentum tensor must vanish.
+
+
+	\item In one way, since the energy-momentum tensor itself has to vanish. It must be traceless.
+		
+		Or explicitely, one has 
+		\begin{align*}
+			T_{\alpha\beta} \eta^{\beta \alpha} = T^{\alpha}_{\alpha} &\propto - \frac{1}{2} \Gamma_{\mu\nu} h_{\alpha\beta} h^{\mu\nu} \eta^{\beta\alpha}  + \Gamma_{\alpha\beta} \eta^{\beta\alpha} \\
+																						 &= - \frac{1}{2} \Gamma_{\mu\nu} h^{\mu\nu} h_{\alpha\beta} \eta^{\beta\alpha} + \Gamma_{\alpha\beta} \eta^{\beta\alpha}
+		\end{align*}
+		Because of Wyel invariance, we have $h^{\mu\nu} \eta_{\alpha} = \eta^{\mu\nu} \eta_{\mu\nu} = 2$ and thus $T_\alpha^{\alpha} = 0$.
+
+	\item In light-cone coordinates, energy momentum tensor has to vanish since coordinate transformation keeps a zero "matrix" intact.
+		\begin{equation}
+			T'_{\alpha \beta} = \pdv{\sigma^\mu}{\sigma'^\alpha} \pdv{\sigma^\nu}{\sigma'^\beta} T_{\mu\nu} = 0
+		\end{equation}
+		with $\sigma'=(\sigma^+, \sigma^-)$.
+
+		Explicitely
+		\begin{align*}
+			T'_{00} &= \pdv{\sigma^\mu}{\sigma^+} \pdv{\sigma^\nu}{\sigma^+} T_{\mu\nu} \\
+					  &= \frac{1}{2} T_{00} + \frac{1}{2} T_{01} \\
+					  &= -\frac{\pi T}{2} \left( \dot{X} + X' \right)^2 \\
+					  &= -2 \pi T (\partial_+ X)^2 \\
+			T'_{11} &= \frac{1}{2} T_{00} - \frac{1}{2} T_{01} = -2\pi T  (\partial_- X)^2 \\
+			T_{01} &= T_{10} = 0
+		\end{align*}
+		Here we denote $T'_{00} = T_{++}$, $T'_{11} = T_{--}$ and so on. 
+\end{enumerate}
+

@@ -1,0 +1,55 @@
+\clearpage
+\section{Poisson brackets for the classical closed string}
+From previous section, we have
+\begin{align*}
+	X^\mu (\sigma, \tau) &=  (x^\mu - c^\mu) + 2\frac{\pi \alpha'}{l} p^\mu \tau  + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \left( \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n (\tau + \sigma)} + \alpha_n^\mu e^{-\frac{2\pi}{l} i n (\tau - \sigma)} \right)\\
+	\dot{X}^\mu(\sigma, \tau) &= \frac{2\pi}{l} \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z} \left(  \tilde{\alpha}^\mu_n e^{- \frac{2\pi}{l} i n (\tau+\sigma)}  + {\alpha}^\mu_n e^{- \frac{2\pi}{l} i n (\tau - \sigma)}  \right)
+\end{align*}
+
+We need to "invert" the solutions, in order to express $\tilde\alpha^\mu_n$ and $\alpha^\mu_n$ in terms of $X^\mu$ and $\dot{X}^\mu$. We want to multiply these two with an exponential function and integrate it out, so that only some certain modes can survive ($m\neq 0$)
+\begin{align}
+	\begin{split}
+		\int^l_0 \dd{\sigma} X^\mu (\sigma, 0) e^{\frac{2\pi}{l} im \sigma} &= i\sqrt{\frac{\alpha'}{2}} \left( \frac{1}{m} \tilde{\alpha}_m^\mu - \frac{1}{m} \alpha_{-m}^\mu \right) \\
+		\int^l_0 \dd{\sigma} \dot{X}^\mu (\sigma, 0) e^{\frac{2\pi}{l} i m \sigma} &= \frac{2\pi}{l} \sqrt{\frac{\alpha'}{2}} \left( \tilde{\alpha}_m^\mu + \alpha_{-m}^\mu \right)
+	\end{split}\label{math:Xint}
+\end{align}
+Thus we get
+\begin{align}
+	\tilde{\alpha}_m^\mu &= \frac{1}{\sqrt{2\alpha'}} \int_0^l \dd{\sigma} e^{\frac{2\pi}{l} im \sigma} \left( \frac{m}{i} X^\mu(\sigma,0) + \frac{l}{2\pi} \dot{X}^\mu(\sigma,0) \right) \\
+	{\alpha}_m^\mu &= \frac{1}{\sqrt{2\alpha'}} \int_0^l \dd{\sigma} e^{-\frac{2\pi}{l} im \sigma} \left( \frac{m}{i} X^\mu(\sigma,0) + \frac{l}{2\pi} \dot{X}^\mu(\sigma,0) \right)
+\end{align}
+where for $\alpha_m^\mu$, we used $m \rightarrow -m$.
+
+To get the desired Poisson brackets
+\begin{align}
+	\acomm{\tilde{\alpha}^\mu_n}{\tilde{\alpha}^\nu_m} &= \frac{1}{{2\alpha'}} \int_0^l \dd{\sigma} e^{\frac{2\pi}{l} in \sigma}  \int_0^l \dd{\sigma'} e^{\frac{2\pi}{l} im \sigma'} \notag \\
+																		&\quad \times \acomm{\frac{n}{i} X^\mu(\sigma,0) + \frac{l}{2\pi} \dot{X}^\mu(\sigma,0)}{\frac{m}{i} X^\nu(\sigma',0) + \frac{l}{2\pi} \dot{X}^\nu(\sigma',0)} \notag\\
+&= \frac{1}{{2\alpha'}} \int_0^l \dd{\sigma} e^{\frac{2\pi}{l} in \sigma}  \int_0^l \dd{\sigma'} e^{\frac{2\pi}{l} im \sigma'} \notag\\
+&\quad \times  \left( \frac{nl}{2\pi i} \acomm{X^\mu(\sigma)}{\dot{X}^\nu(\sigma')} + \frac{ml}{2\pi i} \acomm{\dot{X}^\mu(\sigma)}{X^\nu(\sigma')} \right) \notag\\
+&= \frac{1}{{2\alpha'}} \int_0^l \dd{\sigma} e^{\frac{2\pi}{l} in \sigma}  \int_0^l \dd{\sigma'} e^{\frac{2\pi}{l} im \sigma'} \frac{l}{2\pi T i }\left( n \eta^{\mu\nu} - m \eta^{\nu\mu}  \right) \delta(\sigma - \sigma') \notag\\
+&= \frac{1}{{2\alpha'}} \int_0^l \dd{\sigma} e^{\frac{2\pi}{l} in \sigma}   e^{\frac{2\pi}{l} im \sigma} \frac{l}{2\pi T i }\left( n \eta^{\mu\nu} - m \eta^{\nu\mu}  \right) \notag\\ 
+&= -i n \delta_{m+n,0} \eta^{\mu\nu}
+\end{align}
+The calculation is essentially the same for $\alpha_m^\mu$, the signs in the exponential cancel with each other.
+\begin{equation}
+	\acomm{a_n^\mu}{a_m^\nu} = -in \delta_{n+m,0}\eta^{\mu\nu}
+\end{equation}
+Similarly
+\begin{align}
+	\acomm{\alpha^\mu_n}{\tilde{\alpha}_m^\nu} &= \frac{1}{{2\alpha'}} \int_0^l \dd{\sigma} e^{\frac{2\pi}{l} in \sigma}   e^{-\frac{2\pi}{l} im \sigma} \frac{l}{2\pi T i }\left( n \eta^{\mu\nu} - m \eta^{\nu\mu}  \right) \notag\\  
+															 &= 0
+\end{align}
+
+For $m=0$ in equation \eqref{math:Xint},
+\begin{align*}
+	\int^l_0 \dd{\sigma}X^\mu (\sigma, 0)  &= l (x^\mu - c^\mu) \\
+	\int^l_0 \dd{\sigma} \dot{X}^\mu (\sigma, 0)  &= 2\pi \alpha' p^\mu 
+\end{align*}
+Set $c^\mu = 0$ (or Poisson brackets with $c^\mu$ vanish)
+\begin{align}
+	\acomm{x^\mu}{x^\nu} &= \frac{1}{l^2} \int^l_0 \dd{\sigma} \int^l_0 \dd{\sigma'} \acomm{X^\mu(\sigma)}{X^\nu(\sigma')} = 0 \\
+	\acomm{p^\mu}{p^\nu} &= \frac{1}{ 4 \pi^2 \alpha'^2} \int^l_0 \dd{\sigma} \int^l_0 \dd{\sigma'} \acomm{\dot{X}^\mu(\sigma)}{\dot{X}^\nu(\sigma')} = 0 \\
+	\acomm{x^\mu}{p^\nu} &= \frac{1}{2l\pi\alpha'} \int^l_0 \dd{\sigma} \int^l_0 \dd{\sigma'} \acomm{X^\mu(\sigma)}{\dot{X}^\nu(\sigma')} \notag \\
+								&=\frac{1}{2l\pi\alpha'} \int^l_0 \dd{\sigma} \int^l_0 \dd{\sigma'} \frac{1}{T} \eta^{\mu\nu} \delta(\sigma - \sigma') \notag \\
+								&= \eta^{\mu\nu}
+\end{align}

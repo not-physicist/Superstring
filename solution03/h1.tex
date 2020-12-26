@@ -1,0 +1,124 @@
+\section{Oscillator expansions for the classical string}
+\begin{enumerate}[label=(\alph*)]
+	\item We make the ansatz
+		\begin{equation}
+			X^\mu (\sigma, \tau) = f(\sigma) g(\tau)
+		\end{equation}
+		Then the equation of motion becomes
+		\begin{align*}
+			g(\tau )\pdv[2]{f(\sigma)}{\sigma}- f(\sigma) \pdv[2]{g(\tau)}{\tau}  &= 0 \\
+		\end{align*}
+		
+		Clearly if we have
+		\begin{equation}
+			\pdv[2]{f(\sigma)}{\sigma}  = k f(\sigma), \quad \pdv[2]{g(\tau)}{\tau} = k g(\tau)
+		\end{equation}
+		the equation of motion is satisfied. Thus we write the solutions
+		\begin{align*}
+			f(\sigma) &= A e^{-i \sqrt{-k} \sigma} + B e^{i\sqrt{-k}\sigma}, \\ 
+			g(\tau) &= A' e^{-i \sqrt{-k} \tau} + B' e^{i\sqrt{-k}\tau}, \text{ for } k \neq 0 \\
+			f(\sigma) &= C\sigma + D, \quad g(\tau) = C' \tau + D', \text{ for } k = 0
+		\end{align*}
+		To determine the constant $k$, we need to use periodic boundary condition ($m\in \Z$)
+		\begin{align*}
+			l \sqrt{-k} &= 2 \pi m  \\
+			k &= - \frac{4 \pi^2 m^2}{l^2}
+		\end{align*}
+		Polynomial solution of $f(\sigma)$ cannot satisfy unless $C=0$. Multiplying out $f(\sigma)$ and $g(\tau)$ and redefining the constants (so that they also carries Lorentz indices)
+		\begin{equation}
+			X^\mu (\sigma, \tau) = A^\mu + B^\mu \tau + \sum_{m\in \Z \setminus \{0\}} e^{i\sqrt{-k}\sigma} \left( C^\mu_m e^{-i\sqrt{-k}\tau} + D^\mu_m e^{i\sqrt{-k}\tau} \right)
+		\end{equation}	
+		Note that terms with $e^{-i\sqrt{-k}\sigma}$ gets absorbed in redefinition of constants.
+
+	\item Equation of motion can be rewritten as
+		\begin{equation*}
+			\partial_+ \partial_- X^\mu = 0
+		\end{equation*}
+		Thus it makes sense to write the solution into left- and right-moving parts
+		\begin{equation}
+			X^\mu (\sigma, \tau) = X^\mu_L (\sigma^+) + X^\mu_R (\sigma^-)
+		\end{equation}
+		These two parts are explicit given on the sheet
+		\begin{align}
+			X_L^\mu (\sigma^+) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\pi \alpha'}{l} p^\mu \sigma^+ + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^+} \\
+			X_R^\mu (\sigma^-) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\pi \alpha'}{l} p^\mu \sigma^- + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} {\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^-}
+		\end{align}
+		We will set $c^\mu$ to zero in the following discussion.
+
+	\item  We suppose that the solution from part (b) should be used here.
+	
+		We require that solutions $X^\mu$ must be real. Thus $x^\mu$ and $p^\mu$ ($\alpha'$ too) must be real. Last term is a bit more involved
+		\begin{align*}
+			\left( i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^+} \right)^* &= -i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} (\tilde{\alpha}_n^\mu)^* e^{\frac{2\pi}{l} i n \sigma^+} \\
+																																																		 &= i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{-n} (\tilde\alpha_{-(-n)}^\mu)^* e^{-\frac{2\pi}{l}i (-n) \sigma^+} \\
+																																																		 &= i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} (\tilde\alpha_{-n}^\mu)^* e^{-\frac{2\pi}{l}i n \sigma^+} \\
+																																																		 &\stackrel{!}{=} i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \tilde\alpha_{n}^\mu e^{-\frac{2\pi}{l}i n \sigma^+}
+		\end{align*}
+		Thus the condition for $\tilde\alpha$ is
+		\begin{equation*}
+			\tilde \alpha^\mu_n = (\tilde \alpha^\mu_{-n})^*
+		\end{equation*}
+		Analogically,
+		\begin{equation*}
+			 \alpha^\mu_n = ( \alpha^\mu_{-n})^*
+		\end{equation*}
+	
+	\item There are a couple of interesting quantities to look at
+
+		\begin{itemize}
+			\item  total spacetime momentum
+				\begin{align*}
+					P^\mu &= \frac{1}{2\pi\alpha'} \int^l_0 \dd{\sigma} \dot{X}^\mu \\
+							&= \frac{1}{2\pi\alpha'} \int ^l_0 \dd{\sigma} (\partial_+ X^\mu_L + \partial_- X^\mu_R) \\
+							&=\frac{1}{2\pi\alpha'} \int ^l_0 \dd{\sigma} \frac{2\pi}{l} \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z} \left(  \tilde{\alpha}^\mu_n e^{- \frac{2\pi}{l} i n (\tau+\sigma)}  + {\alpha}^\mu_n e^{- \frac{2\pi}{l} i n (\tau - \sigma)}  \right)
+				\end{align*}
+				Here the sum includes $n=0$ mode, because we introduce
+				\begin{equation*}
+					\alpha_0^\mu = \tilde{\alpha}^\mu_0 = \sqrt{\frac{\alpha'}{2}} p^\mu
+				\end{equation*}
+				Obviously, integrals with $n\neq 0$ vanish because of periodicity of complex exponential function. 
+				\begin{equation}
+					P^\mu = \frac{1}{2\pi\alpha'} \frac{2\pi}{l} \sqrt{\frac{\alpha'}{2}} l \cdot 2 \sqrt{\frac{\alpha'}{2}} p^\mu = p^\mu
+				\end{equation}
+				It shows that the $p^\mu$ is the total momentum.
+			\item center of mass position
+				\begin{align}
+					q^\mu &= \frac{1}{l} \int_0^l \dd{\sigma} X^\mu \notag \\
+							&= \frac{1}l \int_0^l \dd{\sigma} \left( x^\mu + 2 \frac{\pi \alpha'}{l} p^\mu \tau   \right) \notag \\
+							&= x^\mu + 2 \frac{\pi\alpha'}{l} p^\mu \tau
+				\end{align}
+				$x^\mu$ can be interpreted as center of mass position at $\tau=0$.
+
+			\item total angular momentum
+				\begin{align*}
+					J^{\mu\nu} &= \frac{1}{2\pi\alpha'} \int_0^l \dd{\sigma} \left( X^\mu \dot{X}^\nu - X^\nu \dot{X}^\mu \right) \\
+								  &= \frac{1}{2\pi\alpha'} \int_0^l \dd{\sigma} \left(x^\mu + \cancel{2 \frac{\pi\alpha'}{l} p^\mu \tau} \right) \dot{X}^\nu  \\
+								  & \quad + \frac{i}{2 l }\int_0^l \dd{\sigma} \sum_{n\neq0} \left(  \frac{1}{n} \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n (\tau + \sigma)} + \frac{1}{n} {\alpha}_n^\mu e^{-\frac{2\pi}{l} i n (\tau - \sigma)} \right) \\
+								  &\quad \times \sum_{n \in \Z} \left(  \tilde{\alpha}^\mu_n e^{- \frac{2\pi}{l} i n (\tau+\sigma)}  + {\alpha}^\mu_n e^{- \frac{2\pi}{l} i n (\tau - \sigma)}  \right)  - (\mu \leftrightarrow \nu)
+				\end{align*}
+				Here term with $p^\mu \dot{X}^\nu$ is symmetric in indices and it get cancelled by the $(\mu \leftrightarrow \nu)$ term. The same as before, only terms with constant in $\sigma$ can be non-zero after integration. Thus we must have $n$ of opposite signs for two sums.
+				\begin{align*}
+					J^{\mu\nu} &= x^\mu p^\nu + i \sum_{n > 0} \frac{1}{n} \left( \tilde{\alpha}_{n}^\mu \tilde{\alpha}_{-n}^\nu  -  \alpha^\mu_n \alpha^\nu_{-n}\right) - (\mu \leftrightarrow \nu)
+				\end{align*}
+				Note that $\frac{1}{2}$ factor in the last term disappeared because we can have $-n$ from first summation and $n$ from second summation in the $(\mu \leftrightarrow \nu)$ term. The sign from $1/n$ cancels with the overall sign in front. Thus two times the same contributions.
+		\end{itemize}
+
+	\item Physically open strings can reflect left- and right-moving oscillations. Thus only one mode is necessary.
+
+	\item The given mode expansion solves the bulk equation
+		\begin{equation*}
+			(\partial_\tau^2 - \partial_\sigma^2) X^\mu (\tau, \sigma) = i\sqrt{2\alpha'} \sum_{n\neq 0} \frac{1}{n } \alpha_n^\mu e^{-i \frac{\pi}{l} n \tau} \cos(\frac{n\pi\sigma}{l}) \left( - \frac{\pi}{l} n + \frac{n\pi}{l} \right) = 0
+		\end{equation*}
+		And to check the boundary conditions
+		\begin{align*}
+			X'^\mu = i\sqrt{2\alpha'} \sum_{n\neq 0} \frac{1}{n } \alpha_n^\mu e^{-i \frac{\pi}{l} n \tau} \sin(\frac{n\pi\sigma}{l}) \cdot \left(- \frac{n\pi}{l} \right)
+		\end{align*}
+		It indeed vanishes at $\sigma=0$ and $\sigma=l$.
+
+	\item This mode expansion also solves the bulk equation
+		\begin{equation*}
+			(\partial_\tau^2 - \partial_\sigma^2) X^\mu (\tau, \sigma) = \sqrt{2\alpha'} \sum_{n\neq 0} \frac{1}{n } \alpha_n^\mu e^{-i \frac{\pi}{l} n \tau} \sin(\frac{n\pi\sigma}{l}) \left( - \frac{\pi}{l} n + \frac{n\pi}{l} \right) = 0
+		\end{equation*}
+		Because of $\sin(n\pi\sigma/l)$, third term vanishes at $\sigma=0$ and $\sigma=l$. And $X^\mu(\sigma=0) = x_0^\mu$, $X^\mu(\sigma=l) = x_l^\mu$. So the Dirichlet conditions are satisfied.
+\end{enumerate}
+

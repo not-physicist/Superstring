@@ -1,0 +1,63 @@
+\section{A first look at the canonical quantization of the bosonic string}
+
+\begin{enumerate}[label=(\alph*)]
+	\item From previous sheet(s),
+		\begin{align}
+			X_L^\mu (\sigma^+) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\pi \alpha'}{l} p^\mu \sigma^+ + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^+} \\
+			X_R^\mu (\sigma^-) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\pi \alpha'}{l} p^\mu \sigma^- + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} {\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^-}
+		\end{align}
+		Now we want to express $X_{L,R}^\mu$ in terms of $(z,\bar{z}) = (e^{2\pi i \sigma_- /l}, e^{2\pi i \sigma_+ / l})$. It should be stress that $\bar{z}$ is \textit{not} the complex conjugation of $z$. Thus
+		\begin{align}
+			X_L^\mu (\bar{z}) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\alpha'}{2i} p^\mu \ln\bar{z} + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \tilde{\alpha}_n^\mu {\bar{z}}^{-n} \\
+			X_R^\mu (z) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\alpha'}{2i} p^\mu \ln z + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} {\alpha}_n^\mu z^{-n}
+		\end{align}
+
+	\item Propagator is defined as
+		\begin{equation}
+			\braket{X^\mu(\sigma,\tau) X^\nu (\sigma', \tau)} = T[X^\mu(\sigma,\tau) X^\nu (\sigma', \tau')] - :X^\mu(\sigma,\tau) X^\nu (\sigma',\tau'):
+		\end{equation}
+		$T$ denotes time ordering and $: \, :$ normal ordering
+		\begin{align*}
+			:\alpha_{-m} \alpha_{m}: &= 
+			\begin{cases}
+				\alpha_{-m} \alpha_{m}, & m>0 \\ 
+				\alpha_{-m} \alpha_{m} - \comm{\alpha_{-m}}{\alpha_{m}}, & m < 0 \\
+			\end{cases} \\
+			:p^\nu x^\mu: &= x^\mu p^\nu = p^\nu x^\mu - \comm{p^\nu}{x^\mu}
+		\end{align*}
+
+		We can write out the first term
+		\begin{align*}
+			T[X_L^\mu(\bar{z}) X_L^\nu (\bar{w})]&= 
+\begin{cases}
+X_L^\mu(\bar{z}) X_L^\nu (\bar{w}), & \tau > \tau' \\
+X_L^\nu (\bar{w}) X_L^\mu(\bar{z}), & \tau < \tau' \\
+\end{cases}\\
+		\end{align*}
+		The normal orderer product is just the "original" product along with some appropriate commutators.
+		\begin{align*}
+		:X_L^\mu(\bar{z}) X_L^\nu (\bar{w}):	&= X_L^\mu(\bar{z}) X_L^\nu (\bar{w}) - \frac{\alpha'}{4i} \comm{p^\mu}{x^\nu} \ln{\bar{z}} + \frac{\alpha'}{2} \sum_{n>0, m<0} \frac{1}{nm} \comm{\tilde\alpha^\mu_n}{\tilde{\alpha}^\nu_m} \bar{z}^{-n} \bar{w}^{-m} \\
+															&= X_L^\mu(\bar{z}) X_L^\nu (\bar{w}) + \frac{\alpha'}{4i} i\eta^{\nu\mu} \ln{\bar{z}} + \frac{\alpha'}{2} \sum_{n>0, m<0} \frac{1}{nm} n \eta^{\mu\nu} \delta_{m+n} \bar{z}^{-n} \bar{w}^{-m}\\
+																&= X_L^\mu(\bar{z}) X_L^\nu (\bar{w}) + \frac{\alpha'}{4} \eta^{\mu\nu} \ln{\bar{z}} - \frac{\alpha'}{2} \sum_{n>0} \frac{1}{n} \eta^{\mu\nu} \bar{z}^{-n} \bar{w}^{n} \\
+																&= X_L^\mu(\bar{z}) X_L^\nu (\bar{w}) + \frac{\alpha'}{4} \eta^{\mu\nu} \ln{\bar{z}} + \frac{\alpha'}{2} \eta^{\mu\nu} \ln(1-\frac{\bar{w}}{\bar{z}}) \\
+		\end{align*}
+		Thus 
+		\begin{align}
+			\braket{X_L^\mu(\bar{z}) X_L^\nu (\bar{w})}	&= - \frac{\alpha'}{4} \eta^{\mu\nu} \ln{\bar{z}} - \frac{\alpha'}{2} \eta^{\mu\nu} \ln(1-\frac{\bar{w}}{\bar{z}}) \notag \\
+																		&= \eta^{\mu\nu} \left[ \frac{\alpha'}{4} \ln(\bar{z}) - \frac{\alpha'}{2} \ln(\bar{z}-\bar{w}) \right]
+		\end{align}
+		
+		With "$RR$" combination, it is the same with $\bar{z} \rightarrow z$ and $\bar{w} \rightarrow w$
+		\begin{equation}
+			\braket{X_R^\mu({z}) X_R^\nu ({w})}	= \eta^{\mu\nu} \left[ \frac{\alpha'}{4} \ln({z}) - \frac{\alpha'}{2} \ln({z}-{w}) \right]
+		\end{equation}
+		The "mixed" contributions are simpler since commutators involving ladder operators vanish
+		\begin{align}
+			\braket{X_L^\mu(\bar{z}) X_R^\nu ({w})} &= - \frac{\alpha'}{4} \eta^{\mu\nu} \ln{\bar{z}} \\
+			\braket{X_R^\mu({z}) X_L^\nu (\bar{w})} &= - \frac{\alpha'}{4} \eta^{\mu\nu} \ln{{z}}
+		\end{align}
+		All together we have
+		\begin{equation}
+			\braket{X^\mu (z,\bar{z}) X^\nu(w,\bar{w})} = -\eta^{\mu\nu} \frac{\alpha'}{2} \ln (z-w)(\bar{z}-\bar{w})
+		\end{equation}
+\end{enumerate}

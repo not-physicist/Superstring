@@ -1,0 +1,87 @@
+\section{The quantum Virasoro algebra}
+Virasoro algebra is in quantum theory defined as
+\begin{equation}
+	L_m = \frac{1}{2} \sum_{n \in \Z} :\alpha_{m-n} \alpha_{n}:,\quad \bar{L}_m = \frac{1}{2} \sum_{n \in \Z} :\bar\alpha_{n-m} \bar\alpha_{n}:
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+	\item In $L_m$ there are only two terms of interest, since all other vanish due to commutation relation
+		\begin{align*}
+			\comm{L_m}{\alpha_n^\mu} &= \frac{1}{2} \alpha_{m-(-n), \nu} \comm{\alpha_{-n}^\nu}{\alpha_n^\mu} + \frac{1}{2} \alpha_{m+n,\nu} \comm{\alpha_{m-(m+n)}^\nu}{\alpha_n^\mu} \\
+											 &= \frac{1}{2} \left( \alpha_{m-(-n), \nu} (-n) \eta^{\nu\mu} +  \alpha_{m+n,\nu} (-n) \eta^{\nu\mu} \right) \\
+											 &= - n \alpha_{m + n}^\mu
+		\end{align*}
+		One should note that the equal sign on the first row is not always valid. Here we have the commutation simply as a number instead of operator, so we can place the commutator where ever we want. In principle, the ordering should depend on the values of $m$ and $n$.
+
+	\item 
+		Use the definition of normal ordering, we see
+		\begin{align}
+			L_m &=
+			\frac{1}{2} \sum_{n \geq m/2} \alpha_{m-n} \alpha_{n} +  \frac{1}{2} \sum_{n < m/2}\alpha_{n} \alpha_{m-n}  \notag
+			\shortintertext{As a matter of fact, the "threshold" to separate these two summations are arbitrary, since the mode indices are not opposite if $m\neq 0$}
+				 &= \frac{1}{2} \sum_{n \geq 0} \alpha_{m-n} \alpha_{n} +  \frac{1}{2} \sum_{n < 0}\alpha_{n} \alpha_{m-n} \label{math:Lm}
+		\end{align}
+		
+	\item From previous results, we can write the commutator of Virasoro generators as
+		\begin{align*}
+			\comm{L_m}{L_n} &= \frac{1}{2} \left( \sum_{p<0} \comm{L_m}{\alpha_p \cdot \alpha_{n-p}} + \sum_{p \geq 0} \comm{L_m}{\alpha_{n-p} \cdot \alpha_{p}}\right) \\
+			2 \comm{L_m}{L_n} &=  \sum_{p<0} \comm{L_m}{\alpha_p^\mu  } \alpha_{n-p, \mu} + \sum_{p<0} \alpha_{p, \mu} \comm{L_m}{\alpha_{n-p}^\mu} \\
+									&\quad + \sum_{p \geq 0} \comm{L_m}{\alpha_{n-p}^\mu } \alpha_{p, \mu} + \sum_{p \geq 0} \alpha_{n-p, \mu}\comm{L_m}{ \alpha_{p}^\mu}\\
+			2 \comm{L_m}{L_n} &=  \sum_{p<0} -p \alpha^\mu_{m + p} \alpha_{n-p, \mu} + \sum_{p<0} \alpha_{p, \mu} (-n+p) \alpha^\mu_{m+n-p} \\
+									&\quad + \sum_{p \geq 0} (-n+p)\alpha_{m+n-p}^\mu \alpha_{p, \mu} + \sum_{p \geq 0} \alpha_{n-p, \mu} (-p) \alpha_{m+p}^\mu\\
+		\end{align*}
+		Now we realized that I should have expanded $L_m$. Instead, rename indices $n \leftrightarrow m$
+		\begin{align*}
+			2 \comm{L_n}{L_m} &=  \sum_{p<0} -p \alpha^\mu_{n + p} \alpha_{m-p, \mu} + \sum_{p<0} \alpha_{p, \mu} (-m+p) \alpha^\mu_{m+n-p} \\
+									&\quad + \sum_{p \geq 0} (-m+p)\alpha_{m+n-p}^\mu \alpha_{p, \mu} + \sum_{p \geq 0} \alpha_{m-p, \mu} (-p) \alpha_{n+p}^\mu\\
+			\comm{L_m}{L_n} &= \frac{1}{2} \sum_{p<0}\left[  (m-p) \alpha_{p} \cdot \alpha_{m+n-p} + p \alpha_{n + p} \cdot \alpha_{m-p}  \right]\\
+								 &\quad + \frac{1}{2} \sum_{p \geq 0}\left[  (m-p)\alpha_{m+n-p} \cdot \alpha_{p} +  p \alpha_{m-p} \cdot \alpha_{n+p} \right] \\
+		\end{align*}
+		This is the same as the expression given on the sheet, up to "position" of $p=0$. It does not matter, since first sum is essentially the same as the second sum.
+
+	\item Change the summation variable as follows: $p \rightarrow q$ in the first term, $p \rightarrow q-n$ in the second term, $p \rightarrow q$ in the third term and $p \rightarrow  q - n$ in the last term.
+		\begin{align*}
+			\comm{L_m}{L_n} &= \frac{1}{2} \left[ \sum_{q \leq 0} (m-q) \alpha_{q} \cdot \alpha_{m+n-q} + \sum_{q \leq n}(q-n) \alpha_{q} \cdot \alpha_{m+n-q}  \right]\\
+								 &\quad + \frac{1}{2} \left[  \sum_{q > 0} (m-q)\alpha_{m+n-q} \cdot \alpha_{q} + \sum_{q > n} (q-n) \alpha_{m+n-q} \cdot \alpha_{q} \right] \\
+		\end{align*}
+		First two terms are very similar, thus we "split" second sum and combine one part into the first sum. The same operation is done to the second two terms.
+		\begin{align}
+			\comm{L_m}{L_n} &= \frac{1}{2} \left[ \sum_{q \leq 0} (m-n) \alpha_{q} \cdot \alpha_{m+n-q} + \sum_{0 < q \leq n}(q-n) \alpha_{q} \cdot \alpha_{m+n-q}  \right] \notag \\
+								 &\quad + \frac{1}{2} \left[  \sum_{q > n} (m-n)\alpha_{m+n-q} \cdot \alpha_{q} + \sum_{0 < q \leq n}  (m-q)\alpha_{m+n-q} \cdot \alpha_{q}\right] \label{math:Lcomm}
+		\end{align}
+		Is it normal ordered with $n>0$? No, for instance if $m \rightarrow -\infty$, then the first term with $q=0$ is not normal ordered.
+
+	\item If $m+n \neq 0$ and $n>0$, with equation \eqref{math:Lm}
+		\begin{align*}
+			L_{m+n} = \frac{1}{2} \sum_{q < 0} \alpha_{q} \cdot \alpha_{m+n-q} + \frac{1}{2} \sum_{q \geq 0} \alpha_{m+n-q} \cdot \alpha_{q}
+		\end{align*}
+		This is the same as $\comm{L_m}{L_n}$ up to a numerical factor. One can see it from combining second and last term of equation \eqref{math:Lcomm} together (with $m+n \neq 0$ we are allowed to exchange $\alpha$'s in the second term) and then put it into the third sum. Thus
+		\begin{equation*}
+			\comm{L_m}{L_n} =	(m-n) L_{m+n}, \quad m+n \neq 0
+		\end{equation*}
+
+	\item If $m+n = 0$ and $n>0$,
+		\begin{align*}
+			\comm{L_m}{L_n} &= \frac{1}{2} \left[ \sum_{q \leq 0} (m-n) \alpha_{q} \cdot \alpha_{-q} + \sum_{0 < q \leq n}(q-n) \alpha_{q} \cdot \alpha_{-q}  \right]  \\
+								 &\quad + \frac{1}{2} \left[  \sum_{q > n} (m-n)\alpha_{-q} \cdot \alpha_{q} + \sum_{0 < q \leq n}  (m-q)\alpha_{-q} \cdot \alpha_{q}\right] 
+		\end{align*}
+		The second term is not normal ordered,
+		\begin{align*}
+			\sum_{0 < q \leq n}(q-n) \alpha_{q} \cdot \alpha_{-q} &= \sum_{0 < q \leq n} (q-n) ( \alpha_{-q} \cdot \alpha_{q} + \comm{\alpha_q^\mu}{\alpha_{-q,\mu}} ) \\
+																					&= \sum_{0 < q \leq n} (q-n)  \alpha_{-q} \cdot \alpha_{q} + \sum_{0<q\leq n} (q-n) q \eta^\mu_\mu  \\
+																					&= \sum_{0 < q \leq n} (q-n)  \alpha_{-q} \cdot \alpha_{q} + \sum_{0<q\leq n} (q^2 - nq) d \\
+																					&= \sum_{0 < q \leq n} (q-n)  \alpha_{-q} \cdot \alpha_{q} + \left[ \frac{1}{6} \left( 2n^3 + 3 n^2 + n \right) - n \frac{n}{2} (n+1) \right] d \\
+																					&= \sum_{0 < q \leq n} (q-n)  \alpha_{-q} \cdot \alpha_{q} + \frac{1}{6} n (1-n^2) d 
+		\end{align*}
+		with $d$ the dimension of the target space.
+
+		Thus with $m+n=0$,
+		\begin{align*}
+			\comm{L_m}{L_n} &= \frac{1}{2} \left[ \sum_{q \leq 0} (m-n) \alpha_{q} \cdot \alpha_{-q} + \sum_{0 < q \leq n}(q-n)  \alpha_{-q} \cdot \alpha_{q}  \right]  \\
+								 &\quad + \frac{1}{2} \left[  \sum_{q > n} (m-n)\alpha_{-q} \cdot \alpha_{q} + \sum_{0 < q \leq n}  (m-q)\alpha_{-q} \cdot \alpha_{q}\right]  + \frac{d}{12} n (1-n^2) \\
+								 \shortintertext{combine second, third and fourth term together}
+								 &= \frac{1}{2}\left[ \sum_{q\leq 0} (m-n) \alpha_q \cdot \alpha_{-q} + \sum_{q > 0} (m-n) \alpha_{-q} \cdot \alpha_{q} \right] + \frac{d}{12} n (1-n^2) \\
+								 &= (m-n) L_0 + \frac{d}{12} n (1-n^2) \\
+			\comm{L_m}{L_n} &= 2m L_0 + \frac{d}{12} m (m^2-1) \\
+		\end{align*}
+
+\end{enumerate}

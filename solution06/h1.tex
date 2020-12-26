@@ -1,0 +1,55 @@
+\section{Lorentz symmetry of the quantum string}
+
+We have shown already the total angular momentum in terms of modes. In quantum theory, they get normal ordered
+\begin{equation}
+	J^{\mu\nu} = l^{\mu\nu} + E^{\mu\nu} + \bar{E}^{\mu\nu}
+\end{equation}
+For closed strings, there is contribution $\bar{E}^{\mu\nu}$. Since it is entirely made of $\bar{\alpha}$'s, its commutator with Virasoro generator is zero. So in this calculation, open string and closed string are the same.
+
+The quantum Virasoro operators are 
+\begin{equation}
+	L_m = \frac{1}{2} \sum_{n \in \Z} :\alpha_{m-n}\cdot \alpha_n:  = \frac{1}{2} \sum_{n<0} \alpha_n \cdot \alpha_{m-n}  + \frac{1}{2}\sum_{n\geq 0} \alpha_{m-n} \cdot \alpha_n
+\end{equation}
+We also have a useful relation
+\begin{equation}
+	\comm{L_m}{\alpha^\mu_n} = -n \alpha^\mu_{m+n}
+\end{equation}
+
+First
+\begin{align*}
+	\comm{L_m}{E^{\mu\nu}} &=  \sum_{n>0} \frac{-i}{n}  \comm{L_m}{-  \alpha^\nu_{-n}\alpha^\mu_n + \alpha^\mu_{-n}\alpha^\nu_n} \\
+								  &= \sum_{n>0} \frac{-i}{n} \left( -\comm{L_m}{\alpha_{-n}^\nu}\alpha_n^\mu - \alpha_{-n}^\nu \comm{L_m}{\alpha_n^\mu} + \comm{L_m}{\alpha^\mu_{-n}}\alpha^\nu_n + \alpha^\mu_{-n} \comm{L_m}{\alpha^\nu_n} \right) \\
+								  &= \sum_{n>0} \frac{-i}{n} \left( -n \alpha^\nu_{m-n} \alpha^\mu_n + n\alpha_{-n}^\nu \alpha^\mu_{m+n} + n \alpha_{m-n}^\mu \alpha^\nu_n -n  \alpha^\mu_{-n} \alpha_{m+n}^\nu \right)
+								  \shortintertext{It is clear that if $m=0$, the commutator vanishes. What if $m\neq 0$? Indices of first and third terms get renamed $n \rightarrow -n$}
+								  &= -i\sum_{n>0} \left(  \alpha_{-n}^\nu \alpha^\mu_{m+n} - \alpha^\mu_{-n} \alpha_{m+n}^\nu \right) + i \sum_{n < 0 } \left(\alpha_{m+n}^\mu \alpha^\nu_{-n} -  \alpha^\nu_{m+n} \alpha^\mu_{-n} \right)
+								  \shortintertext{Combining these two sums (commutator vanishes)}
+								  &= -i \sum_{n \neq 0} \left( \alpha_{m+n}^\mu \alpha_{-n}^\nu  - \alpha^\nu_{m+n} \alpha^\mu_{-n} \right)
+\end{align*}
+
+Then for the orbital angular momentum part: if $m \neq 0$ then there are two terms contributing
+\begin{align*}
+	\comm{L_m}{l^{\mu\nu}} &= \frac{1}{2} \left( \alpha_m^\sigma \comm{\alpha_{0, \sigma} }{l^{\mu\nu}} + \alpha^\sigma_m \comm{\alpha_{0, \sigma}}{l^{\mu\nu}} \right) \\
+								  &= \alpha_{m, \sigma} \comm{p^\sigma}{x^\mu p^\nu - x^\nu p^\mu} \\
+								  &= \alpha_{m, \sigma} (-i\eta^{\sigma\mu} p^\nu +i \eta^{\sigma\nu}p^\mu) \\
+								  &= -i (\alpha_m^\mu \alpha_0^\nu - \alpha_m^\nu \alpha^\mu_0)
+\end{align*}
+If $m=0$
+\begin{align*}
+	\comm{L_0}{l^{\mu\nu}} &= \frac{1}{2} \comm{\alpha_0^\sigma \alpha_{0, \sigma}}{x^\mu p^\nu - x^\nu p^\mu} \\
+								  &= \alpha_{0, \sigma} \left( \comm{\alpha^\sigma_0}{x^\mu}p^\nu -  \comm{\alpha^\sigma_0}{x^\nu}p^\mu \right) \\
+								  &= -i \alpha_{0, \sigma} \left( \eta^{\sigma \mu} p^\nu - \eta^{\sigma\nu} p^\mu \right)  \\ 
+								  &= 0
+\end{align*}
+
+Put everything together
+\begin{align*}
+	\comm{L_m}{J^{\mu\nu}} &= 
+	\begin{cases}
+		0, & m=0 \\
+		-i \sum_{n } \left( \alpha_{m+n}^\mu \alpha_{-n}^\nu  - \alpha^\nu_{m+n} \alpha^\mu_{-n} \right), & m \neq 0
+	\end{cases} \\
+								  &= 0
+\end{align*}
+In $m \neq 0$ these two terms cancel each other, since one can rename the index of second term $n \rightarrow -n - m$ and $m \neq 0$.
+
+In quantum theory, constraints can be expressed through the restriction that Virasoro generator $L_m$ ($m > 0$) annihilates physical states. The fact that Virasoro generator commutes with total angular momentum operator means that with these constraints physical states have well defined angular momenta. Thus representations of Lorentz group can be thought as particles, i.e.~physical states.

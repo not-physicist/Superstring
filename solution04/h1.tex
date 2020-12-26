@@ -1,0 +1,147 @@
+\section{The classical Virasoro algebra for the closed bosonic string}
+
+\begin{enumerate}[label=(\alph*)]
+	\item 
+		First we can show
+		\begin{align*}
+			\partial_- T_{++} &\propto \partial_- \partial_+ X^\mu \partial_+ X_\mu = 0 \\
+			\partial_+ T_{--} &\propto \partial_+ \partial_- X^\mu \partial_- X_\mu = 0
+		\end{align*}
+		with equations of motion. Then we have
+		\begin{equation}
+			T_{++} = T_{++}(\sigma_+), \quad T_{--} = T_{--}(\sigma_-)
+		\end{equation}
+		Equivalently, one could also use conservation of energy-momentum in flat spacetime (after using the reparametrization and Weyl invariances) $\partial^\alpha T_{\alpha\beta} = 0$. Thus we have found
+		\begin{align*}
+			\partial^+ T_{++} + \partial^- T_{-+} &= 0 	 \\
+			\cancel{\eta^{+-}}\partial_- T_{++} + \cancel{\eta^{-+}} \partial_+ T_{-+} &= 0 \\
+			\partial_- T_{++} = 0
+		\end{align*}
+		since off-diagonal entries $T_{+-}$, $T_{-+}$ vanish. It is analogous for $T_{--}$. These two methods are the same, since in both constraint or EOM is used. Remember that e.g. in GR, conservation of energy-momentum is a consequence of Einstein field equations.
+		
+		\textcolor{blue}{Essentially, we only showed that the relations are valid for "on-shell" strings. What about off-shell (i.e. without constraints)?} It does not matter, since we still have classical theory.
+
+	\item 
+		First we write the action in the normal worldsheet light-cone coordinates
+		\begin{align*}
+			S_p &= 2 T \int \dd{\tau} \dd{\sigma} \partial_+ X \cdot \partial_- X \\
+				 &= T \int \dd[2]{\sigma^{\pm}} \partial_+ X \cdot \partial_- X
+		\end{align*}
+		Remember $X^\mu$ lives in target space, thus unaffected by the coordinate transformation.
+
+		Actually after we set $h^{\alpha\beta}=\eta^{\alpha\beta}$, there is still residual symmetry. To see this, we reparametrize the worldsheet again via 
+		\begin{align}
+			\sigma^+ &\rightarrow \tilde{\sigma}^+ = \tilde{\sigma}^+(\sigma^+) \\
+			\sigma^- &\rightarrow \tilde{\sigma}^- = \tilde{\sigma}^- (\sigma^-)
+		\end{align}
+		Basically Jacobian is diagonal. 
+		\begin{align*}
+			\dd[2]{\sigma^\pm} &= \dd[2]{\tilde{\sigma}^{\pm}} \pdv{(\sigma^\pm)}{(\tilde{\sigma}^\pm)} \\
+			\partial_+ X \cdot \partial_- X &= \tilde\partial_+ X \cdot \tilde\partial_- X \pdv{\tilde{\sigma}^+}{\sigma^+} \pdv{\tilde{\sigma}^-}{\sigma^-}
+		\end{align*}
+		These two extra factors are inverse to each other. Thus this coordinate transformation again leaves the action invariant.
+
+
+	\item 
+		To write the aforementioned transformation in infinitesimal form
+		\begin{equation*}
+			\sigma^\pm \rightarrow \sigma^\pm + \xi^\pm(\sigma^\pm)
+		\end{equation*}
+		The field transforms as
+		\begin{equation*}
+			X^\mu \rightarrow X^\mu + \xi^\pm \partial_\pm X^\mu
+		\end{equation*}
+		The corresponding conserved currents are ($\alpha = \pm$ also)
+		\begin{align*}
+			\xi^b j_b^\alpha &= \pdv{\lag}{(\partial_\alpha X^a)} \delta X^a \\
+								  &= \left( \partial_- X_\mu \delta^\alpha_+ \delta^\mu_a + \partial_+ X_\nu \delta^\alpha_- \delta^\nu_a \right) \xi^c \partial_c X^a \\
+									j_b^\alpha &= \partial_- X \cdot \partial_b X \delta^\alpha_+ + \partial_+ X \cdot \partial_b X \delta^\alpha_-
+		\end{align*}
+
+	\item The corresponding charges are
+		\begin{align*}
+			j_{+} &= \int \dd{\sigma^+} j_{+}^- \\
+					  &=T \int \dd{\sigma^+} \partial_+ X_\mu \partial_+ X^\mu \\
+					  &= T\int \dd{\sigma^+} T_{++} \\
+			j_{-} &= \int \dd{\sigma^-} j_{-}^+ \\
+					&= T \int\dd{\sigma^-} T_{--}
+		\end{align*}
+		Also $\int\dd{\sigma^+} j^+_+ = \int \dd{\sigma^-} j^-_- = 0$ due to the equation of motion.
+
+	\item  From last sheet, we have the mode expansion for closed strings
+		\begin{equation*}
+			X^\mu (\sigma, \tau) =  (x^\mu - c^\mu) + \frac{\pi \alpha'}{l} p^\mu (\sigma^+ + \sigma^-)  + i \sqrt{\frac{\alpha'}{2}} \sum_{n \in \Z \setminus \{0\}} \frac{1}{n} \left( \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^+} + \alpha_n^\mu e^{-\frac{2\pi}{l} i n \sigma^-} \right)\\
+		\end{equation*}
+		Then
+		\begin{align*}
+			\partial_+ X^\mu &=   \frac{\pi \alpha'}{l} p^\mu + \frac{\sqrt{2\alpha'} \pi}{l} \sum_{n \in \Z \setminus \{0\}}  \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^+} \\
+								  &= \frac{\sqrt{2\alpha'} \pi}{l} \sum_{n \in \Z }  \tilde{\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^+}\\
+			\partial_- X^\mu &=  \frac{\sqrt{2\alpha'} \pi}{l} \sum_{n \in \Z }  {\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^-} 
+		\end{align*}
+		Thus
+		\begin{align*}
+			T_{--} &=  - \frac{1}{\alpha'} \frac{2 \alpha' \pi^2}{l^2} \sum_{n \in \Z }  {\alpha}_n^\mu e^{-\frac{2\pi}{l} i n \sigma^-} \cdot \sum_{m \in \Z }  {\alpha}_{m,\mu} e^{-\frac{2\pi}{l} i m \sigma^-} \\
+					 &= - \frac{2\pi^2}{l^2} \sum_{n, m \in \Z} \alpha_{n} \cdot \alpha_{m} e^{- \frac{2\pi i }{l} (n+m) \sigma^-} \\
+					 &= - \frac{2\pi^2}{l^2} \sum_{n, m \in \Z} \alpha_{n-m} \cdot \alpha_{m} e^{- \frac{2\pi i }{l} n \sigma^-}
+		\end{align*}
+		with $n \rightarrow n-m$ shifted at last step. Thus we have (analogously for $T_{++}$)
+		\begin{align}
+			T_{--} &= - \left( \frac{2\pi}{l} \right)^2 \sum_{n\in \Z} L_n e^{- \frac{2\pi i n}{l} \sigma^- } \\
+			T_{++} &= - \left( \frac{2\pi}{l} \right)^2 \sum_{n\in \Z} \tilde{L}_n e^{- \frac{2\pi i n}{l} \sigma^+ }
+		\end{align}
+		with $L_n = \frac{1}{2} \sum_{m \in \Z} \alpha_{n-m} \cdot \alpha_{m}$ and the same for $\tilde{L}_n$.
+
+	\item In last sheet, we found
+		\begin{align}
+			\acomm{\alpha_n^\mu}{\alpha^\nu_m} &= \acomm{\tilde\alpha_n^\mu}{\tilde\alpha^\nu_m} = -in \eta^{\mu\nu} \delta_{m+n,0} \\
+			\acomm{\alpha_n^\mu}{\tilde\alpha^\nu_m} &= 0 \label{math:LLtilde}
+		\end{align}
+		
+		\begin{align}
+			\acomm{L_m}{L_n} &= \frac{1}{4} \sum_{a,b \in\Z} \acomm{\alpha_{m - a}^\mu \alpha_{a, \mu}}{\alpha_{n-b}^\nu \alpha_{b, \nu}} \notag \\
+								  &= \frac{1}{4} \sum_{a,b \in\Z} \left( \acomm{\alpha_{m - a}^\mu }{\alpha_{n-b}^\nu \alpha_{b, \nu}} \alpha_{a, \mu} + \alpha_{m - a}^\mu\acomm{ \alpha_{a, \mu}}{\alpha_{n-b}^\nu \alpha_{b, \nu}}\right) \notag \\
+								  &= \frac{1}{4} \sum_{a,b \in\Z} \Big( \acomm{\alpha_{m - a}^\mu }{\alpha_{n-b}^\nu } \alpha_{b, \nu}\alpha_{a, \mu} + \alpha_{n-b}^\nu\acomm{\alpha_{m - a}^\mu }{ \alpha_{b, \nu}} \alpha_{a, \mu} \notag \\
+								  &\quad + \alpha_{m - a}^\mu \acomm{ \alpha_{a, \mu}}{\alpha_{n-b}^\nu }\alpha_{b, \nu} + \alpha_{m - a}^\mu \alpha_{n-b}^\nu \acomm{ \alpha_{a, \mu}}{\alpha_{b, \nu} }\Big) \label{math:brackets} \\
+								  &= -\frac{i}{4} \sum_{a,b \in\Z} \Big[ (m-a) \eta^{\mu\nu} \delta_{m-a+n-b,0} \alpha_{b, \nu}\alpha_{a, \mu} + (m-a) \delta^\mu_\nu \delta_{m-a+b,0} \alpha^\nu_{n-b} \alpha_{a,\mu}  \notag \\
+								  &\quad + a \delta^\nu_\mu \delta_{a+n-b,0} \alpha^\mu_{m-a} \alpha_{b,\nu} + a \eta_{\mu\nu} \delta_{a+b,0} \alpha_{m - a}^\mu \alpha_{n-b}^\nu \Big]  \notag\\
+								  &= - \frac{i}{2} \sum_{a \in \Z} \left[ (m-a) \alpha_{m+n-a} \cdot \alpha_{a}  + a \alpha_{m-a} \cdot\alpha_{a+n}  \right] \notag \\
+								  \shortintertext{we shift summation index of the second term $a\rightarrow a - n$.}
+								  &= - \frac{i}{2} (m-n) \sum_{a\in\Z} \alpha_{m+n-a} \cdot \alpha_{a} \notag \\
+								  &= -i (m-n) L_{m+n}
+		\end{align}
+		Analogously,
+		\begin{equation}
+			\acomm{\tilde{L}_m}{\tilde{L}_n} = - i (m-n) \tilde L_{m+n}
+		\end{equation}
+		since Poisson brackets are the same. If we have the second Virasoro generator with tilde, then the second terms in the Poisson brackets in equation \eqref{math:brackets} are all with tilde. They vanish due to equation \eqref{math:LLtilde}.
+		\begin{equation}
+			\acomm{{L}_m}{\tilde{L}_n} = 0
+		\end{equation}
+
+	\item Fourier transformed Virasoro generators, i.e.~$T_{++}$ and $T_{--}$, are zero. Thus we conclude that $L_n = \tilde{L}_n = 0$ because of constraints.
+	
+	\item Mass-shell condition for the closed bosonic string can be expressed with zero modes
+		\begin{equation}
+			M^2 = -p^\mu p_\mu = - \frac{2}{\alpha'} \alpha_0 \cdot \alpha_0
+		\end{equation}
+		We can express this in terms of all other mode coefficients with the result we obtained in last part $L_0 = \tilde{L}_0 = 0$.
+		\begin{align*}
+			M^2 &= -\frac{1}{\alpha'} (\alpha_0 \cdot \alpha_0 + \tilde{\alpha}_0 \cdot \tilde{\alpha}_0) \\ 
+				 &= \frac{1}{\alpha'} \left( \sum_{n \in \Z \setminus \{0\}} \alpha_{-n} \cdot \alpha_{n} + \sum_{n \in \Z \setminus \{0\}} \tilde\alpha_{-n} \cdot \tilde \alpha_{n} \right) \\
+				 &= \frac{2}{\alpha'} \sum_{n\in \N} \left( \alpha_{-n} \cdot \alpha_{n} + \tilde\alpha_{-n} \cdot \tilde \alpha_{n} \right)
+		\end{align*}
+
+	\item 
+		For closed string, due to periodicity definitions of start and end points are arbitrary. Thus it must be $\sigma$-translation invariant.
+		$-T \int \dot{X} \cdot X' \dd{\sigma}$ is able to generate $\sigma$-translation
+		\begin{align*}
+			&\quad -T \int \dd{\sigma} \acomm{\dot{X}(\sigma, \tau) \cdot X'(\sigma, \tau)}{X^\nu(\sigma',\tau)} \\
+			&= -T \int \dd{\sigma} \acomm{\dot{X}^\mu(\sigma, \tau) }{X^\nu(\sigma',\tau)}X'_\mu(\sigma, \tau) \\
+			&= - X'^\nu(\sigma')
+		\end{align*}
+		
+		Plug in the solution, we have $-T \int \dot{X} \cdot X' \dd{\sigma} = 2\pi/l (L_0 - \tilde{L}_0)$.
+		Thus we need to impose the constraint that $L_0 - \tilde{L}_0 = 0$.
+
+		The periodicity also implies that we should have two distinct modes in the general solution, i.e.~left and right moving modes.
+\end{enumerate}

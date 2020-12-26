@@ -1,0 +1,40 @@
+\section{A spaghetti stick as solution to the string equations of motion}
+We have 
+\begin{align}
+	\begin{split}
+		X^0 &= A \tau, \\
+		X^1 &= A \cos\tau \cos\sigma, \\
+		X^2 &= A \sin\tau\cos\sigma,  \\
+		X^i &=0 \text{ for } i=3,\dots,d-1
+	\end{split}
+\end{align}
+\begin{enumerate}[label=(\alph*)]
+	\item To verify it is indeed a solution,
+		\begin{align*}
+			(\partial_\tau^2 - \partial_\sigma^2) X^1 &= (-1 + 1) X^1 = 0 \\
+			(\partial_\tau^2 - \partial_\sigma^2) X^2 &= (-1 + 1) X^2 = 0
+		\end{align*}
+		And it is trivial for all other dimensions.
+
+	\item $X^0$ has Neumann boundary conditions, as the $\sigma$-derivative vanishes identically. $X^1$ and $X^2$ have Neumann conditions again, since after differentiation they both proportional to $\sin\sigma$ which vanishes for $\sigma=0$ and $\sigma=l$ if $l \in \pi \N$.
+
+	\item The energy
+		\begin{align*}
+			M &= P^0 = \frac{1}{2\pi \alpha'} \int_0^l \dd{\sigma} \partial_\tau X^0 \\
+			  &= \frac{Al}{2\pi\alpha'} 
+		\end{align*}
+
+	\item Angular momentum
+		\begin{align*}
+			J &= |J^{12}| = \frac{1}{2\pi\alpha'} \int_0^l \dd{\sigma} \left( X^1 \dot{X}^2 - X^2 \dot{X}^1 \right) \\
+			  &= \frac{1}{2\pi\alpha'} A^2 \int_0^l \dd{\sigma} \left( \cos^2\tau \cos^2\sigma + \sin^2\tau \cos^2\sigma \right) \\
+			  &= \frac{A^2}{4\pi\alpha'} \left[ \sin\sigma \cos\sigma + \sigma \right]_0^l \\
+			  &= \frac{A^2}{4\pi \alpha'} l
+		\end{align*}
+		In the last step, the Neumann boundary condition is used.
+
+	\item 
+		\begin{align*}
+			\frac{J}{M^2} = \frac{A^2l}{4\pi \alpha'} \frac{(2\pi \alpha')^2}{A^2l^2} = \frac{\pi \alpha'}{l}
+		\end{align*}
+\end{enumerate}

@@ -1,0 +1,148 @@
+\section{Lorentz invariance in light-cone gauge}
+The space-time light-cone coordinates will be used
+\begin{equation}
+	X^\pm = \frac{1}{\sqrt{2}} \left( X^0 \pm X^{d-1} \right)
+\end{equation}
+with $i=1,\dots,d-2$. Light-cone gauge is
+\begin{equation}
+	X^+ = x^+ + p^+ \tau
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+	\item The constraints are
+		\begin{equation}
+			( \dot{X} \pm X' )^2 = 0
+		\end{equation}
+		Written in space-time light-cone coordinates ($i=1,\dots,d-2$ and metric signature is $(+,-,-,\dots)$)
+		\begin{align*}
+			[( \dot{X} \pm X' )^i]^2  &= 2 ( \dot{X} \pm X' )^- ( \dot{X} \pm X' )^+ \\
+											  &= 2 p^+ ( \dot{X} \pm X' )^-
+		\end{align*}
+		Thus we have
+		\begin{equation}
+			( \dot{X} \pm X' )^- = \frac{1}{2p^+} \sum_{i=1}^{d-2} [( \dot{X} \pm X' )^i]^2
+			\label{math:constr}
+		\end{equation}
+
+	\item  In order to express the previous equation in terms of modes, we first calculate ($\mu \neq +$)
+		\begin{align*}
+			( \dot{X} \pm X' )^\mu &= p^\mu + \sum_{n\neq 0 } \alpha^\mu_n e^{-in\tau} \cos n\sigma \mp i \sum_{n\neq 0} \alpha^\mu_n e^{-in\tau} \sin n \sigma \\
+										  &= p^\mu + \sum_{n\neq 0 } \alpha^\mu_n e^{-in (\tau \pm \sigma)}  \\
+										  &= \sum_{n} \alpha^\mu_n e^{-in (\tau \pm \sigma)}
+		\end{align*}
+		Thus equation \eqref{math:constr} becomes
+		\begin{align*}
+			\sum_{n} \alpha^-_n e^{-in (\tau \pm \sigma)} &= \frac{1}{2p^+} \sum_{i=1}^{d-2} \sum_{n,m}\alpha^i_n \alpha^i_m  e^{-i (n+m) (\tau \pm \sigma)} \quad | \int_0^{2\pi} \dd{\sigma^\pm} e^{ik \sigma^\pm} \\
+			\sum_n \alpha^-_n 2\pi \delta_{n,k} &= \frac{1}{2p^+} \sum_{i=1}^{d-2} \sum_{n,m}\alpha^i_n \alpha^i_m 2\pi \delta_{n+m, k} \\
+			\alpha^-_{k} &= \frac{1}{2p^+} \sum_{i=1}^{d-2} \sum_{m}\alpha^i_{k-m} \alpha^i_m
+		\end{align*}
+		We introduce a normal-ordering constant constant $a$
+		\begin{equation}
+			\alpha^-_{n} = \frac{1}{p^+} \left( \frac{1}{2}\sum_{i=1}^{d-2} \sum_{m=-\infty}^{\infty} :\alpha^i_{n-m} \alpha^i_m:   - a \delta_n \right)
+		\end{equation}
+
+	\item Mass shell condition
+		\begin{align*}
+			M^2 &= 2p^+p^- - p^i p_i \\
+				 &= \sum_{i=1}^{d-2} \sum_m \alpha_{-m}^i \alpha_{m}^i - \alpha^i_0 \alpha^i_0 \\
+				 &= \sum_{i=1}^{d-2} \sum_{m \neq 0} \alpha_{-m}^i \alpha_{m}^i \\
+				 &= 2 \sum_{i=1}^{d=2} \sum_{m=1}^{\infty} \alpha^i_{-m} \alpha^i_{m} - 2 a \\
+				 &= 2 (N-a)
+		\end{align*}
+	\item 
+		We have found 
+		\begin{equation}
+			\comm{J^{\mu\nu}}{J^{\rho\sigma}} = i (\eta^{\mu \rho} J^{\nu\rho} + \eta^{\nu\sigma} J^{\mu\rho} - \eta^{\nu\rho} J^{\mu\sigma} - \eta^{\mu\sigma} J^{\nu\rho})
+		\end{equation}
+		Thus
+		\begin{align*}
+			\comm{J^{i-}}{J^{j-}} &= i (\eta^{i j} J^{--} + \eta^{--} J^{ij} - \eta^{-j} J^{i-} - \eta^{i-} J^{-j}) \\
+										 &= i \delta^{ij} J^{--} \\
+										 &= 0
+		\end{align*}
+		because by definition $J^{\mu\nu}$ is totally anti-symmetric tensor.
+
+	\item First
+		\begin{align*}
+			\comm{A}{BC} &= ABC - BCA \\
+							 &= \comm{A}{B}C + B\comm{A}{C}
+		\end{align*}
+		Thus
+		\begin{align*}
+			\comm{AB}{CD} &= \comm{AB}{C} D + C \comm{AB}{D} \\
+							  &= -\comm{C}{AB} D - C \comm{D}{AB} \\
+							  &= -\left(\comm{C}{A}B + A \comm{C}{B} \right) D - C \left(\comm{D}{A}B + A \comm{D}{B} \right) \\
+							  &= \comm{A}{C}BD + A \comm{B}{C} D + C\comm{A}{D} B + C A \comm{B}{D} \\
+							  &= A \comm{B}{C} D + C\comm{A}{D} B + \comm{A}{C} (DB - \comm{D}{B}) + (AC - \comm{A}{C})\comm{B}{D}\\ 
+							  &= A \comm{B}{C} D + C\comm{A}{D} B + \comm{A}{C} DB + AC \comm{B}{D} \\
+							  &= A \comm{B}{C} D + AC \comm{B}{D}  + \comm{A}{C} DB + C\comm{A}{D} B
+		\end{align*}
+
+	\item 
+		% As in canonical quantisation, we have the following commutation relations
+		% \begin{align}
+			% \comm{X^\mu(\sigma,\tau)}{\dot{X}^\nu(\sigma',\tau)} &= 2 \pi i \alpha' \eta^{\mu\nu} \delta(\sigma - \sigma') = \pi i \eta^{\mu\nu} \delta(\sigma- \sigma') \\
+			% \comm{X^\mu(\sigma,\tau)}{{X}^\nu(\sigma',\tau)} &=\comm{\dot{X}^\mu(\sigma,\tau)}{\dot{X}^\nu(\sigma',\tau)} = 0
+		% \end{align}
+		% Thus
+		% \begin{align*}
+			% \comm{\dot{X}^+(\sigma,\tau)}{\dot{X}^-(\sigma',\tau)} &= \sum_{n}\comm{p^+}{\alpha_n^-} e^{-in\tau} \cos n \sigma = 0
+		% \end{align*}
+		% One can pick out one mode  by multiplying $e^{ik\tau}$ and integrating $\tau$ on both side. Thus $\comm{p^+}{\alpha^-_n}$ vanishes for all $n$, especially $n=0$: $\comm{p^+}{p^-}=0$.
+		% \begin{align*}
+			% \comm{{X}^-(\sigma,\tau)}{\dot{X}^+(\sigma',\tau)} &= - \pi i \delta(\sigma - \sigma') \\
+																					 % &= \comm{x^-}{p^+} + \comm{p^-}{p^+} + i \sum_{n\neq 0} \frac{1}{n} \comm{\alpha_n^-}{p^+} e^{-in\tau} \cos n\sigma
+		% \end{align*}
+		% The last two terms vanish as shown before. To get rid of delta functions, integrate over $\sigma'$ from $0$ to $l=\pi$
+
+		Choice of coordinate doesn't change the previously proven commutation relations. Light-cone gauge also doesn't affect it, since it is just a condition that $\alpha^+_n$ vanishes for all $n$.
+
+		Thus
+		\begin{align}
+			\comm{x^-}{p^+} &= i \eta^{-+} = - i \notag \\
+			\frac{1}{p^+} \comm{x^-}{p^+}\frac{1}{p^+} &= -i (p^+)^{-2} \notag \\
+			\comm{x^-}{1/p^+} &= i (p^+)^{-2}
+		\end{align}
+
+		The second relation is
+		\begin{align}
+			\comm{\alpha_m^i}{\alpha_n^-} &= \frac{1}{2p^+} \sum_{j=1}^{d-2} \sum_{k} \comm{\alpha_m^i}{\alpha_{n-k}^j \alpha_k^j} \notag \\
+													&= \frac{1}{2p^+} \sum_{i=1}^{d-2} \sum_{k} \left( \comm{\alpha^{i}_m}{\alpha^j_{n-k}} \alpha^j_k + \alpha^j_{n-k} \comm{\alpha^i_m}{\alpha^j_{k}} \right) \notag \\
+													&= \frac{1}{2p^+} \sum_{i=1}^{d-2} \sum_{k} \delta^{ij} \left(  m \delta_{m+n-k} \alpha^j_k + \alpha^j_{n-k} m \delta_{m+k} \right) \notag \\
+													&= \frac{m}{p^+} \alpha^j_{m+n}
+		\end{align}
+		Note that since $\comm{p^+}{\alpha^\nu_n} = 0$, the quotient notation is well-defined.
+
+		And the third
+		\begin{align}
+			\comm{\alpha^-_m}{x^-} &= \frac{1}{2} \sum_{i=1}^{d-2} \sum_{n}  \comm{1/p^+}{x^-}\alpha^i_{m-n} \alpha^i_{n} \notag \\
+										  &= -\frac{i}{p^+} \alpha^-_m
+		\end{align}
+
+	\item In assignment 5.2, we have
+		\begin{equation}
+			\comm{L_m}{L_n} = (m-n) L_{m+n} + \frac{d}{12}m (m^2 - 1) \delta_{m+n,0}
+		\end{equation}
+		It is almost identical as the commutator here, since $L_m$ is very similar as $p^+ \alpha^-_m$ except the normal-ordering constant term. Thus
+		\begin{equation}
+			\comm{p^+ \alpha^-_m}{p^+ \alpha^-_m} = (m-n) p^+ \alpha^-_{m+n} + \left[ \frac{d-2}{12}m(m^2 - 1) + 2am \right]\delta_{m+n}
+		\end{equation}
+		We have $d-2$ here instead of $d$ because in $L_m$ commutator, there is a normal Minkowski product thus summation over all space-time coordinates, whereas here we only sum over the transverse direction.
+
+	\item Define 
+		\begin{equation*}
+			E^j = p^+ E^{j-}
+		\end{equation*}
+		Then
+		\begin{align*}
+			\comm{x^i}{E^{j-}} &= p^+ \comm{x^i}{E^{j-}} \\
+									 &= -ip^+ \sum_{n>0} \frac{1}{n} \left( \comm{x^i}{\alpha^j_{-n} \alpha^-_{n}} - \comm{x^i}{\alpha^-_{-n} \alpha^j_n} \right) \\
+									 &= \sum_{n>0} \sum_{k=1}^{d-2} \sum_{m} \frac{-i}{2n} \left( \alpha^j_{-n} \comm{x^i}{\alpha^k_{n-m} \alpha^k_{m}} - \comm{x^i}{\alpha^k_{-n-m} \alpha^k_{m} }\alpha^j_n \right)
+									 \shortintertext{$\alpha_{\pm n}^j$ is brought out of the commutator since $n\neq 0$. In order for the commutator not to vanish, $m=0$ or $\pm n - m = 0$ and these two cannot be satisfied simultaneously.}
+									 &= \sum_{n>0} \sum_{k=1}^{d-2} \sum_{m} \frac{-i}{2n} \left[ \alpha^j_{-n} i \eta^{ik} (\delta_{n-m}\alpha^k_m + \alpha^k_{n-m} \delta_m ) - i\eta^{ik} (\delta_{n+m} \alpha^k_m + \delta_m \alpha^k_{-n-m})  \alpha^j_n \right] \\
+									 &= \sum_{n>0} \sum_{k=1}^{d-2} \frac{-i}{2n} \left[ \alpha^j_{-n} i \delta^{ik} (\alpha^k_n + \alpha^k_{n} ) - i\delta^{ik} (\alpha^k_{-n} + \alpha^k_{-n})  \alpha^j_n \right] \\
+									 &= i\sum_{n>0} \frac{-i}{n} \left( \alpha^j_{-n}\alpha^i_n - \alpha^i_{-n}\alpha^j_n \right) \\
+									 &= -i E^{ij}
+		\end{align*}
+\end{enumerate}
+

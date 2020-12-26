@@ -1,0 +1,31 @@
+\section{Classical string equations of motion and boundary conditions}
+\begin{enumerate}[label=(\alph*)]
+	\item The Polyakov in conformal gauge ($h_{\alpha\beta} = \Omega(\sigma,\tau) \eta_{\alpha\beta}$)is 
+		\begin{align}
+			S_p &= - \frac{T}{2} \int \dd[2]{\sigma} \sqrt{-h} h^{\alpha\beta} \partial_\alpha X^\mu \partial_\beta X^\nu \eta_{\mu\nu} \notag \\
+				 &= - \frac{T}{2} \int \dd[2]{\sigma} \eta^{\alpha\beta} \partial_\alpha X^\mu \partial_\beta X^\nu \eta_{\mu\nu} \notag \\
+				 &= - \frac{T}{2} \int \dd[2]{\sigma} \partial_\alpha X^\mu \partial^\alpha X_\mu \notag \\
+				 &= \frac{T}{2} \int \dd[2]{\sigma} \left(  \dot{X}^2 - X'^2 \right)
+		\end{align}
+
+	\item 
+		Take the variation of $\delta S_p$ with respect to $X^\mu$
+		\begin{align*}
+			\delta S_p &= \frac{T}{2} \int \dd[2]{\sigma} \left( 2 \dot{X}^\mu \delta \dot{X}_\mu - 2 X'^\mu \delta X'_\mu \right) \\
+						  &= T \int \dd[2]{\sigma} \left( \dot{X}^\mu \delta \dot{X}_\mu - X'^\mu \delta X'_\mu \right) \\
+						  &\stackrel{\text{i.b.p.}}{=} T \int \dd[2]{\sigma} \left( \partial_\tau^2   - \partial_\sigma^2  \right)X^\mu \delta X_\mu - T \left. \int_0^l \dd{\sigma} \dot{X}^\mu \delta X_\mu \right|_{\tau = \tau_i}^{\tau_f} \\
+						  &\quad \quad - T \left. \int_{\tau_i}^{\tau_f} \dd{\tau} X'^\mu \delta X_\mu \right|_{\sigma=0}^l
+		\end{align*}
+		where the second term vanished due to $\delta X^\mu (\tau_i) = \delta X^\mu (\tau_f)$. Thus assume that first and third term separately go to zero, we have
+		\begin{align}
+			\left( \partial_\tau^2 - \partial_\sigma^2 \right) X^\mu &= 0 \\
+			\left. \int_{\tau_i}^{\tau_f} \dd{\tau} X'^\mu \delta X_\mu \right|_{\sigma=0}^l & = 0 
+		\end{align}
+
+	\item There are various ways to make the second term vanish
+		\begin{itemize}
+			\item Periodicity $X^\mu (\sigma, \tau) = X^\mu (\sigma + l, \tau)$ so that the integral evaluated at two points are equal. It means that we have closed string now.
+			\item Neumann boundary condition $X'_\mu (\sigma, \tau) = 0$ for $\sigma=0, l$ so that the integrand vanishes. It means that the direction or slope of string's end points are always fixed.
+			\item Dirichlet boundary condition $X^\mu(\sigma=0) = \text{const.}$ and $X^\mu(\sigma=l) = \text{const.}$ so that the integrand vanishes. It means the end points of string are fixed. It breaks Lorentz invariance.
+		\end{itemize}
+\end{enumerate}

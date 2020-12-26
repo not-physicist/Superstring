@@ -1,0 +1,77 @@
+\section{Global Poincare invariance and Poincare Algebra}
+The energy-momentum current
+\begin{equation}
+	P^\alpha_\mu = - T \sqrt{-h} h^{\alpha \beta} \partial_\beta X_\mu
+\end{equation}
+The angular momentum current
+\begin{equation}
+	J^\alpha_{\mu\nu} = - T \sqrt{-h} h^{\alpha\beta} \left( X_\mu \partial_\beta X_\nu - X_\nu \partial_\beta X_\mu \right)
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+	\item Obviously
+		\begin{align}
+			J^\alpha_{\mu\nu} &= X_\mu \left( - T \sqrt{-h} h^{\alpha\beta} \partial_\beta X_\nu \right) - X_\nu \left( - T \sqrt{-h} h^{\alpha\beta} \partial_\beta X_\mu \right) \notag \\ 
+			&= X_\mu P^\alpha_\nu - X_\nu P^\alpha_\mu 
+		\end{align}
+
+	\item 
+		Integrals of these two currents over a space-like section are constant in time, i.e.~conversed quantities. To see it
+		\begin{align*}
+			\partial_0 P_\mu &= \int_0^l \dd{\sigma} \partial_0 P^0_\mu  \\
+						&= T \int_0^l \dd{\sigma} \partial_0^2 X_\mu \\
+						&\stackrel{\text{e.o.m.}}{=} T \int_0^l \dd{\sigma} \partial_1^2 X_\mu \\
+						&= T \left. \partial_\sigma X_\mu \right|_{\sigma=0}^{\sigma=l}
+		\end{align*}
+		where the equation of motion is used. It is zero for closed string due to periodicity. For open string, momentum current is conserved with Neumann boundary condition. Physical intepretation is that with Neumann condition no momentum can flow in or out of string.
+
+		\begin{align*}
+			\partial_0 J_{\mu\nu} &= \partial_0 \int_0^l \dd{\sigma} J_{\mu\nu}^0\\ 
+										 &= T \int_0^l \dd{\sigma} \left( X_\mu \partial_0^2 X_\nu - X_\nu \partial_0^2 X_\mu \right) \\
+										 &\stackrel{\text{e.o.m.}}{=} T \int_0^l \dd{\sigma} \left( X_\mu \partial_1^2 X_\nu - X_\nu \partial_1^2 X_\mu \right) \\
+			\frac{1}{T} \partial_0 J_{\mu\nu} &\stackrel{\text{i.b.p.}}{=}  \left.X_\mu \partial_1 X_\nu\right|_{\sigma=0}^{l} - \int_0^l \dd{\sigma} \partial_1 X_\mu \partial_1 X_\nu - \int_0^l \dd{\sigma} X_\nu \partial_1^2 X_\mu \\
+														 &\stackrel{\text{i.b.p.}}{=} \left.X_\mu \partial_1 X_\nu\right|_{\sigma=0}^{l} - \left. X_\nu \partial_1 X_\mu \right|_{\sigma=0}^{l}
+		\end{align*}
+		Again it vanishes for closed string with periodicity, with Neumann condition for open string also. Here the angular momentum cannot flow in or out of the string.
+	
+		Also it is obvious that for open string with Dirichlet condition, momentum and angular momentum currents are not necessarily conserved. It has something to do with its explicite volation of Lorentz invariance.
+
+	\item We work again in conformal gauge. 
+
+		We have relation of Poisson brakcet
+		\begin{align*}
+			\acomm{X^\mu(\sigma, \tau)}{X^\nu (\sigma', \tau)} = \acomm{\dot{X}^\mu(\sigma, \tau)}{\dot{X}^\nu(\sigma', \tau)} = 0 \\
+			\acomm{X^\mu(\sigma, \tau)}{\dot{X}^\nu(\sigma', \tau)} = \frac{1}{T}\eta^{\mu\nu}\delta(\sigma-\sigma')
+		\end{align*}
+		Thus 
+		\begin{align*}
+			\acomm{X^\mu(\sigma, \tau)}{P^\nu(\sigma', \tau)} &= \int \dd{\sigma'} \acomm{X^\mu(\sigma, \tau)}{P^{0,\nu}(\sigma', \tau)} \\
+																			  &= -T \int \dd{\sigma'} \acomm{X^\mu(\sigma, \tau)}{\partial^0 X^\nu(\sigma', \tau)} \\
+																			  &= -\eta^{\mu\nu}
+		\end{align*}
+
+		The Poincare Algebra
+		\begin{align}
+			\acomm{P^\mu}{P^\nu} &= \int \dd{\sigma} \int \dd{\sigma'} \acomm{P^{0,\mu}}{P^{0,\mu}} \notag \\
+										&\propto  \int \dd{\sigma} \int \dd{\sigma'} \acomm{\partial^0 X^\mu}{\partial^0 X^\nu}  \notag \\
+			\acomm{P^\mu}{P^\nu}	&= 0
+		\end{align}
+	
+		\begin{align}
+			\acomm{P^\mu}{J^{\rho\sigma}} &=  \acomm{P^{\mu}}{X^\rho P^{\sigma} - X^\sigma P^{\rho}} \notag \\
+													&= \acomm{P^\mu}{X^\rho P^\rho} - \acomm{P^\mu}{X^\sigma P^\rho} \notag \\
+													&= \acomm{P^\mu}{X^\rho} P^\rho + X^\rho \underbrace{\acomm{P^\mu}{P^\rho}}_{=0} - \acomm{P^\mu}{X^\sigma}P^\rho - X^\sigma\underbrace{\acomm{P^\mu}{P^\rho}}_{=0} \notag  \\
+													&= -\eta^{\mu\rho} P^\sigma + \eta^{\mu\sigma} P^\rho
+		\end{align}
+		If one substitue some certain $P^\mu$ with $X^\mu$ in the second last step, one has
+		\begin{equation*}
+			\acomm{X^\mu}{J^{\rho\sigma}} = X^\rho \acomm{X^\mu}{P^\rho} - X^\sigma \acomm{X^\mu}{P^\rho} = - X^\rho \eta^{\mu\rho} + X^\sigma \eta^{\mu\rho}
+		\end{equation*}
+
+		\begin{align}
+			\acomm{J^{\mu\nu}}{J^{\rho\sigma}} &= \acomm{X^\mu	P^\nu - X^\nu P^\mu}{J^{\rho\sigma}} \notag \\
+														  &= \acomm{X^\mu}{J^{\rho\sigma}} P^\nu - X^\mu \acomm{P^\nu}{J^{\rho\sigma}} - \acomm{X^\nu}{J^{\rho\sigma}} P^\mu + X^\nu \acomm{P^\mu}{J^{\rho\sigma}} \notag \\
+														  &= \left( - X^\rho \eta^{\mu\sigma} + X^\sigma \eta^{\mu\rho} \right) P^\nu - X^\mu \left( P^\rho \eta^{\nu\sigma} - P^\sigma \eta^{\nu\rho} \right) \notag \\
+														  &\quad + \left( - X^\rho \eta^{\nu\sigma} + X^\sigma \eta^{\nu\rho} \right) P^\mu + X^\nu \left( P^\rho \eta^{\mu\sigma} - P^\sigma \eta^{\mu\rho} \right) \notag \\
+														  &= \eta^{\mu\sigma} J^{\rho\nu} - \eta^{\mu\rho} J^{\sigma\nu} - \eta^{\nu\sigma} J^{\rho\mu} + \eta^{\nu\rho} J^{\mu\sigma}
+		\end{align}
+\end{enumerate}
