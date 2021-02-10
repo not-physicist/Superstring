@@ -1,0 +1,105 @@
+\section{Two-point and three-point correlation functions}
+A primary field $\phi(z)$ transform under the infinitesimal conformal transformation $z \rightarrow z + \epsilon(z)$ as 
+\begin{equation}
+	\delta_\epsilon \phi(z) = - \left[ \epsilon(z)\partial_z + h \partial_z \epsilon(z) \right] \phi(z)
+\end{equation}
+
+Now consider (quasi-)primary fields $\phi_i$ with conformal dimension $h_i$
+\begin{enumerate}
+	\item Conformal invariance of two-point function $G(z_1,z_2)$ implies
+		\begin{align}
+			\begin{split}
+			\delta_{\epsilon(z_1),\epsilon(z2)} G(z_1, z_2) &= \expval{\delta_{\epsilon(z_1)}\phi_1 \phi_2} + \expval{\phi_1 \delta_{\epsilon(z_2)}\phi_2} \\
+																			&= - \left[ \epsilon(z_1)\partial_{z_1} + h_1 \partial_{z_1} \epsilon(z_1) +  \epsilon(z_2)\partial_{z_2} + h_2 \partial_{z_2} \epsilon(z_2)\right] G(z_1, z_2) \\
+																			&= 0
+		\end{split}\label{math:1.1}
+		\end{align}
+
+	\item With $\epsilon(z_i)=\alpha$ in \eqref{math:1.1}, we have
+		\begin{align*}
+			\alpha\left( \partial_{z_1} + \partial_{z_2} \right) G(z_1, z_2) &= 0 \\
+			\partial_{\bar{z}_{12}} G(z_1,z_2) &= 0
+		\end{align*}
+		with $z_{12} = z_1 - z_2$ and $\bar{z}_{12} = z_1 + z_2$. Thus $G(z_1, z_2)$ depends only on $z_{12} = z_1 - z_2$. It follows that $\partial_{z_1} G = - \partial_{z_2} G$.
+
+	\item Use $\epsilon(z_i) = \beta z_i $ in \eqref{math:1.1}, we have
+		\begin{align*}
+			\beta \left(  z_1 \partial_{z_1} + h_1  +  z_2 \partial_{z_2} + h_2 \right) G(z_1, z_2) &= 0 \\
+			 \qquad \left( z_1 - z_2 \right) \frac{\partial_{z_1}G}{G} + (h_1 + h_2)  &= 0 \\
+			 \int \dd{z_1} \frac{\partial_{z_1} G}{G} + (h_1 + h_2) \int \dd{z_1} \frac{1}{z_1 - z_2}&=  0 \\
+			 \ln |G| + (h_1 + h_2) \ln|z_1 - z_2| + C &= 0
+		\end{align*}
+		Indeed 
+		\begin{equation}
+			G(z_1, z_2) = \frac{C_{12}}{(z_1 - z_2)^{h_1 + h_2}}
+			\label{math:G12}
+		\end{equation}
+		is a solution and $C_{12}$ is related to the integration constant.
+		% \begin{align*}
+			% &\beta \left[  z_1 \partial_{z_1} + h_1  +  z_2 \partial_{z_2} + h_2 \right] \frac{C_{12}}{(z_1 - z_2)^{h_1 + h_2}} \\
+			% &= \beta C_{12} \left[ - z_1 \frac{h_1 + h_2}{z_1 - z_2} + h_1 + z_2 \frac{h_1 + h_2}{z_1 - z_2} + h_2 \right] \frac{1}{(z_1 - z_2)^{h_1 + h_2}} \\
+			% &= \beta C_{12} \left[ - (z_1-z_2) \frac{h_1 + h_2}{z_1 - z_2} + h_1  + h_2 \right] \frac{1}{(z_1 - z_2)^{h_1 + h_2}}  \\
+			% &= 0
+		% \end{align*}
+
+	\item Use $\epsilon(z_i) = \gamma z_i^2$, we have
+		\begin{equation*}
+			\gamma \left[ z_1^2 \partial_{z_1} + 2h_1z_1 + z_2^2 \partial_{z_2} + 2 h_2 z_2  \right] G(z_1,z_2) = 0
+		\end{equation*}	
+		Plug \eqref{math:G12} into it
+		\begin{align*}
+			&\gamma C_{12}  \left[ z_1^2 \partial_{z_1} + 2h_1z_1 + z_2^2 \partial_{z_2} + 2 h_2 z_2  \right] \frac{1}{(z_1 - z_2)^{h_1 + h_2}} \\
+			&= \gamma C_{12} \left[ -(z_1^2-z_2^2) \frac{h_1 + h_2}{z_1 - z_2} + 2(h_1 z_1 + h_2 z_2)  \right] \frac{1}{(z_1 - z_2)^{h_1 + h_2}} \\
+			&= \gamma C_{12} \left[ (h_1 - h_2)z_1 + (h_2 - h_1)z_2   \right]  \frac{1}{(z_1 - z_2)^{h_1 + h_2}}
+		\end{align*}
+		In order for it to vanish, we need to demand $h_1 = h_2$ otherwise $G(z_1, z_2)$ should be zero.
+	\item For three-point function, \eqref{math:1.1} becomes
+	\begin{align}
+		\begin{split}
+			&\big[ \epsilon(z_1)\partial_{z_1} + h_1 \partial_{z_1} \epsilon(z_1) +  \epsilon(z_2)\partial_{z_2} + h_2 \partial_{z_2} \epsilon(z_2) \\
+			&\quad + \epsilon(z_3)\partial_{z_3} + h_3 \partial_{z_3} \epsilon(z_3)\big] \expval{\phi_1 (z_1) \phi_2(z_2) \phi_3(z_3)} = 0 \\
+		\end{split}
+	\end{align}
+	\begin{itemize}
+		\item With $\epsilon(z_i)=\alpha$, we have
+			\begin{align}
+				\alpha \left( \partial_{z_1} + \partial_{z_2} + \partial_{z_3} \right)\expval{\phi_1 (z_1) \phi_2(z_2) \phi_3(z_3)} &= 0 \notag \\
+				\left( \partial_{\bar{z}_{12}} + \partial_{\bar{z}_{13}} + \partial_{\bar{z}_{23}} \right) \expval{\phi_1 (z_1) \phi_2(z_2) \phi_3(z_3)} &= 0 
+			\end{align}
+			Obviously $\expval{\phi_1 (z_1) \phi_2(z_2) \phi_3(z_3)} = f(z_{12}, z_{13},z_{23})$ is a solution. To show it must be the case, note that the variables $z_{ij}$ actually depend on each other. We can write $\partial_{\bar{z}_{12}} = \partial_{\bar{z}_{23}} - \partial_{\bar{z}_{13}}$, thus $\partial_{\bar{z}_{23}}\expval{\phi \phi \phi} = 0$. The same can be done with other $z_{ij}$, then indeed the solution is unique.
+
+		\item With  $\epsilon(z_i) = \beta z_i$, we have
+			\begin{equation*}
+				\beta \left[ z_1 \partial_{z_1} + z_2 \partial_{z_2} + z_3 \partial_{z_3} + h_1 + h_2 + h_3 \right] f(z_{12}, z_{13}, z_{23}) = 0
+			\end{equation*}
+			It can be solved by
+			\begin{equation*}
+				f(z_{12}, z_{13}, z_{23}) = \frac{C_{123}}{z_{12}^\alpha z_{13}^\beta z_{23}^\gamma}
+			\end{equation*}
+			with $\alpha + \beta + \gamma = h_1 + h_2 + h_3$, since
+			\begin{align*}
+				&\beta \left[ z_1 \partial_{z_1} + z_2 \partial_{z_2} + z_3 \partial_{z_3} + h_1 + h_2 + h_3 \right] \frac{C_{123}}{z_{12}^\alpha z_{13}^\beta z_{23}^\gamma} \\
+				&=\beta \Bigg[ z_1 \left( - \frac{\alpha}{z_{12}} - \frac{\beta }{z_{13}} \right) + z_2 \left( \frac{\alpha}{z_{12}} - \frac{\gamma}{z_{23}} \right) \\
+				&\quad + z_3 \left( \frac{\beta}{z_{13}} + \frac{\gamma}{z_{23}} \right) + h_1 + h_2 + h_3 \Bigg] \frac{C_{123}}{z_{12}^\alpha z_{13}^\beta z_{23}^\gamma} \\
+				&= \beta \left( -\alpha -\beta - \gamma + h_1 + h_2 + h_3 \right) f(z_{12}, z_{13}, z_{23})  \\
+				& = 0
+			\end{align*}
+
+		\item With $\epsilon(z_i) = \gamma z_i^2$, we have
+			\begin{align*}
+				&\gamma \left[ z_1^2 \partial_{z_1} + z_2^2 \partial_{z_2} + z_3^2 \partial_{z_3} + 2h_1z_1 + 2h_2 z_2 + 2h_3 z_3 \right] f(z_{12}, z_{13}, z_{23}) = 0 \\
+				&z_1^2 \left( - \frac{\alpha}{z_{12}} - \frac{\beta }{z_{13}} \right) + z_2^2 \left( \frac{\alpha}{z_{12}} - \frac{\gamma}{z_{23}} \right) + z_3^2 \left( \frac{\beta}{z_{13}} + \frac{\gamma}{z_{23}} \right)\\
+				&\quad  + 2h_1z_1 + 2h_2z_2 + 2h_3z_3  = 0 \\
+				& -\alpha (z_1 + z_2) - \beta (z_1 + z_3) - \gamma (z_2 + z_3)  + 2h_1 z_1 + 2h_2 z_2 + 2h_3 z_3 = 0
+			\end{align*}
+			This has to be satisfied with arbitrary $z_i$, thus
+			\begin{align*}
+				\begin{pmatrix} 1 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 1\end{pmatrix} \begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix} &= 2 \begin{pmatrix} h_1 \\ h_2 \\ h_3 \end{pmatrix} \\
+				\begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix} &= \begin{pmatrix} 1 & 1 & -1 \\ 1 & -1 & 1 \\ -1 & 1 & 1 \end{pmatrix} \begin{pmatrix} h_1 \\ h_2 \\ h_3 \end{pmatrix}
+			\end{align*}
+			Then
+			\begin{equation}
+				\expval{\phi_1 (z_1) \phi_2(z_2) \phi_3(z_3)}  = \frac{C_{123}}{z_{12}^{h_1 + h_2 - h_3} z_{13}^{h_1 - h_2 + h_3} z_{23}^{-h_1 + h_2 + h_3}}			
+			\end{equation}
+	\end{itemize}
+\end{enumerate}

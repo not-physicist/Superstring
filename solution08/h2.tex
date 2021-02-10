@@ -1,0 +1,69 @@
+\section{The conformal group in 2d}
+For a infinitesimal coordinate transformation $z^\mu \rightarrow z^\mu + \epsilon^\mu(z)$, conformal transformation satisfies 
+\begin{equation}
+	\partial_\mu \epsilon_\nu + \partial_\nu \epsilon_\mu  = \frac{2}{d} \partial \cdot \epsilon \eta_{\mu\nu}
+\end{equation}
+In $2d$, we have
+\begin{align*}
+	\partial_1 \epsilon_1 &= \partial_2 \epsilon_2 \\
+	\partial_1 \epsilon_2 &= - \partial_2 \epsilon_1
+\end{align*}
+which are precisely Cauchy-Riemann equations for $z = x^1 + ix^2$ and $\epsilon(z) = \epsilon^1(z) + i \epsilon^2(z)$. Thus the infinitesimal conformal transformation in $2d$ resembles a holomorphic coordinate transformation.
+\begin{enumerate}[label=(\alph*)]
+	\item Consider a spinless, (scaling) dimensionless field $\phi(z)$. It transform under the conformal transformation as
+		\begin{equation*}
+			\phi(z) \rightarrow \phi'(z)  = \phi - \epsilon \partial_z \phi(z)
+		\end{equation*}
+		Since we have holomorphic function $\epsilon(z)$ (or at least analytic on some open set), there exist a Laurent series
+		\begin{equation*}
+			\epsilon(z) = \sum_{z \in \Z} \epsilon_n z^{n+1}
+		\end{equation*}
+		The exponent $n+1$ is chosen only for convenience. 
+		Note since here we use $\epsilon = \epsilon_1 + i \epsilon_2$ and $z = x_1 + ix_2$, the notation is well-defined. Thus
+		\begin{align*}
+			\delta \phi &= - \epsilon \partial_z \phi(x) \\
+							&= - \sum_{z\in \Z} \epsilon_n \underbrace{ z^{n+1} \partial_z}_{=-l_n} \phi(x)
+		\end{align*}
+		Analogously for $\bar{z} \rightarrow \bar{z} + \bar{\epsilon}(\bar{z})$
+		Thus
+		\begin{equation}
+			l_n = - z^{n+1} \partial_z, \qquad \bar{l}_n = - \bar{z}^{n+1} \partial_{\bar{z}}	
+		\end{equation}
+
+		One can show
+		\begin{align*}
+			\comm{l_n}{l_m} &= z^{n+1} \partial_z z^{m+1} \partial_z - z^{m+1} \partial_z z^{n+1} \partial_z \\
+								 &= z^{n+1} (m+1) z^{m} \partial_z - z^{m+1} (n+1) z^{n} \partial_z \\
+								 &= (m-n) l_{m+n}
+		\end{align*}
+		and the same for $\bar{l}$ and $\comm{l_{n}}{\bar{l}_n} = 0$. Thus we say the generators form Witt algebra.
+
+	\item Riemann sphere is simply the complex plane and infinity: $\mathcal{C} \cup \infty$. It is clear that with $n\leq -1$, the generator $l_n$ is singular at $z=0$. To investigate singular behaviour at $z=\infty$, we substitute $w = 1/z$, then $l_n = -w^{-n+1} \partial_w$. Thus for $n \geq 1$, it is singular at $z=\infty$. Thus the only well-behaved generators are $l_{-1}$, $l_0$ and $l_1$ (same for $\bar{l}_m$).
+
+	\item 
+		% To treat three generators in global conformal group separately
+		% \begin{itemize}
+			% \item $l_{-1} = -\partial_z$ is the generator for translation $z \rightarrow z + b$, namely
+				% \begin{equation*}
+					% \delta \phi = - \epsilon_{-1} \partial_z \phi
+				% \end{equation*}
+			% \item $l_0 = -z \partial_z$ is the generator for dilation $z \rightarrow a z$
+				% \begin{align*}
+					% \delta \phi &= \phi (a z) - \phi(z) \\
+									% &= \partial_{(a z)} \phi(a z) z a \\
+					% &= - \epsilon_0 z \partial_z \phi
+				% \end{align*}
+			% \item $l_{1} = -z^2 \partial_z$ generate the transformation $z \rightarrow z' = \frac{z}{cz+1}$
+		% \end{itemize}
+		To expand the parameters around $a=1, b=0,c=0,d=0$. Then we have a matrix
+		\begin{equation}
+			\begin{pmatrix} 1+\delta a & \delta b \\ \delta c & 1+\delta d \end{pmatrix}
+		\end{equation}
+		Since the determinant has to be $1$ in leading order, we have $\delta d = - \delta a$. Then
+		\begin{align*}
+			\delta z &= \frac{(1+\delta a)z + \delta b}{\delta c z + 1-\delta a} - z \\
+						&= \frac{\delta b + 2 \delta a z - \delta c z^2}{\delta c z + (1-\delta a)} \\
+						&= \delta b + 2 \delta a z - \delta c z^2 + \order{\delta^2}
+		\end{align*}
+		Once one expands $\phi(z+\delta z)$, then there are generators from global conformal groups. Thus global conformal group is $2d$ indeed corresponds to $\SL(2,\Co)$. Since there is an additional symmetry $a,b,c,d \rightarrow -a,-b,-c,-d$. It is isomorphic to $\SL(2,\Co)/\mathbb{Z}_2$.
+\end{enumerate}

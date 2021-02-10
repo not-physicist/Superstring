@@ -1,0 +1,56 @@
+\section{Operator Product Expansions}
+\begin{enumerate}[label=(\alph*)]
+	\item We have two generic operators 
+		\begin{equation}
+			A = \oint_{C_0} \frac{\dd{z}}{2\pi i} A(z), \quad B = \oint_{C_0} \frac{\dd{z}}{2\pi i} B(z)
+		\end{equation}
+		with $C_0 = \{ z \in \Co | |z| < r  \}$ and $r$ is an arbitrary real number. 
+
+		We want to expand the radial ordering term, thus need contour with unambiguous radii
+		\begin{align}
+			& \oint_{C_\omega} \frac{\dd{z}}{2\pi i }\mathcal{R}(A(z)B(w)) \notag \\
+			=& \left( \oint_{C_{w}^+} \frac{\dd{z}}{2\pi i} - \oint_{C_{w}^-} \frac{\dd{z}}{2\pi i} \right) \mathcal{R}(A(z)B(w)) \notag\\
+			=& \oint_{C_w^+} \frac{\dd{z}}{2\pi i}A(z) B(w) - \oint_{C_{w}^-} \frac{\dd{z}}{2\pi i} B(w) A(z) \notag\\
+			=& \oint_{C_w} \frac{\dd{z}}{2\pi i} \comm{A(z)}{B(w)}_{|z| = |w|} \label{math:R_comm}
+		\end{align}
+		where the contours are defined as $C^\pm_w = \{z \in \Co | |z| = |w| \pm \delta, \delta \in \mathbb{R} \}$ and the commutator is understood as equal radius commutator. One can use the definition of the operators to "absorb" the integral on LHS and add another integral, then
+		\begin{equation}
+			\comm{A}{B} = \oint_{C_0} \frac{\dd{w}}{2\pi i} \oint_{C_w} \frac{\dd{z}}{2\pi i} \mathcal{R}(A(z)B(w))
+		\end{equation}
+
+	\item The variation of a primary under infinitesimal conformal transformation is describe as
+		\begin{align*}
+			\delta_\epsilon \phi (\omega) &= - \comm{Q_\epsilon}{\phi(w)}  \\
+													&= - \oint_{C_0} \frac{\dd{z}}{2\pi i } \comm{\epsilon(z) T (z)}{\phi(w)} \\
+													&= - \oint_{C_w} \frac{\dd{z}}{2\pi i} \epsilon(z) \mathcal{R} (T(z) \phi(w)) \\
+													% &= - \oint_{C_0^+} \frac{\dd{z}}{2\pi i} \epsilon(z) T(z)\phi(w) + \oint_{C_0^-} \frac{\dd{z}}{2\pi i} \epsilon(z) \phi(w) T(z)
+													\shortintertext{if we put the desired expression of $\mathcal{R} (T(z) \phi(w))$ in}
+													  &= -\oint_{C_w} \frac{\dd{z}}{2\pi i} \epsilon(z) \left[ \frac{h\phi(w)}{(z-w)^2} + \frac{\partial_w \phi(w)}{z-w} +\text{reg.} \right] \\
+													  &= - \partial_w(\epsilon(z) h \phi(w)) - \partial_w \phi(w) \\
+													  &= - (h \partial_w \epsilon(w)  + \partial_w) \phi(w)
+		\end{align*}
+		which is precisely the alternative definition of the infinitesimal transformation
+		\begin{equation}
+			\delta_\epsilon \phi(w) = - (h \partial_w \epsilon + \epsilon \partial_w) \phi(w)
+		\end{equation}
+
+	\item Consider the Laurent series
+		\begin{equation}
+			T(z) = \sum_{n \in \Z} z^{-n-2} L_n, \quad L_n = \oint_{C_0} \frac{\dd{z}}{2\pi i} z^{n+1} T(z)
+		\end{equation}
+		We assume the statement is correct (with implicit radial ordering)
+		\begin{equation}
+			T(z)T(w) = \frac{c/2}{(z-w)^4} + \frac{2T(w)}{(z-w)^2} + \frac{\partial_w T(w)}{(z-w)} + \text{reg.} \label{math:TT}
+		\end{equation}
+		Then
+		\begin{align*}
+			&\comm{L_m}{L_n} \\
+			 &= \oint_{C_0} \frac{\dd{z}}{2\pi i} z^{n+1} \oint_{C_0} \frac{\dd{w}}{2\pi i} w^{m+1} \comm{T(z)}{T(w)} \\
+								 &\stackrel{\eqref{math:R_comm}}{=} \oint_{C_w} \frac{\dd{z}}{2\pi i} z^{n+1} \oint_{C_0} \frac{\dd{w}}{2\pi i} w^{m+1} T(z)T(w) \\
+								 &\stackrel{\eqref{math:TT}}{=} \oint_{C_0} \frac{\dd{w}}{2\pi i} w^{m+1} \oint_{C_w} \frac{\dd{z}}{2\pi i} z^{n+1} \left[ \frac{c/2}{(z-w)^4} + \frac{2T(w)}{(z-w)^2} + \frac{\partial_w T(w)}{(z-w)} + \text{reg.} \right] \\
+								 &= \oint_{C_0} \frac{\dd{w}}{2\pi i} w^{m+1} \left[ \frac{c}{2} \frac{1}{3!} (n+1) n  (n-1) w^{n-2} + 2(n+1)w^n  T(w) + w^{n+1}\partial_w T(w)  \right]	\\
+								 &\stackrel{\text{i.b.p.}}{=} \oint_{C_0} \frac{\dd{w}}{2\pi i} \left[ \frac{c}{12}  n(n^2 -1) w^{n+m-1} + 2(n+1)w^{m+n+1}  T(w) - (m+n+2) w^{m+n+1} T(w)  \right] \\
+								 &= \frac{c}{12} n (n^2-1) \delta_{n+m} + (n-m) L_{m+n}
+		\end{align*}
+		In principle, we could and should prove it in the other direction.
+\end{enumerate}

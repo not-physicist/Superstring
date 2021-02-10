@@ -1,0 +1,651 @@
+\documentclass[12pt, a4paper, DIV=15]{article}
+
+% useful packages 
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{graphicx}					  
+\graphicspath{{figs/}}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{braket} % easy braket notation
+\usepackage{enumitem}
+\usepackage{cancel}
+\usepackage{booktabs}
+\usepackage{simpler-wick}
+
+\usepackage[backend=biber, sorting=none]{biblatex}
+\bibliography{refs.bib}
+
+\numberwithin{equation}{section}
+
+% New command and etc
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\normord}[1]{:\mathrel{#1}:}
+\newcommand{\diag}{\text{diga}}
+
+\title{Superstring theory \\ Summary}
+\date{\today}
+\author{Chenhuan Wang}
+\begin{document}
+\maketitle
+
+\section{General}
+\paragraph{Metric}
+\begin{equation}
+	\eta_{\mu\nu} = \diag(-1, +1, , \dots, +1)
+\end{equation}
+
+\paragraph{Cauchy} integral formula
+\begin{equation}
+	\oint_{C_w} \frac{\dd{z}}{2\pi i } \frac{f(z)}{(z-w)^n} = \frac{1}{(n-1)!} f^{n-1} (w)
+\end{equation}
+\section{Classical Bosonic String}
+\subsection{The Relativistic Particle}
+\paragraph{Action}
+A free Relativistic particle of mass $m$ moving in a $d$-dimensional flat spacetime has the action
+\begin{equation}
+	S = - m \int_{s_0}^{s_1} \dd{x} = -m \int_{\tau_0}^{\tau^1} \left[ - \dv{x^\mu}{\tau} \dv{x^\nu}{\tau} \eta_{\mu\nu} \right]^{1/2}
+	\label{math:rel-part}
+\end{equation}
+It is simply the length of the world-line.
+
+\paragraph{Constraints} By computing the momentum conjugate to $x^\mu$, one finds $p^2 = -m^2$, with out using equation of motion. Such constraints are called {primary constraints}. If the constraint is from equations of motion, they are {secondary constraints}. Another categorization of constraints would be to look at Poisson brackets $\{\phi_a, \phi_k\}$ for all $k$. If it vanishes, constraint $\phi_a$ is {first class}, if not, it is {second class}.
+
+\paragraph{Generalized action} The action \eqref{math:rel-part} can be generalized to massless case with an auxiliary variable $e(\tau)$,
+\begin{equation}
+	S = \frac{1}{2} \int_{\tau_0}^{\tau_1} e (e^{-2}\dot{x}^2 - m^2) \dd{\tau} 
+\end{equation}
+Plug the equation of motion back it and \eqref{math:rel-part} is recovered. Note that the mass shell constraint (condition) becomes secondary.
+
+\subsection{The Nambu-Goto Action}
+Action of a string in $d$-dimensional space-time is describe be the action of the world-sheet swept by the string
+\begin{align}
+	\begin{split}
+		S_\text{NG} &= - T \int_{\Sigma} \dd[2]{\sigma} A \\
+						&= - T \int_{\Sigma} \dd[2]{\sigma} \left[ - \det_{\alpha\beta} \left( \pdv{X^\mu}{\sigma^\alpha} \pdv{X^\nu}{\sigma^\beta} \eta_{\mu\nu} \right) \right]^{1/2} \\
+						&= - T \int_{\Sigma} \dd[2]{\sigma} \left[ \left( \dot{X}\cdot X' \right)^2 - \dot{X}^2 X'^2 \right]^{1/2} \\
+						&= - T \int_{\Sigma} \dd[2]{\sigma} \sqrt{-\Gamma}
+	\end{split}
+\end{align}
+with string tension $T = \frac{1}{2\pi \alpha'}$. $\alpha'$ is the {Regge slope}.
+
+\subsection{The Polyakov Action and Its Symmetries}
+A $d$-dimension massless world-sheet scalar $X^\mu$ coupled to two-dimensional gravity in flat background has the action
+\begin{equation}
+	S_\text{P} = - \frac{T}{2} \int_{\Sigma} \dd[2]{\sigma} \sqrt{-h} h^{\alpha\beta} \underbrace{\partial_\alpha X^\mu \partial_\beta X^\mu \eta_{\mu\nu}}_{=\Gamma_{\alpha\beta}}
+\end{equation}
+with $h_{\mu\nu}(\sigma,\tau)$ the metric on the world-sheet.
+
+Energy momentum tensor of the world-sheet theory is defined as how the action changes under variation with respect to the metric
+\begin{equation}
+	T_{\alpha\beta} = \frac{4\pi }{\sqrt{-h}} \frac{\delta S_\text{P}}{\delta h^{\alpha\beta}}
+\end{equation}
+In this case, it is 
+\begin{equation}
+	T_{\alpha\beta} = - \frac{1}{\alpha' } \left( \Gamma_{\alpha\beta} - \frac{1}{2}h_{\alpha\beta} h^{\gamma\delta} \Gamma_{\gamma\delta} \right)
+\end{equation}
+Equations of motions are
+\begin{subequations}
+\begin{align}
+	T_{\alpha\beta} &= 0 \\
+	\frac{1}{\sqrt{-h}} \partial_\alpha \left( \sqrt{-h}h^{\alpha\beta} \partial_\beta X^\mu \right) &= 0
+\end{align}
+\end{subequations}
+if the boundary or periodicity conditions are satisfied (later).
+
+\paragraph{Symmetries} of Polyakov action
+\begin{itemize}
+	\item (global) Poincare invariance
+	\item (local) reparametrization invariance
+	\item (local) Weyl rescaling invariance
+\end{itemize}
+Note that $X^\mu$ is a Minkowski space vector and world-sheet scalar. The metric $h_{\alpha\beta}$ is a Minkowski scalar and a world-sheet tensor. Weyl invariance ensures that the energy-momentum tensor is traceless. The local invariances allow conformal gauge $h_{\alpha\beta} = \Omega^2(\sigma,\tau) \eta_{\alpha\beta}$. With Weyl invariance, the metric can be set to flat.
+
+\paragraph{World-sheet light-cone coordinates}
+are given
+\begin{equation}
+	\sigma^\pm = \tau \pm \sigma
+\end{equation}
+Now the metric is
+\begin{equation}
+	\eta_{+-} = \eta_{-+} = - \frac{1}{2}, \eta_{++} = \eta_{--} = 0
+\end{equation}
+
+\paragraph{Action in conformal gauge}
+\begin{equation}
+	S_\text{P} = \frac{T}{2} \int \dd[2]{\sigma} (\dot{X}^2 - X'^2) = 2 T \int\dd[2]{\sigma} \partial_+ X \cdot \partial_- X
+\end{equation}
+It leads to the equations of motion
+\begin{equation}
+	(\partial_\sigma ^2 - \partial_\tau^2)X^\mu = 4 \partial_- \partial_+ X^\mu = 0
+\end{equation}
+
+\paragraph{Boundary/Periodicity conditions}
+In order for the surface term from variation of action to vanish, we demand
+\begin{itemize}
+	\item Periodicity 
+		\begin{equation}
+			X^\mu (\tau, \sigma + l) = X^\mu(\tau, \sigma)
+		\end{equation}
+	\item Neumann boundary condition
+		\begin{equation}
+			\left. \partial_\sigma X^\mu \right|_{\sigma=0,l} = 0
+		\end{equation}
+	\item Dirichlet boundary condition
+		\begin{equation}
+			\left. \delta X^\mu \right|_{\sigma=0,l} = 0
+		\end{equation}
+		It breaks space-time Poincare invariance.
+\end{itemize}
+
+\paragraph{Energy-momentum tensor}
+need to vanish due to equations of motion. This is alternatively
+\begin{equation}
+	\left( \dot{X}^2 + X' \right)^2 = 0
+	\label{math:constr-sqr}
+\end{equation}
+Energy-momentum needs to also be conserved
+\begin{equation}
+	\partial_- T_{++} =0, \quad \partial_+ T_{--} = 0
+\end{equation}
+It implies an infinite number of conserved charges
+\begin{equation}
+	L_f = 2T\int_0^l \dd{\sigma} f(\sigma^+) T_{++}(\sigma^+)
+\end{equation}
+
+\paragraph{Poisson brackets}
+\begin{subequations}
+\begin{align}
+	\acomm{X^\mu(\sigma,\tau)}{X^\nu (\sigma',\tau)} &= \acomm{\dot{X}^\mu(\sigma,\tau)}{\dot{X}^\nu(\sigma',\tau)} = 0 \\
+	\acomm{X^\mu(\sigma,\tau)}{\dot{X}^\nu(\sigma',\tau)} &= \frac{1}{T} \eta^{\mu\nu} \delta(\sigma - \sigma')
+\end{align}
+\label{math:PBs}
+\end{subequations}
+
+\paragraph{Conserved currents}
+\begin{subequations}
+\begin{align}
+	P^\alpha_\mu &= - T \sqrt{h} h^{\alpha\beta} \partial_\beta X_\mu \\
+	P_\mu &= \int_0^l \dd{\sigma} P^\tau_\mu \\
+	J_{\mu\nu} &= X_\mu P^\alpha_\nu - X_\nu P^\alpha_\mu \\
+	J_{\mu\nu} &= \int_0^l \dd{\sigma} J_{\mu\nu}^\tau
+\end{align}
+\end{subequations}
+
+\subsection{Oscillator Expansions}
+\subsubsection{Closed strings}
+Most general solution
+\begin{align}
+	X_{L}^\mu (\tau + \sigma) &= \frac{1}{2} (x^\mu + c^\mu) + \frac{\pi \alpha'}{l} p^\mu (\tau + \sigma) + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{1}{n} \bar{\alpha}_n^\mu e^{-\frac{2\pi}{l}	in (\tau+\sigma)} \\
+	X_{R}^\mu (\tau + \sigma) &= \frac{1}{2} (x^\mu - c^\mu) + \frac{\pi \alpha'}{l} p^\mu (\tau - \sigma) + i \sqrt{\frac{\alpha'}{2}} \sum_{n \neq 0} \frac{1}{n} {\alpha}_n^\mu e^{-\frac{2\pi}{l}	in (\tau+\sigma)}
+\end{align}
+Reality conditions are
+\begin{equation}
+	\alpha^\mu_{-n} = (\alpha^\mu_n)^*, \quad \bar{\alpha}^{\mu}_{-n} = (\bar{\alpha}^\mu_n)^*
+\end{equation}
+Explicit computation gives that $p^\mu$ is total space-time momentum, $x^\mu$ is the "center of mass" at $\tau = 0$.
+
+Poisson brackets of the mode coefficients are\footnote{It is done by invert \eqref{math:PBs}. The trick is to multiply it with an exponential function and integrate over $\sigma$.}
+\begin{subequations}
+\begin{align}
+	\acomm{\alpha^\mu_m}{\alpha^\nu_m} &= \acomm{\bar{\alpha}^\mu_m}{\bar{\alpha}^\nu_n} = -im \delta_{m+n} \eta^{\mu\nu} \\
+	\acomm{\alpha^\mu_m}{\bar{\alpha}^\nu_m} &= 0 \\
+	\acomm{x^\mu}{p^\nu} &= \eta^{\mu\nu}
+\end{align}	\label{math:PBs-alpha}
+\end{subequations}
+
+\paragraph{Virasoro generators}
+\begin{subequations}
+\begin{align}
+	L_n &= - \frac{l}{4\pi} \int_0^l \dd{\sigma} e^{- \frac{2\pi i}{l}n\sigma} T_{--} = \frac{1}{2} \sum_{m} \alpha_{n-m} \cdot \alpha_m \\
+	\bar{L}_n &= - \frac{l}{4\pi} \int_0^l \dd{\sigma} e^{+ \frac{2\pi i}{l}n\sigma} T_{++}= \frac{1}{2} \sum_{m} \bar\alpha_{n-m} \cdot \bar\alpha_m 
+\end{align}
+\label{math:Vira}
+\end{subequations}
+They have the reality condition $L_n = L_{-n}^*$ and $\bar{L}_n = \bar{L}_{-n}^*$. From equations of motion, we find 
+\begin{equation}
+	L_n = \bar{L}_n = 0
+	\label{math:class-constr}
+\end{equation}
+$L_0 - \bar{L}_0$ generator rigid $\sigma$-translation, thus need to require
+\begin{equation}
+	L_0 - \bar{L}_0 = 0
+\end{equation}
+
+The generators form the Virasoro algebra
+\begin{subequations}
+\begin{align}
+	\acomm{L_m}{L_n} &= -i (m-n) L_{m+n} \\
+	\acomm{\bar{L}_m}{\bar{L}_n} &= -i(m-n) \bar{L}_{m+n} \\
+	\acomm{\bar{L}_m}{L_{n}} &= 0
+\end{align}
+\end{subequations}
+
+\subsubsection{Open strings}
+\paragraph{Neumann boundary condition}
+\begin{equation}
+	X^\mu (\sigma, \tau) = x^\mu + \frac{2\pi \alpha'}{l} p^\mu \tau + i \sqrt{2\alpha'} \sum_{n\neq 0} \frac{1}{n} \alpha^\mu_n e^{-i\frac{\pi }{l} n \tau} \cos(\frac{n\pi \sigma}{l})
+\end{equation}
+Equations \eqref{math:PBs-alpha} and \eqref{math:Vira} still hold, but without $\bar\alpha$'s.
+
+\paragraph{Dirichlet boundary condition}
+\begin{equation}
+	X^\mu (\sigma, \tau) = x_0^\mu + \frac{1}{l} (x_1^\mu - x_0^\mu)\sigma + \sqrt{2\alpha'} \sum_{n\neq 0} \frac{1}{n} \alpha^\mu_n e^{-i\frac{\pi }{l} n \tau} \sin(\frac{n\pi \sigma}{l})
+\end{equation}
+Equations \eqref{math:PBs-alpha} and \eqref{math:Vira} still hold, but without $\bar\alpha$'s. Now the center of mass is at $q^\mu = \frac{1}{2}(x_0^\mu + x_1^\mu)$ and there is "potential energy" term due to stretching included in Hamiltonian.
+
+\section{The Quantized Bosonic String}
+\subsection{Canonical Quantization}
+\paragraph{Ladder operators}
+Replace Poisson brackets by commutator in \eqref{math:PBs} and \eqref{math:PBs-alpha}
+\begin{subequations}
+\begin{align}
+	\comm{X^\mu(\sigma,\tau)}{X^\nu (\sigma',\tau)} &= \comm{\dot{X}^\mu(\sigma,\tau)}{\dot{X}^\nu(\sigma',\tau)} = 0 \\
+	\comm{X^\mu(\sigma,\tau)}{\dot{X}^\nu(\sigma',\tau)} &= 2\pi i \alpha' \eta^{\mu\nu} \delta(\sigma - \sigma')
+\end{align}
+\label{math:PBs}
+\end{subequations}
+\begin{subequations}
+\begin{align}
+	\comm{\alpha^\mu_m}{\alpha^\nu_m} &= \comm{\bar{\alpha}^\mu_m}{\bar{\alpha}^\nu_n} = m \delta_{m+n} \eta^{\mu\nu} \\
+	\comm{\alpha^\mu_m}{\bar{\alpha}^\nu_m} &= 0 \\
+	\comm{x^\mu}{p^\nu} &= i \eta^{\mu\nu}
+\end{align}	\label{math:PBs-alpha}
+\end{subequations}
+Hermicity conditions are 
+\begin{equation}
+	(\alpha_m^\mu)^\dagger = \alpha^\mu_{-m}, \quad (\bar{\alpha}^\mu_m)^\dagger = \bar{\alpha}^\mu_m
+\end{equation}
+The vacuum is defined as 
+\begin{equation}
+	\alpha_m^\mu \ket{0; p^\mu} = 0 \quad \text{for }m > 0, \quad \hat{p}^\mu \ket{0; p^\mu} = p^\mu \ket{0; p^\mu}
+\end{equation}
+Number operator is ($m > 0$)
+\begin{equation}
+	N_m = :\alpha_m \cdot \alpha_{-m}: = \alpha_{-m} \cdot \alpha_m
+\end{equation}
+This set of operators and choice of vacuum lead to negative norm states, called otherwise ghosts. In $26$ dimensions, ghosts decouple from physical states.
+
+\paragraph{Propagators}
+is defined as
+\begin{equation}
+	\expval{X^\mu (\sigma, \tau) X^\nu (\sigma', \tau')} = T[X^\mu (\sigma,\tau) X^\nu (\sigma',\tau')] - \normord{[X^\mu(\sigma,\tau) X^\nu(\sigma',\tau')]}
+\end{equation}
+
+For closed strings, it is
+\begin{equation}
+	\expval{X^\mu(z,\bar{z}) X^\nu (w, \bar{w})} = - \frac{\alpha'}{2} \eta^{\mu\nu} \ln((z-w)(\bar{z}-\bar{w}))
+\end{equation}
+
+For open string, it is
+\begin{equation}
+	\expval{X^\mu(z,\bar{z}) X^\nu (w, \bar{w})}_{\text{NN, DD}} = - \frac{\alpha'}{2} \eta^{\mu\nu} \left[ \ln|z-w|^2 \pm \ln|z-\bar{w}|^2 \right]
+\end{equation}
+
+\paragraph{Virasoro generators}
+First need to define properly ordered Virasoro generators
+\begin{equation}
+	L_n = \frac{1}{2} \sum_{m=-\infty}^{+\infty} \normord{\alpha_{n-m}\cdot \alpha_m}
+\end{equation}
+where
+\begin{equation}
+	L_0 = \frac{1}{2} \alpha_0^2 + \sum_{m=1}^{+\infty} \alpha_{-m} \cdot \alpha_m
+	\label{math:L0}
+\end{equation}
+has ordering ambiguity. Thus we need to include a normal ordering constant $L_0 \rightarrow L_0 + a$. Because of the normal ordering, the algebra is now
+\begin{equation}
+	\comm{L_m}{L_n} = (m-n) L_{m+n} + \frac{c}{12} m (m^2 - 1) \delta_{m+n}
+	\label{math:L-comm}
+\end{equation}
+Term proportional to $c$ is due to quantum effects. And $c=d$ the dimension, meaning that each free scalar field contributes one unit to the central charge.
+
+\paragraph{Virasoro constraints}
+Now due to normal ordering constant, \eqref{math:class-constr} cannot be fulfilled, instead
+\begin{subequations}
+\begin{align}
+	L_n \ket{\text{phys.}} &= 0, \quad n > 0\\
+	(L_0 + a) \ket{\text{phys.}} &= 0
+\end{align}
+\label{math:quan-constr}
+\end{subequations}
+For closed strings, the same apply for $\bar{L}_n$. In addition, we have level matching condition
+\begin{equation}
+	(L_0 - \bar{L}_0) \ket{\text{phys.}} = 0
+\end{equation}
+
+\paragraph{Level number operator}
+For open string
+\begin{equation}
+	N = \sum_{n=1}^{\infty} (\alpha^\mu_{-n} \alpha_{\mu, n} + \alpha^i_{-n} \alpha_{i, n}) + \sum_{r \in N_0 + \frac{1}{2} } \alpha^a_{-r} \alpha_{a,r}
+\end{equation}
+with $\mu$ for NN directions, $i$ for DD directions and $a$ for the mixed directions. With \eqref{math:quan-constr}, one has
+\begin{equation}
+	\alpha' m^2 = N + \alpha' (T \Delta x)^2 + a
+\end{equation}
+
+For closed string (with \eqref{math:L0})
+\begin{equation}
+	L_0  = N + \frac{\alpha'}{4} p^2
+\end{equation}
+thus
+\begin{align}
+	m^2 = m_L^2 + m_R^2 = \frac{2}{\alpha'} \left( N + \bar{N} + 2a \right)
+\end{align}
+
+
+
+\subsection{Light-cone Quantization}
+\paragraph{Light-cone coordinates} are defined as $(X^+, X^-, X^i)$ and
+\begin{equation}
+	X^\pm = \frac{1}{\sqrt{2}} (X^0 \pm X^1)
+\end{equation}
+So that the metric in $\pm$ direction is $\eta_{+-} = \eta_{-+} = -1$.
+
+To fix the gauge, 
+\begin{equation}
+	X^+ = \frac{2\pi \alpha'}{l} p^+ \tau
+\end{equation}
+With \eqref{math:constr-sqr}, 
+\begin{equation}
+	\partial_\pm X^- = \frac{l}{2\pi \alpha' p^+} (\partial_\pm X^i)^2
+\end{equation}
+
+\paragraph{Commutation relations}
+\begin{subequations}
+\begin{align}
+	\comm{q^-}{p^+} &= -i \\
+	\comm{q^i}{p^j} &= i \delta^{ij} \\
+	\comm{\alpha^i_n}{\alpha^j_m} &= n \delta^{ij} \delta_{n+m} \\
+	\comm{\bar{\alpha}^i_n}{\bar{\alpha}^j_m} &= n \delta^{ij} \delta_{m+n}
+\end{align}
+\end{subequations}
+
+\subsection{Spectrum of the Bosonic String}
+Massive states can be classified by representation of $SO(d-1)$. Massless states can be classified by $E(d-2) \supset SO(d-2)$.
+\paragraph{Open string spectrum}
+Lorentz invariance can be kept intact, when $d=26$. It leads to critical dimension. More rigorously, $\comm{M^{i-}}{M^{j-}}$ behaves normally at $d=26$.
+
+Regge trajectories
+\begin{equation}
+	j_\text{mas} = n = \alpha' m^2 + 1
+\end{equation}
+Ground state has negative mass square, i.e.~a tachyon.
+
+\paragraph{Closed string spectrum} has the Regge trajectories
+\begin{equation}
+	j_\text{max} = \frac{1}{2} \alpha' m^2 + 2
+\end{equation}
+
+\paragraph{Orientation}
+Still need to fix original diffeomorphism invariance, in particular world-sheet parity transformation. Define a unitary operator
+\begin{equation}
+	\Omega X^\mu(\sigma,\tau) \Omega^{-1} = X^\mu (l-\sigma,\tau)
+\end{equation}
+
+\paragraph{Interpretation}
+Massless spin two particles are always present in closed string spectrum. It can be identified with graviton. Massless vector states in open string can be identified with gauge bosons.
+
+\subsection{Covariant Path Integral Quantization}
+Partition function is
+\begin{equation}
+	Z = \int \mathcal{D}h \mathcal{D}X e^{iS_\text{P}[h,X]}
+\end{equation}
+By fixing the gauge, $h_{\mu\nu}$ is not dynamical and a determinant is introduced. The determinant then can be rewritten using ghost fields
+\begin{subequations}
+\begin{align}
+	Z &= \int \mathcal{D}X^\mu \mathcal{D}c \mathcal{D} b \quad e^{i S[X, \hat{h}, b, c]} \\
+	S &= - \frac{1}{4\pi \alpha'} \int \dd[2]{\sigma} \sqrt{-\hat{h}} \hat{h}^{\alpha\beta} \left\{ \partial_\alpha X^\mu \partial_\beta X_\mu + 2 i \alpha' b_{\beta\gamma} \hat{\nabla}_\alpha c^\gamma \right\}
+\end{align}
+\end{subequations}
+\paragraph{Virasoro operators} for ghost sector are
+\begin{subequations}
+z\begin{align}
+	L_m &= \sum_{n=-\infty}^{+\infty} (m-n) \normord{b_{m+n}c_{-n}} \\
+	\bar{L}_m &= \sum_{n=-\infty}^{+\infty} (m-n) \normord{\bar{b}_{m+n} \bar{c}_{-n}} \\
+\end{align}
+\end{subequations}
+They satisfy 
+\begin{equation}
+	\comm{L_m}{L_n} = (m-n) L_{m+n} + A(m) \delta_{m+n}
+\end{equation}
+with $A(m) = \frac{1}{12}(-26 m^3 + 2m)$. Combing the Virasoro generators, then only when $a=-1$ and $d=26$, the central charge term vanishes.
+
+\section{Introduction to Conformal Field Theory}
+\subsection{General}
+Map to complex plane by
+\begin{equation}
+	z = e^{\frac{2\pi}{l}(\tau - i \sigma)}, \quad \bar{z} = e^{\frac{2\pi}{l}(\tau + i \sigma)}
+\end{equation}
+
+\paragraph{Radial ordering}
+\begin{equation}
+	R(\phi_1(z)\phi_1(w)) = 
+	\begin{cases}
+		\phi_1(z) \phi_2(w) & |z| > |w| \\
+		\phi_2(w) \phi_1(z) & |z| < |w| \\
+	\end{cases}
+\end{equation}
+In conformal field theory, radial ordering is always implied.
+
+\paragraph{Equal radius commutator}
+\begin{equation}
+	\comm{\phi_1(z)}{\phi_2(w)}_{|z|=|w|} = \lim_{\delta \rightarrow 0} \left\{ (\phi_1(z)\phi_2(w))_{|z| = |w| + \delta} - (\phi_2(w) \phi_1(z))_{|z| = |w| - \delta} \right\}
+\end{equation}
+
+\begin{equation}
+	\oint_{C_0} \frac{\dd{z}}{2\pi i} \comm{A(z)}{B(w)} =  \oint_{C_w} \frac{\dd{z}}{2\pi i} R(A(z) B(w))
+\end{equation}
+
+
+\paragraph{Conformal fields} are defined by
+\begin{equation}
+	\phi(z,\bar{z}) \rightarrow \phi'(z',\bar{z}') = \left( \pdv{z'}{z'} \right)^{-h} \left( \pdv{\bar{z}'}{\bar{z}} \right)^{-\bar{h}} \phi(z,\bar{z})
+\end{equation}
+Infinitesimally
+\begin{equation}
+	\delta_{\xi,\bar{\xi}} \phi(z,\bar{z}) = - (h \partial \xi + \bar{h} \bar{\partial} \bar{\xi} + \xi \partial + \bar{\xi} \bar{\partial}) \phi(z,\bar{z})
+	\label{math:delta_xi}
+\end{equation}
+with $h$ and $\bar{h}$ conformal weights. Tensor with $\bar{h}=0$ ($h=0$) are called (anti-)homomorphic tensors.
+
+Mode expansion is
+\begin{equation}
+	\phi_\text{plane} (z) = \sum_{n \in Z} \phi_n z^{-n-h} \Leftrightarrow \phi_n = \oint_{C_0} \frac{\dd{z}}{2\pi i} \phi(z) z^{n+h-1}
+\end{equation}
+
+\paragraph{Energy-momentum tensors}
+must be conserved
+\begin{equation}
+	\partial_{\bar{z}} T_{zz} = 0, \quad \partial_z T_{\bar{z}\bar{z}} = 0
+\end{equation}
+In the following denote $T_{zz}(z) = T(z)$ and ${T}_{\bar{z}\bar{z}}(\bar{z}) = \bar{T}(\bar{z})$.
+The infinitesimal conformal transformation $z \rightarrow z + \xi(z)$ has the conserved charge
+\begin{equation}
+	T_\xi = \oint_{C_0} \frac{\dd{z}}{2\pi i } \xi(z) T(z)
+\end{equation}
+
+\eqref{math:delta_xi} is now
+\begin{equation}
+	\delta_\xi \phi(w) = - \comm{T_\xi}{\phi(w)} = - \oint_{C_w} \frac{\dd{z}}{2\pi i} \xi(z) T(z) \phi(w)
+\end{equation}
+
+\paragraph{Operator product expansions}
+It leads to the OPE
+\begin{equation}
+	T(z) \phi(w) = \frac{h\phi(w)}{(z-w)^2} + \frac{\partial \phi(w)}{(z-w)} + \text{reg.}
+\end{equation}
+
+In general
+\begin{equation}
+	O_i (z,\bar{z}) O_j (w,\bar{w}) = \sum_k C_{ij}^k((z-w)) O_k(w,\bar{w})
+\end{equation}
+
+OPE of energy-momentum tensor 
+\begin{equation}
+	T(z)T(w) = \frac{c/2}{(z-w)^4} + \frac{2T(w)}{(z-w)^2} + \frac{\partial T(w)}{(z-w)} + \text{reg.}
+\end{equation}
+This is actually equivalent to the Virasoro algebra with central charge $c$. Expand 
+\begin{equation}
+	T(z) = \sum_{n} z^{-n-2} L_n \Leftrightarrow L_n = \oint \frac{\dd{z}}{2\pi i} z^{n+1} T(z)
+	\label{math:T-conf}
+\end{equation}
+Then \eqref{math:L-comm} is recovered and singular terms in OPE of energy-momentum tensor are equivalent to the Virasoro algebra.
+
+\paragraph{Conformal group}
+Conformal transformation leaves the metric invariant up to a scale (switch to $d$-dimensional flat spacetime temporarily)
+\begin{equation}
+	\eta'_{\mu\nu} = \Lambda(x^\mu) \eta_{\mu\nu}(x^\mu)	
+\end{equation}
+
+In $1$ dimension, any form of transformation is conformal.
+
+In $d\leq 3$ dimension the infinitesimal transformation is given as
+\begin{equation}
+	x^\mu \rightarrow x^\mu + \epsilon^\mu(x^\mu)
+\end{equation}
+with
+\begin{equation}
+	\epsilon_\mu = a_\mu + b_{\mu\nu}x^\nu + c_{\mu\nu\rho}x^\nu x^\rho	
+\end{equation}
+where $a_\mu$ leads to translation, $b_{\mu\nu}$ to rotation and scaling, and $c_{\mu\nu\rho}$ to special conformal transformation.
+
+\paragraph{In $2$d}
+constraints of conformal transformation resemble the Cauchy-Riemann equations, thus conformal transformation in $2$d is equivalent to (anti-)homomorphic coordinate transformation. The generator of the transformations are
+\begin{equation}
+	l_m = - z^{m+1} \partial_z, \quad \bar{l}_m = - \bar{z}^{m+1}\bar{\partial}
+\end{equation}
+Note that they are valid in classical theory. It shows that only $l_{-1,0,+1}$ are defined globally. Their corresponding finite transformation belong to special linear group $SL(2,\mathbb{C})$
+\begin{equation}
+	z \rightarrow z'= \frac{az + b}{cz + d}
+\end{equation}
+with $ad-bc=1$. Actually global conformal group is isometric to $SL(2,\mathbb{C})$.
+
+Energy-momentum tensor under finite conformal transformations $z \rightarrow w(z)$ is 
+\begin{equation}
+	T(z) \rightarrow T'(w) = \left( \dv{z}{w} \right)^2 T(z) + \frac{c}{12} \acomm{z}{w}
+\end{equation}
+Here $\acomm{z}{w}$ refers to Schwarzian derivative.
+
+\paragraph{Representation}
+Regularity of energy-momentum tensor \eqref{math:T-conf} at $z=0$ ($\tau=-\infty$) gives
+\begin{equation}
+	L_n \ket{0} = 0, \quad \text{ for} \quad n > -2
+\end{equation}
+Its Hermitian conjugate holds for $n<2$ and same for $\bar{L}_n$. Similarly,
+\begin{subequations}
+\begin{align}
+	\phi_n \ket{0} &= 0, \text{ for } n > -h \\
+	\bra{0} \phi_n &= 0, \text{ for } n < h
+\end{align}
+\end{subequations}
+
+State-operator correspondence
+\begin{equation}
+	\ket{\phi_\text{in}} = \ket{\phi} = \lim_{z\rightarrow 0 } \phi(z) \ket{0} = \phi(0) \ket{0} = \phi_{-h} \ket{0}
+\end{equation}
+where the limit corresponds to $\tau \rightarrow -\infty$. The out states are
+\begin{equation}
+	\bra{\phi_\text{out}} = \lim_{z\rightarrow \infty} \bra{0} \phi^\dagger(z) z^{2h} = \bra{0} (\phi^\dagger)_h
+\end{equation}
+Alternatively, another choice of out states is BPZ-conjugate
+\begin{equation}
+	\bra{\phi} = \lim_{z\rightarrow \infty} \bra{0} \phi(z)z^{2h}	
+\end{equation}
+
+The choices lead to
+\begin{subequations}
+\begin{align}
+	L_0 \ket{\phi} &= h \ket{\phi} \\
+	L_n \ket{\phi} \ket{\phi} &= 0 \forall n > 0
+\end{align}
+\end{subequations}
+It is to be compared with \eqref{math:quan-constr}. States satisfy these conditions are called highest weight states. $L_{-n}$ with $(n \geq 0)$ raise the eigenvalue of $L_0$
+\begin{equation}
+	L_0 \left( L_{-n} \ket{\phi} \right) = (n + h) \left( L_{-n} \ket{\phi} \right)
+\end{equation}
+
+\paragraph{Complete Hilbert space} Descendent states are constructed by 
+\begin{equation}
+	\ket{\phi^{k_1\dots k_m}} = L_{-k_1} \dots L_{-k_m} \ket{\phi}
+\end{equation}
+with $k_1 \geq \dots k_m > 0$. They form Verma module $V(c,h)$ of the highest weight state.
+
+Descendant fields are contained in the operator product of the primary fields with the energy-momentum tensor
+\begin{equation}
+	T(z) \phi(w) = \sum_{k=0}^{\infty} (z-w)^{-2+k} \phi^{(k)}(w) \Leftrightarrow \phi^{(k)}(w) = L_{-k} \phi(w)
+\end{equation}
+They are secondary fields. Descendent fields can have their own descendants, which is contained in OPE of $T(z) \phi^{(k_1)}(w)$. All these fields constitute the conformal family $[\phi]$. Energy-momentum tensor is an example of secondary fields.
+
+\paragraph{Unitarity}
+Requiring that $\expval{\phi_j | L_n L_{-n} | \phi_j} \geq 0$  leads to $c>0$ and $h_j \geq 0$.
+
+\paragraph{Correlation functions}
+Correlation function need to be invariant under $SL(2, \mathbb{C})$. This requirement leads to for quasi-primary fields $\phi (z)$
+\begin{itemize}
+	\item two-point function
+		\begin{equation}
+			\expval{\phi_i(z) \phi_j(w)} = 
+			\begin{cases}
+				\frac{G_{ij}}{(z-w)^{2h_i}} & h_i = h_j \\
+				0 & \text{otherwise}	
+			\end{cases}
+		\end{equation}
+	\item three-point function
+		\begin{equation}
+			\expval{\phi_i(z_1) \phi_j(z_2) \phi_k(z_3)} = \frac{C_{ijk}}{z_{12}^{h_i+h_j-h_k} z_{13}^{h_i+h_k-h_j} z_{23}^{h_j+h_k-h_i}}
+		\end{equation}
+\end{itemize}
+
+% \paragraph{Conformal ward identities}
+\subsection{Application to Closed String}
+\paragraph{Two-point function}
+for free boson $X(z,\bar{z})$
+\begin{equation}
+	\braket{X(z,\bar{z}) X(w,\bar{w}) } = - \frac{\alpha'}{2} \log|(z-w)/R|^2
+\end{equation}
+They are not primary. The derivative fields are (anti-)holomorphic fields
+\begin{subequations}
+\begin{align}
+	\expval{\partial X(z) \partial X(w)} &= - \frac{\alpha'}{2} \frac{1}{(z-w)^2} \\
+	\expval{\bar{\partial} X(\bar{z}) \bar{\partial} X(\bar{w})} &= -\frac{\alpha'}{2} \frac{1}{(\bar{z} - \bar{w})^2}
+\end{align}
+\end{subequations}
+
+\paragraph{Energy momentum tensor}
+\begin{equation}
+	T(z) = - \frac{1}{\alpha'} \normord{\partial X(z) \partial X(z)}
+\end{equation}
+
+\paragraph{Wick's theorem}
+\begin{equation}
+	\phi_i(z) \phi_j (w) = \wick{\c \phi_i(z) \c \phi_j (w)} + \normord{\phi_i(z) \phi_j (w)}
+\end{equation}
+
+\paragraph{Vertex operator}
+\begin{equation}
+	V_\alpha(z,\bar{z}) = \normord{e^{i\alpha\phi(z,\bar{z})}}
+\end{equation}
+\subsection{The Ghost System as a CFT}
+\paragraph{Propagator}
+\begin{equation}
+	\expval{b(z) c(w)} = \expval{c(z) b(w) } = \frac{1}{z-w}
+\end{equation}
+
+\paragraph{Energy-momentum tensor}
+\begin{equation}
+	T^{b,c}(z) = -2 \normord{b \partial c (z)} - \normord{\partial b c (z)}
+\end{equation}
+
+\paragraph{OPE}
+\begin{equation}
+	T^{b,c}(z) T^{b,c}(w) = \frac{-26/2}{(z-w)^4} + \frac{2T^{b,c}(w)}{(z-w)^2} + \frac{\partial T^{b,c}(w)}{z-w} + \text{reg.}
+\end{equation}
+Thus $c=26$ for ghost systems and once again conformal anomaly is absent in $d=26$.
+\end{document}

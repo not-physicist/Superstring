@@ -1,0 +1,69 @@
+\section{The Ghost System}
+The ghost system has the action
+\begin{equation}
+	S = \frac{g}{2} \int \dd[2]{x} b_{\mu\nu} \partial^\mu c^\nu
+\end{equation}
+and the propagator is
+\begin{equation}
+	\expval{b(z) c(w)} =  \frac{1}{\pi g} \frac{1}{z-w}
+\end{equation}
+Because they are anti-commuting fields $\expval{b(z) c(w)} = \expval{c(z) b(w)}$.
+\begin{enumerate}[label=(\alph*)]
+	\item Other similar correlators are then determined as
+		\begin{align}
+			\expval{b(z) \partial c(w)} &= -\expval{\partial c (z)  b(w)} = \frac{1}{\pi g} \frac{1}{(z-w)^2} \\
+			\expval{\partial b(z) c(w)} &= -\expval{c (z) \partial b(w)} = -\frac{1}{\pi g} \frac{1}{(z-w)^2} \\
+			\expval{\partial b(z) \partial c(w)} &= \expval{\partial c (z) \partial b(w)} =- \frac{2}{ \pi g} \frac{1}{(z-w)^3}
+		\end{align}
+
+	\item The energy-momentum tensor of the system is given by
+		\begin{equation}
+			T(z) = \pi g \normord{(2\partial c b + c \partial b)}
+		\end{equation}
+
+		Then we can calculate the following OPEs 
+		\begin{align*}
+			T(z) b(w) &= \pi g \normord{(2\partial c(z) b(z) + c(z) \partial b(z))} b(w) \\
+						 &= \pi g \big( 2\wick{ \normord{ \c \partial c(z) b(z) \c b(w)}} + \wick{ \normord{\c c(z) \partial b(z) \c b(w)}} \big) + \text{reg.} \\
+						 &= \frac{2b(z)}{(z-w)^2} - \frac{\partial b(z)}{z-w} + \text{reg.} \\
+						 &= \frac{2b(w)}{(z-w)^2} + \frac{\partial b(w)}{z-w} + \text{reg.}
+		\end{align*}
+		Thus $b$-field has conformal dimension $(h,\bar{h}) = (2,0)$. 
+
+		$c$-field has conformal dimension $(h,\bar{h})=(1,0)$, since 
+		\begin{align*}
+			T(z) c(w) &= \pi g \normord{(2\partial c(z) b(z) + c(z) \partial b(z))} c(w) \\
+						 &= \pi g \big( 2\wick{ \normord{ \partial c(z) \c b(z) \c c(w)}} + \wick{ \normord{c(z) \c \partial b(z) \c c(w)}} \big) + \text{reg.} \\
+						 &= \frac{2 \partial c(z)}{z-w} + \frac{- c(z)}{(z-w)^2} + \text{reg.} \\
+						 &= \frac{- c(w)}{(z-w)^2}+ \frac{ \partial c(w)}{z-w} + \text{reg.}
+		\end{align*}
+
+	\item OPE of energy-momentum tensor with itself 
+		\begin{align*}
+				&T(z) T(w) \\
+				&= \pi^2 g^2 \normord{(2\partial c(z) b(z) + c(z) \partial b(z))} \normord{(2\partial c(w) b(w) + c(w) \partial b(w))} \\
+				&= \pi^2 g^2 \big( 4 \normord{\wick{ \c1  \partial c(z) \c2 b(z) \c2\partial c(w)\c1 b(w)}} +  4 \normord{\wick{ \c1  \partial c(z)  b(z) \partial c(w)\c1 b(w)}} + 4 \normord{\wick{   \partial c(z) \c2 b(z) \c2\partial c(w) b(w)}} \\
+				&\quad +  2 \normord{\wick{\c1 \partial c(z) \c2 b(z) \c2 c(w) \c1 \partial b(w)}} +  2 \normord{\wick{ \partial c(z) \c2 b(z) \c2 c(w)  \partial b(w)}}  +  2 \normord{\wick{\c1 \partial c(z)  b(z)  c(w) \c1 \partial b(w)}} \\
+				&\quad + 2 \normord{\wick{\c1 c(z) \c2 \partial b(z) \c2 \partial c(w) \c1 b(w)}} + 2 \normord{\wick{ c(z) \c2 \partial b(z) \c2 \partial c(w)  b(w)}} + 2 \normord{\wick{\c1 c(z)  \partial b(z)  \partial c(w) \c1 b(w)}}\\
+				&\quad + \normord{\wick{\c1 c(z) \c2 \partial b(z) \c2 c(w) \c1 \partial b(w)}} + \normord{\wick{ c(z) \c2 \partial b(z) \c2 c(w)  \partial b(w)}}+ \normord{\wick{\c1 c(z)  \partial b(z)  c(w) \c1 \partial b(w)}}\\
+						 &\quad + \text{reg.}\big) \\
+						 &= -\frac{4}{(z-w)^4} +  \frac{4 \pi g}{(z-w)^2} \left( -\normord{b(z) \partial c (w)} + \normord{\partial c(z) b(w)} \right) \\
+						 &\quad - \frac{4}{(z-w)^4} + \frac{2\pi g}{z-w} \normord{\partial c(z) \partial b(w)}  - \frac{4\pi g}{(z-w)^3} \normord{b(z) c(w)} \\
+						 &\quad - \frac{4}{(z-w)^4} - \frac{4\pi g}{(z-w)^3} \normord{c(z) b(w)} + \frac{2\pi g}{z-w} \normord{\partial b(z) \partial c(w)} \\
+						 &\quad -\frac{1}{(z-w)^4} + \frac{\pi g}{(z-w)^2} \left(- \normord{c(z) \partial b(w)} + \normord{\partial b(z) c(w)}\right) + \text{reg.} \\
+						 % &= \frac{-26/2}{(z-w)^4}  + \frac{2\pi g}{z-w} (:\partial c(z) \partial b(w): - :\partial b(z) \partial c(w):)\\
+						 % &\quad +  \frac{\pi g}{(z-w)^2}(-4:b(z) \partial c (w): + 4:\partial c(z) b(w): - :c(z) \partial b(w): +:\partial b(z) c(w):) \\
+						 % &\quad + \frac{4\pi g}{(z-w)^3} \left( :b(z) c(w): + :c(z) b(w): \right) + \text{reg.}
+						 \shortintertext{now to taylor expand the normal orderder product around $z=w$}
+							&= \frac{-26/2}{(z-w)^4}  + \frac{2\pi g}{z-w} \left[ \normord{\partial c(w) \partial b(w)}  + \normord{\partial b(w) \partial c(w)} \right] \\
+							&\quad +  \frac{\pi g}{(z-w)^2} \big[ -4 \normord{b(w) \partial c (w)} - 4 (z-w) \normord{\partial b(w) \partial c(w)} + 4 \normord{\partial c(w) b(w)} \\
+							&\quad + 4 (z-w) \normord{\partial^2 c(w) b(w)} - \normord{c(w) \partial b(w)} - (z-w) \normord{\partial c(w) \partial b(w)} \\
+							&\quad + \normord{\partial b(w) c(w)} + (z-w) \normord{\partial^2 b(w) c(w)}  \big]  \\
+							&\quad -\frac{4\pi g}{(z-w)^3} \big[  \cancel{\normord{b(w) c(w)}} + (z-w) \normord{\partial b(w) c(w)} + \frac{1}{2} (z-w)^2 \normord{\partial^2 b(w) c(w)} \\
+							&\quad + \cancel{\normord{c(w) b(w)}} + (z-w)\normord{\partial c(w) b(w)} + \frac{1}{2} (z-w)^2 \normord{\partial^2 c(w) b(w)}  \big]   + \text{reg.}
+							\shortintertext{Note ghost fields are anti-commuting, thus $\normord{bc}=-\normord{cb}$ \textit{despite} the normal ordering}
+							&= \frac{-26/2}{(z-w)^4} + \frac{\pi g}{z-w} \left( 3 \normord{\partial c \partial b} + \normord{c \partial^2 b} + 2 \normord{\partial^2 c b} \right) + \frac{2\pi g}{(z-w)^2} \left( 2\normord{\partial c b} + \normord{c \partial b} \right) + \text{reg.} \\
+							&= \frac{-26/2}{(z-w)^4} + \frac{\partial T(w)}{z-w}  + \frac{2 T(w)}{(z-w)^2}  + \text{reg.}
+		\end{align*}
+\end{enumerate}
+Thus the central charge of the ghost system is $c=-26$ and it has conformal weight $(h,\hat{h}) = (2,0)$.

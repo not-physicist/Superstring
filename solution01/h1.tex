@@ -52,10 +52,10 @@ The Polyakov action is given by
 													 j^\alpha_\mu &= -T \partial^\alpha X_\mu
 				\end{align}
 		\end{itemize}
-	\item The action is invariant under reparametrization transformation $\sigma^\alpha \mapsto \sigma'^\alpha (\sigma^\beta)$. Here "everything" transforms like a tensor (with weight $w=0$)
+	\item The action is invariant under reparametrization transformation $\sigma^\alpha \mapsto \sigma'^\alpha (\sigma^\beta)$. $X^\mu$ is a world-sheet scalar (thus $\partial_\mu = \nabla_\mu$ for $X^\nu$), $h_{\alpha\beta}$ is a tensor.
 		\begin{align*}
-			X^\mu (\sigma^\alpha) &\mapsto X^\mu (\sigma'^\alpha) \\
-			\partial_\alpha &\mapsto \pdv{\sigma'^\beta}{\sigma^\alpha} \partial_\beta \\
+			X^\mu (\sigma^\alpha) &\mapsto X^\mu(\sigma'^\alpha) \\
+			\Gamma_{\alpha\beta} &\mapsto \Gamma_{\mu\nu} \pdv{\sigma^\mu}{\sigma'^\alpha} \pdv{\sigma^\nu}{\sigma'^\beta}  \\
 			h_{\alpha \beta} &\mapsto h_{\mu\nu} \pdv{\sigma^\mu}{\sigma'^\alpha} \pdv{\sigma^\nu}{\sigma'^\beta} \\
 			\dd[2]{\sigma}\sqrt{-h} &\mapsto \dd[2]{\sigma'} \pdv{\sigma^{'\alpha}}{\sigma^\beta} \pdv{\sigma^{' \beta}}{\sigma^\alpha}  \sqrt{- h}  \det \left(\pdv{\sigma}{\sigma'} \right) = \dd[2]{\sigma'} \sqrt{-h}
 		\end{align*}
@@ -63,9 +63,10 @@ The Polyakov action is given by
 
 		Plug all these transformation in and we have
 		\begin{align}
-			S_p \mapsto S'_p &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h}  h_{\rho\sigma} \pdv{\sigma^\rho}{\sigma'^\alpha} \pdv{\sigma^\sigma}{\sigma'^\beta} \pdv{\sigma'^\tau}{\sigma^\alpha} \partial_\tau X^\nu \pdv{\sigma'^\omega}{\sigma^\beta} \partial_\omega X^\mu \eta_{\mu\nu} \notag \\
-								  &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h}  h_{\rho\sigma}  \delta^\rho_\alpha \delta^\tau_\alpha \partial_\tau X^\nu  \delta^\sigma_{\beta} \delta^\omega_\beta \partial_\omega X^\mu  \eta_{\mu\nu} \notag \\
-								  &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h} h_{\alpha\beta} \partial_\alpha X^\nu \partial_\beta X^\mu  \eta_{\mu\nu} = S_p
+			S_p \mapsto S'_p 
+			% &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h}  h_{\rho\sigma} \pdv{\sigma^\rho}{\sigma'^\alpha} \pdv{\sigma^\sigma}{\sigma'^\beta} \pdv{\sigma'^\nu}{\sigma^\tau} \partial'_\alpha X^\tau \pdv{\sigma'^\mu}{\sigma^\omega} \partial'_\beta X^\omega \eta_{\mu\nu} \notag \\
+								  % &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h}  h_{\rho\sigma}  \delta^\rho_\alpha \delta^\tau_\alpha \partial_\tau X^\nu  \delta^\sigma_{\beta} \delta^\omega_\beta \partial_\omega X^\mu  \eta_{\mu\nu} \notag \\
+								  &= - \frac{T}{2} \int \dd[2]{\sigma'} \sqrt{-h} h^{\alpha\beta} \partial'_\alpha X^\nu \partial'_\beta X^\mu  \eta_{\mu\nu} = S_p
 		\end{align}
 	\item The action is invariant under Weyl transformation $h_{\alpha\beta} \mapsto e^{\phi(\sigma^\alpha)} h_{\alpha\beta}$ (I think there is no summing over $\alpha$ here). This is quite simple. Tranformation of $\sqrt{-h}$ introduce $e^{\phi}$ and since it lies inside sqaure root and determinant: $\sqrt{-h} \mapsto e^{\phi}\sqrt{-h}$. This factor gets cancelled by the transformation of $h^{-1}$. Thus the action is again invariant.
 	\item 

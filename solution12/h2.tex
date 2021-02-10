@@ -1,0 +1,39 @@
+\section{Vertex operator}
+Vertex operator is defined as 
+\begin{equation}
+	V_\alpha (z, \bar{z}) = \normord{e^{i\alpha \phi(z,\bar{z})}}
+\end{equation}
+
+One can show that normal ordered exponentials of free boson fields can be written as
+\begin{equation}
+	\normord{e^{a\phi_1}} \normord{e^{b\phi_2}} = \normord{e^{a\phi_1 + b \phi_2}} e^{ab \expval{\phi_1 \phi_2}}
+\end{equation}
+Up to second order in fields, we have 
+\begin{align*}
+	\text{LHS} &= \normord{ \left( 1 + a \phi_1 + \frac{1}{2!} (a\phi_1)^2 \right) }\normord{ \left( 1 + b \phi_2 + \frac{1}{2!} (b\phi_2)^2 \right) } + \order{\phi^3} \\
+				  &= 1 + a \phi_1 + b \phi_2 + ab \normord{\phi_1} \normord{\phi_2} + \frac{1}{2!} \normord{(a\phi_1)^2}+ \frac{1}{2!} \normord{(b\phi_2)^2} + \order{\phi^3} \\
+				  &= 1 + a \phi_1 + b \phi_2 + ab \normord{\phi_1 \phi_2}  + \frac{1}{2!} \normord{(a\phi_1)^2}+ \frac{1}{2!} \normord{(b\phi_2)^2} + ab \expval{\phi_1 \phi_2}+ \order{\phi^3}
+\end{align*}
+This is exactly the RHS up to second order in $\phi$. In general, at $\order{\phi^n}$ 
+\begin{align*}
+	\text{LHS} &= \sum_{k=0}^n \frac{1}{(n-k)! k!} \normord{(a\phi_1)^{n-k}} \normord{(b\phi_2)^{k}}	\\
+				  &= \sum_{k=0}^n  \frac{1}{(n-k)!k!} \sum_{m=0}^{\min(k,n-k)} m! \begin{pmatrix} n-k \\ m \end{pmatrix} \begin{pmatrix} k \\ m \end{pmatrix} \left( ab \expval{\phi_1 \phi_2} \right)^m \normord{(a\phi_1)^{n-k-m} (b\phi_2)^{k-m}}
+				  \shortintertext{The combinatoric factors come from different ways to contract fields. The $\min$ is to avoid undefined binomial coeffcients. (Two extreme cases correspond to only $\phi_1$ or $\phi_2$ are left uncontracted.)}
+				  &= \sum_{k=0}^n   \sum_{m=0}^{\min(k,n-k)} \frac{1}{m! (n-k-m)! (k-m)!} \left( ab \expval{\phi_1 \phi_2} \right)^m \normord{(a\phi_1)^{n-k-m} (b\phi_2)^{k-m}}
+\end{align*}
+which is the RHS at the same order.
+
+Thus OPE of the vertex operators is
+\begin{align*}
+	V_\alpha (z, \bar{z}) V_\beta (w, \bar{w}) &= \normord{e^{i\alpha \phi(z,\bar{z}) + i\beta\phi(w,\bar{w})}} e^{-\alpha\beta \expval{\phi(z,\bar{z})\phi(w,\bar{w})}} \\
+															 &= \normord{e^{i\alpha \phi(z,\bar{z}) + i\beta\phi(w,\bar{w})}} \exp[-\alpha\beta \frac{\alpha'}{2} \log|(z-w)/R|^2] \\
+															 &= \normord{e^{i\alpha \phi(z,\bar{z}) + i\beta\phi(w,\bar{w})}} \left| \frac{z-w}{R} \right|^{-\alpha' \alpha\beta}
+\end{align*}
+The vacuum expectation value of the OPE vanishes unless $\alpha = -\beta$, since normal ordered product has zero vacuum expectation value. Use $\alpha'=\frac{1}{2\pi g}$ and set the cutoff $R$ to unity  Thus
+\begin{equation}
+	\expval{V_\alpha (z, \bar{z}) V_\beta (w, \bar{w})} = 
+	\begin{cases}
+		|z-w|^{-\alpha^2/2\pi g} & \alpha = -\beta \\
+		0 & \text{else}
+	\end{cases}
+\end{equation}

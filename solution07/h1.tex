@@ -1,0 +1,175 @@
+\section{Lorentz invariance in light-cone quantization: cont}
+\begin{enumerate}[label=(\alph*)]
+% \setItemnumber{9}
+	\item[(i)]
+		Now to expand the commutator
+		\begin{align*}
+			\comm{J^{i-}}{J^{j-}} &= \comm{l^{i-}}{l^{j-}} + \comm{E^{i-}}{l^{j-}} + \comm{l^{i-}}{E^{j-}} + \comm{E^{i-}}{E^{j-}}
+		\end{align*}
+		\begin{itemize}
+			\item First commutator vanishes
+				\begin{align*}
+					\comm{l^{i-}}{l^{j-}} &= \comm{x^i p^-}{x^j p^-} - \comm{x^i p^-}{x^- p^j} - \comm{x^- p^i}{x^j p^-} + \comm{x^- p^i}{x^-p^j} \\
+												 &= 0 - x^- \comm{x^i}{p^j} p^- - x^- \comm{p^i}{x^j} p^- + 0  \\
+												 &= 0
+				\end{align*}
+			\item Second commutator is
+				\begin{align*}
+					\comm{E^{i-}}{l^{j-}} &= \frac{1}{p^+} \left( \comm{E^i}{x^j p^-} - \comm{E^i}{x^- p^j} \right) \\
+												 &= \frac{1}{p^+} \left( \comm{E^i}{x^j}p^- + x^j \comm{E^i}{p^-} - (- \leftrightarrow j) \right) \\
+												 &= \frac{1}{(p^+)^2} \left( i E^{ji} p^- p^+ + p^+ x^j  \cancel{\comm{E^i}{p^-}} - i E^{-i} p^j p^+ + p^+x^- \cancel{\comm{E^i}{p^j}} \right)
+				\end{align*}
+				The commutators in the last step vanish because $p^\mu = \alpha^\mu_0$ and $E^i = p^+ E^{i-}$ contains only zero mode $p^+$ and it clearly commute with $p^{-}$ and $p^{j}$.
+			\item Third term is the same computation as the second one
+				\begin{equation*}
+					\comm{l^{i-}}{E^{j-}} = - \frac{1}{(p^+)^2} \left( i E^{ij} p^- p^+ - i E^{-j} p^i p^+  \right)
+				\end{equation*}
+			\item Last term
+				\begin{align*}
+					\comm{E^{i-}}{E^{j-}} &= \frac{1}{(p^+)^2} \comm{E^i}{E^j}
+				\end{align*}
+		\end{itemize}
+		Together
+		\begin{equation}
+			\comm{J^{i-}}{J^{j-}} = - \frac{1}{(p^+)^2} \left( 2i p^+ p^- E^{ij} - i E^i p^j + i E^j p^i - \comm{E^i}{E^j} \right) = - \frac{1}{(p^+)^2} C^{ij}
+		\end{equation}
+		where anti-symmetric property of $E^{ij}$ has been used.
+	\item [(j)]
+		We expect this commutator to be in the form of
+		\begin{equation}
+			\comm{J^{i-}}{J^{j-}} = - \frac{1}{(p^+)^2} \sum_{m=1}^{\infty} \Delta_m \left( \alpha^i_{-m} \alpha_m^j - \alpha^j_{-m} \alpha^i_m \right)
+		\end{equation}
+		Thus $C^{ij}$ is basically the sum. In other word with matrix element of $C^{ij}$, the coefficients $\Delta_m$ can be determined. 
+		
+		Explicitly,
+		\begin{align}
+			&\braket{0| \alpha^k_m \comm{J^{i-}}{J^{j-}}\alpha^l_{-m} | 0} \notag \\ 
+			=& - \frac{1}{(p^+)^2} \sum_{n=1}^{\infty} \Delta_n \braket{0| \alpha^k_m \left( \alpha^i_{-n} \alpha^j_n - \alpha^j_{-n} \alpha^i_n \right)\alpha^l_{-m} | 0} \notag \\
+			=& - \frac{1}{(p^+)^2} \sum_{n=1}^{\infty} \Delta_n \left( \braket{0| \alpha^k_m  \alpha^i_{-n} \alpha^j_n \alpha^l_{-m} | 0} - \braket{0|\alpha^k_m  \alpha^j_{-n} \alpha^i_n \alpha^l_m |0}\right) \notag \\
+			=& - \frac{1}{(p^+)^2}  \Delta_m m^2 \left( \delta^{ki} \delta^{jl} - \delta^{kj} \delta^{il}\right) \label{math:Delta}
+		\end{align}
+
+	\item[(k)] We first notice that $C^{ij}$ is anti-symmetric in indices $ij$. Thus first write
+		\begin{equation*}
+			C^{ij} = 2 p^+ p^- \sum_{r=1}^{\infty} \frac{1}{r} \alpha^i_{-r} \alpha^j_r - (p^+)^2 E^{i-} E^{j-} - i E^i p^j - (i\leftrightarrow j)
+		\end{equation*}
+		Now we are going to compute the matrix element of first three terms. The strategy is to use the commutation relations between modes so that we only have Kronecker deltas afterwards. To use is $\alpha^\mu_m \ket{0} = 0$ for $m>0$ and its hermitian conjugate. Also $m>0$.
+		\begin{itemize}
+			\item Firstly,
+				\begin{align*}
+					& 2p^+ \sum_{r>0} \frac{1}{r} \braket{0 | \alpha^k_m \alpha^-_0 \alpha^i_{-r} \alpha^j_r \alpha^l_{-m} | 0} \\
+					&= 2p^+ \sum_{r>0} \frac{1}{r} \braket{0 | \comm{\alpha^k_m}{\alpha^-_0} \alpha^i_{-r} \comm{\alpha^j_r}{\alpha^l_{-m}} | 0} \\
+					&= 2m \braket{0 | \alpha^k_{m} \alpha^i_{-m} | 0} \delta^{jl} \\
+					&= 2m \braket{0 | \comm{\alpha^k_{m}}{\alpha^i_{-m}} | 0} \delta^{jl} \\
+					&= 2m^2 \braket{0 | \delta^{ki}  \delta^{jl}| 0} 
+				\end{align*}
+			\item Second chunk of terms
+				\begin{align*}
+					 & \braket{0 | \alpha^k_m E^{i-} E^{j-} \alpha^l_{-m} | 0} \\
+					 &= - \sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 | \alpha^k_m (\alpha^i_{-r} \alpha^-_r - \alpha^-_{-r} \alpha^i_r) (\alpha^j_{-s} \alpha^-_s - \alpha^-_{-s} \alpha^{j}_s) \alpha^l_{-m} | 0} \\
+																							  &= - \sum_{r,s>0}^{\infty} \frac{1}{rs} \bra{0} \alpha^k_m (\alpha^i_{-r} \alpha^-_r \alpha^j_{-s} \alpha^-_s - \alpha^i_{-r} \alpha^-_r \alpha^-_{-s} \alpha^j_s \\
+																							  &\quad - \alpha^-_{-r} \alpha^i_r \alpha^j_{-s} \alpha^-_{s} + \alpha^-_{-r} \alpha^i_r \alpha^-_{-s} \alpha^j_s) \alpha^l_{-m} \ket{0}
+					\end{align*}
+					The first term
+					\begin{align*}
+																							  &  -\sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 | \alpha^k_m\alpha^i_{-r} \alpha^-_r \alpha^j_{-s} \alpha^-_s \alpha^l_{-m} | 0} \\
+																							  &=  -\sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 | \comm{\alpha^k_m}{\alpha^i_{-r}} \alpha^-_r \alpha^j_{-s} \comm{\alpha^-_s}{\alpha^l_{-m}} | 0} \\
+																							  &=  -\frac{1}{p^+} \sum_{r,s>0}^{\infty} \frac{1}{rs} m \delta_{m-r} \delta^{ki}\braket{0 | \alpha^-_r \alpha^j_{-s}  m \alpha^{l}_{s-m} | 0} \\
+																							  &=  -\frac{m}{p^+} \sum_{r>0}^{\infty} \frac{1}{r}  \delta^{ki}\braket{0 | \alpha^-_m \alpha^j_{-s} \alpha^l_{s-m} | 0} \\
+					\end{align*}
+
+					Second term
+					\begin{align*}
+																							  & \sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 | \alpha^k_m \alpha^i_{-r} \alpha^-_r  \alpha^-_{-s} \alpha^{j}_s \alpha^l_{-m} | 0} \\
+																							  &= \sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 | \comm{\alpha^k_m}{\alpha^i_{-r}} \alpha^-_r  \alpha^-_{-s} \comm{\alpha^{j}_s}{\alpha^l_{-m}} | 0} \\
+																							  &= \sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 | m \delta_{m-r} \delta^{ki} \alpha^-_r  \alpha^-_{-s} s \delta_{s-m} \delta^{jl} | 0} \\
+																							  &= \delta^{ik} \delta^{jl} \braket{0| \alpha^-_m \alpha^-_{-m} | 0}
+				\end{align*}
+				Third term
+				\begin{align*}
+																							  &  -\sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 |\alpha^k_m \alpha^-_{-r} \alpha^i_r \alpha^j_{-s} \alpha^-_{s}   \alpha^l_{-m} | 0} \\
+																							  &=  -\sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 |\comm{\alpha^k_m}{\alpha^-_{-r}} \alpha^i_r \alpha^j_{-s} \comm{\alpha^-_{s}}{ \alpha^l_{-m}} | 0} \\
+																							  &=  -\frac{m^2}{(p^+)^2} \sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 |\alpha^k_{m-r} \alpha^i_r \alpha^j_{-s} \alpha^l_{s-m} | 0} \\
+				\end{align*}
+				Last term is similar as the first term
+				\begin{align*}
+																							  &  -\sum_{r,s>0}^{\infty} \frac{1}{rs}  \braket{0 |\alpha^k_m  \alpha^-_{-r} \alpha^i_r \alpha^-_{-s} \alpha^j_s  \alpha^l_{-m} | 0} \\
+																							  &= - \frac{m}{p^+} \sum_{r>0}^{\infty} \frac{1}{r} \delta^{jl} \braket{0| \alpha^k_{m-s} \alpha_s^i \alpha^-_{-m} | 0}
+				\end{align*}
+				All the sum here actually terminate at $r,s = m$, because then we would have annihilation operators acting on the vacuum.
+			\item Lastly,
+				\begin{align*}
+					& -p^+ \sum_{r>0}^{\infty} \frac{1}{r} \braket{0| \alpha^k_m (\alpha^i_{-r} \alpha^-_r - \alpha^-_{-r} \alpha^i_r) \alpha^j_0 \alpha^l_{-m} |0} \\
+					&= -p^+ \sum_{r>0}^{\infty} \frac{1}{r} \left( \braket{0| \comm{\alpha^k_m}{\alpha^i_{-r}} \alpha^-_r \alpha^j_0 \alpha^l_{-m} |0} - \braket{0| \alpha^k_m \alpha^-_{-r} \alpha^j_0 \comm{\alpha^i_r}{\alpha^l_{-m}}   |0} \right) \\
+					&= -p^+ \sum_{r>0}^{\infty} \frac{1}{r} \left( m \delta_{m-r} \delta^{ki}\braket{0 |  \alpha^-_r   \alpha^l_{-m} \alpha^j_0| 0} - r \delta_{r-m} \delta^{il} \braket{0 | \alpha^k_{m}\alpha^-_{-r} \alpha_0^j  | 0} \right) \\
+					&= -p^+ \sum_{r>0}^{\infty} \frac{1}{r} \left( m \delta_{m-r} \delta^{ki}\braket{0 |  \comm{\alpha^-_r}{\alpha^l_{-m}} \alpha^j_0| 0} - r \delta_{r-m} \delta^{il} \braket{0 | \comm{\alpha^k_{m}}{\alpha^-_{-r}} \alpha_0^j  | 0} \right) \\
+					&= -p^+ \sum_{r>0}^{\infty} \frac{1}{r} \left( \frac{m^2}{p^+} \delta_{m-r} \delta^{ki}\braket{0 | \alpha^l_{r-m}  \alpha^j_0| 0} - \frac{mr}{p^+} \delta_{r-m} \delta^{il} \braket{0 | \alpha^k_{m-r} \alpha_0^j  | 0} \right) \\
+					&= -m \braket{0|  \left( \delta^{ki} p^l p^j - \delta^{il} p^k p^j \right) |0}
+				\end{align*}
+		\end{itemize}
+		Put everything together
+		\begin{align}
+			\begin{split}
+			\braket{0 | \alpha^k_m C^{ij} \alpha^l_{-m} | 0} &= \braket{0 | \left( 2m^2\delta^{ik}\delta^{jl} + mp^j p^k \delta^{il} - mp^j p^l \delta^{ik} \right) | 0} \\
+																			 &+p^+m\delta^{ik} \sum_{s=1}^{m} \frac{1}{s} \braket{0 | \alpha^-_m \alpha^j_{-s}\alpha^l_{s-m} | 0} - (p^+)^2 \delta^{ik}\delta^{jl} \braket{0 | \alpha^-_m \alpha^-_{-m} | 0} \\
+																			 &+ m^2 \sum_{r,s=1}^{m} \frac{1}{rs} \braket{0 | \alpha^k_{m-s} \alpha^j_s \alpha^i_{-r} \alpha^l_{r-m} | 0} \\
+																			 &+ p^+ m \delta^{jl} \sum_{s=1}^{m} \frac{1}{s} \braket{0 | \alpha^k_{m-s} \alpha^i_s \alpha^-_{-m} |0 } - (i \leftrightarrow j)
+			\end{split}
+		\end{align}
+	\item[(l)] Now to compute these matrix elements
+		\begin{enumerate}[label=(\roman*)]
+			\item Since $m>0$, we can leave out the normal ordering constant in the $\alpha^-_n$ (remember the commutation relations from last sheet)
+				\begin{align*}
+					&(p^+)^2 \braket{0 | \alpha^-_{m} \alpha^-_{-m} | 0} \\
+					=& \braket{0| \comm{p^+ \alpha^-_m}{p^+ \alpha^-_{-m}}|0} \\
+					=&  \frac{d-2}{12} m (m^2 -1 ) + 2am
+				\end{align*}
+				where we have used $\expval{\alpha_0^-} = \expval{p^-} = 0$, since it is the vacuum.
+
+			\item 
+				\begin{align*}
+					& p^+ \sum_{s=1}^m \frac{1}{s} \braket{0 | \alpha^-_m \alpha^j_{-s} \alpha^l_{s-m} | 0} \\
+					=& p^+ \sum_{s=1}^m \frac{1}{s} \braket{0 | \comm{\alpha^-_m}{\alpha^j_{-s}} \alpha^l_{s-m} | 0} \\
+					=& \sum_{s=1}^m \braket{0 | \alpha^j_{m-s} \alpha^l_{s-m} | 0 } \\
+					=& \sum_{s=1}^{m-1} (m-s) \delta^{jl} + p^jp^l \\
+					=& \delta^{jl} m(m-1)/2 + p^jp^l
+				\end{align*}
+
+			\item Identical computation as last one,
+				\begin{equation}
+					p^+ \sum_{s=1}^m \frac{1}{s} \braket{0 | \alpha^k_{m-s} \alpha^i_{s} \alpha^-_{-m} | 0} = \delta^{ik} m(m-1)/2 + p^i p^k
+				\end{equation}
+
+			\item Lastly
+				\begin{align*}
+					&\sum^m_{r,s=1} \frac{1}{rs} \braket{0| \alpha^k_{m-s} \alpha^j_s \alpha^i_{-r} \alpha^l_{r-m} |0} - (i\leftrightarrow j) \\
+					=&\sum^m_{r,s=1} \frac{1}{rs} \braket{0| \alpha^k_{m-s}  \alpha^i_{-r} \alpha^j_s\alpha^l_{r-m} |0} - (i\leftrightarrow j) \\
+					\shortintertext{because the commutator term is $\propto \delta^{ij}$ and gets canceled by the $i\leftrightarrow j$ term}
+					=&\sum^{m-1}_{r,s=1} \frac{1}{rs} \braket{0| \alpha^k_{m-s}  \alpha^i_{-r} \comm{\alpha^j_s}{\alpha^l_{r-m}} |0} - (i\leftrightarrow j) \\
+					\shortintertext{note that here the summation is only up to $(m-1)$, since if $r=m$ we would have a momentum operator acting on the vacuum. Thus the term vanishes.}
+					=&\sum^{m-1}_{r,s=1} \frac{1}{rs} s \delta_{s+r-m} \delta^{jl}\braket{0| \alpha^k_{m-s}  \alpha^i_{-r}  |0} - (i\leftrightarrow j) \\
+					=&\sum^{m-1}_{r=1} \frac{1}{r}   \delta^{jl}\braket{0| \alpha^k_{r}  \alpha^i_{-r}  |0} - (i\leftrightarrow j) \\
+					=&\sum^{m-1}_{r=1} \frac{1}{r}   \delta^{jl}\braket{0| \alpha^k_{r}  \alpha^i_{-r}  |0} - (i\leftrightarrow j) \\
+					=&\sum^{m-1}_{r=1} \delta^{jl}\delta^{ki} - (i\leftrightarrow j) \\
+					=& (m-1)(\delta^{jl} \delta^{ki} - \delta^{il} \delta^{kj})
+				\end{align*}
+		\end{enumerate}
+
+
+	\item[(j)]  We put everything together
+		\begin{align}
+			\begin{split}
+			\braket{0 | \alpha^k_m C^{ij} \alpha^l_{-m} | 0} &= \braket{0 | \left( 2m^2\delta^{ik}\delta^{jl} + mp^j p^k \delta^{il} - mp^j p^l \delta^{ik} \right) | 0} \\
+																			 &+m\delta^{ik} (p^jp^l + \delta^{jl}m(m-1)/2) - \delta^{ik}\delta^{jl} \left[ \frac{d-2}{12}m(m^2-1) + 2am \right] \\
+																			 &- m^2 (m-1) (\delta^{il} \delta^{jk})  \\
+																			 &+ m \delta^{jl} (p^i p^k + \delta^{ik} m(m-1)/2) - (i \leftrightarrow j)
+			\end{split}
+		\end{align}
+		Compare it with equation \eqref{math:Delta} (note that terms quadratic in momenta vanish once considering the $(i\leftrightarrow j)$ contributions)
+		\begin{align}
+			\Delta_m m^2 &= 2m^2 + m^2 (m-1) - \frac{d-2}{12} m(m^2-1) + 2am + m^2 (m-1) \notag \\
+					\Delta_m	 &= m \left( 1 + \frac{d-2}{12} + 1 \right) + \frac{1}{m} \left( \frac{d-2}{12} + 2a \right) \notag \\
+							 &= m \frac{26-d}{12} + \frac{1}{m} \left( \frac{d-26}{12} + 2(1-a) \right)
+		\end{align}
+\end{enumerate}
+

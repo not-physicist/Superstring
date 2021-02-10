@@ -1,0 +1,48 @@
+\section{The Schwarzian Derivative}
+\begin{enumerate}[label=(\alph*)]
+	\item The infinitesimal change of energy-momentum tensor is
+		\begin{equation}
+			\delta_\epsilon T(z) = - \epsilon(z) \partial_z T(z) - 2 \partial_z \epsilon(z) T(z) -\frac{c}{12} \partial_z^3 \epsilon(z)
+		\end{equation}
+		We want to show it is equivalent to its OPE
+		\begin{align*}
+			\delta_\epsilon T(z) &= -\comm{Q_\epsilon}{T(w)} \\
+										&=\oint_{C_0} \frac{\dd{z}}{2\pi i } \epsilon(z) \comm{T(z)}{T(w)} \\
+										&=- \oint_{C_w} \frac{\dd{z}}{2\pi i } \epsilon(z) T(z) T(w) \\
+										\shortintertext{Plug in the OPE}
+										&= -\oint_{C_w} \frac{\dd{z}}{2\pi i } \epsilon(z) \left[ \frac{c/2}{(z-w)^4} + \frac{2T(w)}{(z-w)^2} + \frac{\partial_w T(w)}{(z-w)} + \text{reg.} \right] \\
+										&= -\frac{c}{2\cdot 3!}\partial_z^3 \epsilon(z) - 2 \partial_z \epsilon(z) T(w) - \epsilon(z)\partial_w T(w) \\
+										&= - \epsilon(z) \partial_z T(z) - 2 \partial_z \epsilon(z) T(z) -\frac{c}{12} \partial_z^3 \epsilon(z)
+		\end{align*}
+
+	\item The Schwarzian is defined as
+		\begin{equation}
+			\acomm{w}{z} = \frac{w'''}{w'} - \frac{3}{2} \left( \frac{w''}{w'} \right) ^2
+		\end{equation}
+		Then for $w = \frac{az+b}{cz+d}$ with $ad-bc \neq 0$
+		\begin{align*}
+			w' &= \frac{a(cz+d) - c (az+d)}{(cz+d)^2} = \frac{ad-cd}{(cz+d)^2} \\
+			w'' &= -2c \frac{ad-cd}{(cz+d)^3} \\
+			w''' &= 6c^2 \frac{ad-cd}{(cz+d)^4} \\
+		\end{align*}
+		The Schwarzian is
+		\begin{equation*}
+			\acomm{w}{z} = \frac{6c^2}{(cz+d)^2} - \frac{3}{2} \left( \frac{-2c}{cz+d} \right)^2 = 0
+		\end{equation*}
+		The energy-momentum tensor is quasi-primary field or secondary field. Its conformal dimension (weight?) is $h=2$.
+
+	\item The map from cylinder to complex plane is
+		\begin{equation*}
+			z = e^{2\pi w/l}, \bar{z} = e^{2\pi \bar{w}/l}
+		\end{equation*}
+		Then the Schwarzian is
+		\begin{align*}
+			\acomm{w}{z} = \frac{2}{z^2} - \frac{3}{2} \left( -\frac{1}{z} \right)^2 = \frac{1}{2} \frac{1}{z^2}
+		\end{align*}
+		Put together
+		\begin{align*}
+			T_\text{cycl.}(w) &= \left( \dv{w}{z} \right)^{-2} \left[ T(z) - \frac{c}{12} \acomm{w}{z} \right] \\
+									&= \left( \frac{2\pi}{l} \right)^2 z^2 \left[ T_{\text{plane}}(z) - \frac{c}{12} \frac{1}{2} \frac{1}{z^2} \right] \\
+									&= \left( \frac{2\pi}{l} \right)^2 \left[ z^2 T_{\text{plane}}(z) - \frac{c}{24}  \right]
+		\end{align*}
+\end{enumerate}

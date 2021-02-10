@@ -1,0 +1,232 @@
+\section{The conformal group in $d$ dimensions}
+Conformal transformation is defined as the transformation 
+\begin{equation}
+	\eta'_{\mu\nu}(x'^\mu) = \eta_{\rho\sigma} \pdv{x^\rho}{x'^\mu} \pdv{x^\sigma}{x'^\nu} = \Lambda(x^\mu) \eta_{\mu \nu} (x^\mu)
+\end{equation}
+In this assignment we will work in Euclidean $d$-dimensional spacetime.
+
+\begin{enumerate}
+	% [label=(\alph*)]
+	\item We require that the transformation 
+		\begin{equation}
+			x^\mu \rightarrow x^\mu + \epsilon^\mu (x^\mu)
+		\end{equation}
+		with $\epsilon^\mu \ll 1$ is conformal. Then we have
+		\begin{align*}
+			\eta'_{\mu\nu}(x'^\mu) &= \eta_{\rho\sigma} \left( \delta^\rho_\mu + \partial_\mu \epsilon^\rho \right) \left( \delta_\nu^\sigma + \partial_\nu \epsilon^\sigma \right) \\
+										  &= \eta_{\mu\nu} + \partial_\mu \epsilon_\nu + \partial_\nu \epsilon_\mu + \order{\epsilon^2} \\
+										  &\stackrel{!}{=} \Lambda(x^\mu) \eta_{\mu\nu}
+		\end{align*}
+		Thus we find
+		\begin{equation}
+			\partial_\mu \epsilon_\nu + \partial_\nu \epsilon_\mu = f \eta_{\mu\nu} \label{math:f_eta}
+		\end{equation}
+		We have a condition for $f$ if we contract the above equation with $\eta^{\mu\nu}$
+		\begin{equation}
+			f = \frac{2}{d} (\partial_\mu \epsilon^\mu) \label{math:def_f}
+		\end{equation}
+
+	\item Take partial derivative $\partial_\rho$ of \eqref{math:f_eta}
+		\begin{equation}
+			\partial_\rho \partial_\mu \epsilon_\nu + \partial_\rho \partial_\nu \epsilon_\mu = \eta_{\mu\nu} \partial_\rho f
+		\end{equation}
+		Rename (permute) the indices $(\mu,\nu,\rho) \rightarrow (\rho,\mu,\nu)$ and $(\mu,\nu,\rho) \rightarrow (\nu,\rho,\mu)$ and add these two equations together with "negative" \eqref{math:f_eta}
+		\begin{align}
+	&\cancel{\partial_\nu \partial_\rho \epsilon_\mu} + \partial_\nu \partial_\mu \epsilon_\rho
+	+	\partial_\mu \partial_\nu \epsilon_\rho + \cancel{\partial_\mu \partial_\rho \epsilon_\nu}
+	-\cancel{\partial_\rho \partial_\mu \epsilon_\nu} - \cancel{\partial_\rho \partial_\nu \epsilon_\mu}  \notag \\
+	&= ( \eta_{\rho\mu} \partial_\nu +  \eta_{\nu\rho} \partial_\mu -\eta_{\mu\nu} \partial_\rho  )f \notag  \\
+			2\partial_\nu \partial_\mu \epsilon_\rho &= ( \eta_{\rho\mu} \partial_\nu +  \eta_{\nu\rho} \partial_\mu -\eta_{\mu\nu} \partial_\rho  )f \label{math:partial_partial_f} 
+		\end{align}
+
+	\item Contract \eqref{math:partial_partial_f} with $\eta^{\mu\nu}$ and take $\partial^\nu$
+		\begin{equation*}
+			2  \partial^2 \partial_\nu \epsilon_\rho = d \partial_\rho\partial_\nu f
+		\end{equation*}
+		Note that RHS is symmetric in $\rho$ and $\nu$, thus LHS must be also.
+
+		Take $\partial^2$ of \eqref{math:f_eta}
+		\begin{equation*}
+			\partial^2 \partial_\mu \epsilon_\nu + \partial^2 \partial_\nu \epsilon_\mu  =  \partial^2 f \eta_{\mu\nu}
+		\end{equation*}
+
+		Combine these two equations and use the fact that first equation is symmetric in indices
+		\begin{equation}
+			\partial^2 f \eta_{\rho \nu} = (2-d) \partial_\rho \partial_\nu f
+		\end{equation}
+
+		Contract it with $\eta^{\rho \nu}$ 
+		\begin{equation}
+			(d-1) \partial^2 f = 0
+		\end{equation}
+
+	\item For $d > 2$, we have 
+		\begin{equation*}
+			\partial_\mu \partial_\nu f = 0 \Leftrightarrow f(x^\mu) = A + B_\mu x^\mu
+		\end{equation*}
+		Thus \eqref{math:f_eta} becomes
+		\begin{align}
+			2 \partial_\mu \epsilon_\nu  &= (A + B_\rho x^\rho) \eta_{\mu\nu} \notag \\
+			\epsilon_\nu &= a_\nu + \underbrace{\frac{1}{2}A \eta_{\mu\nu}}_{b_{\mu\nu}} x^\mu + \underbrace{\frac{1}{2} B_\rho \eta_{\mu\nu}}_{c_{\rho\mu\nu}} x^\mu x^\rho
+		\end{align}
+		where $a_\nu$ is just an integration constant and $c_{\rho\mu\nu}$ is symmetric in $\mu\nu$ due to the symmetry of the metric.
+		
+	\item Next we treat the allowed three terms separately.
+		\begin{enumerate}
+			\item The requirement for $\epsilon_\mu$ in its original form, \eqref{math:f_eta}, involves a derivative. So naturally a constant term $a_\mu$ without constraint exist.
+			\item Insert the linear term in \eqref{math:f_eta}
+				\begin{align*}
+					b_{\nu\rho}\partial_\mu  x^\rho + b_{\mu \rho}\partial_\nu  x^\rho &= \frac{2}{d} b^\rho_\rho \eta_{\mu\nu} \\
+					b_{\nu\mu} + b_{\mu\nu} &\stackrel{\eqref{math:def_f}}{=} \frac{2}{d} b^\rho_\rho \eta_{\mu\nu}
+				\end{align*}
+
+			\item Insert the quadratic into \eqref{math:partial_partial_f}
+				\begin{align*}
+					4c_{\rho \mu\nu}	&= ( \eta_{\rho\mu} \partial_\nu +  \eta_{\nu\rho} \partial_\mu -\eta_{\mu\nu} \partial_\rho  ) \frac{4}{d} c^\sigma_{\,\sigma\xi} x^\xi \\
+					c_{\rho\mu\nu} &=  (\eta_{\rho\mu}\delta^\xi_\nu + \eta_{\nu\rho} \delta^\xi_\mu - \eta_{\mu\nu} \delta^\xi_\rho) b_\xi \\
+					c_{\rho\mu\nu} &= \eta_{\rho\mu} b_\nu + \eta_{\nu\rho} b_\mu - \eta_{\mu\nu } b_\rho
+				\end{align*}
+				with $b_\mu := \frac{1}{d} c^\nu_{\,\nu\mu}$.
+		\end{enumerate}
+	\item 
+		Transformations and generators of CFT are
+		\begin{table}[ht]
+			\centering
+			\label{tab:label}
+			\begin{tabular}{c | c}
+				\toprule
+				Transformations & Generators \\
+				\midrule
+				$x'^\mu = x^\mu + a^\mu$ & $P_\mu = -i \partial_\mu$ \\
+				$x'^\mu = M^\mu_\nu x^\nu$ & $L_{\mu\nu}  = - (x_\mu P_\nu - x_\nu P_\mu)$ \\
+				$x'^\mu = \alpha x^\mu$ & $D = x^\mu P_\mu$ \\
+				$x'^\mu = \frac{x^\mu - b^\mu x^2}{1-2b\cdot x + b^2 x^2}$ & $K_\mu  = 2x_\mu x^\nu P_\nu - x^2 P_\mu$ \\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+		Check the commutation relations
+		\begin{align}
+			\comm{D}{P_\mu} &= \comm{x^\nu}{P_\mu} P_\nu \notag \\
+								 &= i \delta^\nu_\mu P_\nu \notag \\
+								 &= i P_\mu
+		\end{align}
+		Similarly $\comm{D}{x_\mu} = x_\nu \comm{P^\nu}{x_\mu} = -ix_\mu$.
+		\begin{align}
+			\comm{D}{K_\mu} &= \comm{D}{2 x_\mu x^\rho P_\rho - x^2 P_\mu} \notag \\
+								 &= 2 \left(\comm{D}{x_\mu}x^\rho P_\rho + x_\mu \comm{D}{x^\rho} P_\rho + x_\mu x^\rho \comm{D}{P_\rho} \right) \notag \\
+								 &\quad - \left( \comm{D}{x^\nu}x_\nu P_\mu + x^\nu \comm{D}{x_\nu} P_\mu + x^2 \comm{D}{P_\mu} \right) \notag \\
+								 &= -2i x_\mu x^\rho P_\rho +  i x^2 P_\mu \notag \\
+								 &= -i K_\mu
+		\end{align}
+
+		\begin{align}
+			\comm{K_\mu}{P_\nu} &= 2 \comm{x_\mu x^\rho}{P_\nu} P_\rho - \comm{x^\rho x_\rho}{P_\nu} P_\mu  \notag \\
+									  &= 2 i (\eta_{\mu\nu}x^\rho + x_\mu \delta_\nu^\rho) P_\rho - i( x_\rho \delta^\rho_\nu + x^\rho \eta_{\rho\nu}) P_\mu \notag \\
+									  &= 2i (x\cdot P) \eta_{\mu\nu} + 2i x_\mu P_\nu -2i x_\nu P_\mu \notag \\
+									  &= 2i D \eta_{\mu\nu} -2i L_{\mu\nu}
+		\end{align}
+		
+		First we compute
+		\begin{align}
+			\comm{K_\mu}{x_\nu} &= 2x_\mu x^\rho \comm{P_\rho}{x_\nu} - x^2 \comm{P_\mu}{x_\nu} \notag \\
+									  &= -2i x_\mu x_\nu   + i x^2 \eta_{\mu\nu}
+		\end{align}
+		then
+		\begin{align}
+			\comm{K_\rho}{L_{\mu\nu}} &= - \comm{K_\rho}{x_\mu P_\nu - x_\nu P_\mu} \notag \\
+											  &= -\comm{K_\rho}{x_\mu} P_\nu - x_\mu\comm{K_\rho}{P_\nu} + \comm{K_\rho}{x_\nu} P_\mu + x_\nu \comm{K_\rho}{P_\mu} \notag \\
+											  &= - (-2i x_\rho x_\mu + ix^2 \eta_{\rho\mu}) P_\nu - x_\mu 2i(D\eta_{\rho\nu} - L_{\rho\nu}) \notag \\
+											  &\quad + (-2ix_\rho x_\nu + i x^2 \eta_{\rho\nu}) P_\mu + x_\nu 2i(D \eta_{\rho\mu} - L_{\rho\mu}) \notag \\
+											  &= 	-2i x_\mu D \eta_{\rho\nu} + 2i x_\nu D \eta_{\rho\mu} + 2i  (- x_\rho L_{\mu\nu} + x_\mu L_{\rho\nu} - x_\nu L_{\rho\mu})  \notag \\
+											  &\quad + ix^2 (-\eta_{\rho\mu}P_\nu + \eta_{\rho\nu}P_\mu) \notag \\
+											  &= i (\eta_{\rho\mu}K_\nu - \eta_{\rho\nu} K_\mu) + \cancel{2i  (- x_\rho L_{\mu\nu} + x_\mu L_{\rho\nu} - x_\nu L_{\rho\mu})}
+		\end{align}
+		Now we want to show that the second part indeed vanishes
+		\begin{align*}
+			&- x_\rho L_{\mu\nu} + x_\mu L_{\rho\nu} - x_\nu L_{\rho\mu} \\
+			&= x_\rho x_\mu P_\nu - x_\rho x_\nu P_\mu - x_\mu x_\rho P_\nu + x_\mu x_\nu P_\rho + x_\nu x_\rho P_\mu - x_\nu x_\mu P_\rho \\
+			&= 0
+		\end{align*}
+
+		There are two further commutation relations from the sheet
+		\begin{align}
+			\comm{P_\rho}{L_{\mu\nu}} &= i (\eta_{\rho\mu}P_\nu - \eta_{\rho\nu}P_\mu) \\
+			\comm{L_{\mu\nu}}{L_{\rho\sigma}} &= i (\eta_{\nu\rho}L_{\mu\sigma} + \eta_{\mu\sigma}L_{\nu\rho} - \eta_{\mu\rho}L_{\nu\sigma} - \eta_{\nu\sigma}L_{\mu\rho}) \label{math:LL}
+		\end{align}
+
+	\item Now with new definitions
+		\begin{align}
+			\begin{split}
+				J_{\mu\nu} &= L_{\mu\nu} \\
+				J_{-1,\mu} &= \frac{1}{2} (P_\mu - K_\mu) \\
+				J_{-1,0} &= D \\
+				J_{0,\mu} &= \frac{1}{2} (P_\mu + K_\mu)
+			\end{split}
+		\end{align}
+		Now Greek letters are $1,\dots,d$ and Latin letters are $-1, 0,\dots,d$. We assume other components of $J_{ab}$: $J_{0,0} = J_{0, -1} = J_{-1,-1} = 0$. We want to show
+		\begin{equation}
+			\comm{J_{ab}}{J_{cd}} = i (\eta_{bc}J_{ad} + \eta_{ad}J_{bc} - \eta_{ac}J_{bd} - \eta_{bd}J_{ac}) \label{math:JJ}
+		\end{equation}
+		holds.
+		\begin{itemize}
+			\item if $(a,b,c,d) = (\mu,\nu,\rho,\sigma)$ then with \eqref{math:LL} we find the equation to hold.
+			\item if $(a,b,c,d) = (-1, 0 , -1, 0)$
+				then
+				\begin{align*}
+					\text{LHS} &= \comm{x^\mu P_\mu}{x^\nu P_\nu} \\
+								  &= x^\nu\comm{x^\mu}{P_\nu}P_\mu + x^\mu\comm{P_\mu}{x^\nu}P_\nu \\
+								  &= i D - iD \\
+								  &= 0 \\
+					\text{RHS} &= -i(\eta_{-1,-1}J_{00} - \eta_{00} J_{-1,-1}) = 0 \\
+								  &= \text{LHS}
+				\end{align*}
+			\item if $(a,b,c,d) = (-1,0,-1,\mu)$
+				\begin{align*}
+					\text{LHS} &= \frac{1}{2} \comm{D}{P_\mu - K_\mu} \\
+								  &= \frac{i}{2} (P_\mu + K_\mu)  \\
+								  &= iJ_{0,\mu} \\
+					\text{RHS} &= - i \eta_{-1,-1} J_{0,\mu} \\
+								  &= \text{LHS}
+				\end{align*}
+
+			\item if $(a,b,c,d) = (-1,0,0,\mu)$
+				\begin{align*}
+					\text{LHS} &= \frac{1}{2} \comm{D}{P_\mu + K_\mu} \\
+								  &= i J_{-1,\mu} \\
+					\text{RHS} &= i \eta_{bc}J_{ad} \\
+								  &= iJ_{-1,\mu} \\
+								  &= \text{LHS}
+				\end{align*}
+			\item if $(a,b,c,d) = (-1,0,\mu,\nu)$
+				\begin{align*}
+					\text{LHS} &= \comm{D}{L_{\mu\nu}} \\
+								  &= -\comm{x^\rho P_\rho}{x_\mu P_\nu} + \comm{x^\rho P_\rho}{x_\nu P_\mu} \\
+								  &= -x_\mu \comm{x^\rho}{P_\nu} P_\rho - x^\rho \comm{P_\rho}{x_\mu} P_\nu + x_\nu \comm{x^\rho}{P_\mu} P_\rho + x^\rho \comm{P_\rho}{x_\nu} P_\mu \\
+								  &= -i x_\mu P_\nu +i x_\mu P_\nu + i x_\nu P_\mu - x_\nu P_\mu \\
+								  &= 0 = \text{RHS}
+				\end{align*}
+			\item if $(a,b,c,d) = (-1,\mu,-1,\nu)$.
+				First to calculate
+				\begin{align*}
+					\text{LHS} &= \frac{1}{4} \comm{P_\mu - K_\mu}{P_\nu - K_\nu} \\
+								  &= \frac{1}{4} (-\comm{P_\mu}{K_\nu} - \comm{K_\mu}{P_\nu} ) \\
+								  &= \frac{i}{2}(\eta_{\nu\mu}D - L_{\nu\mu}) - \frac{i}{2} (\eta_{\mu\nu} D - L_{\mu\nu}) \\
+								  &= i L_{\mu\nu} \\
+					\text{RHS} &= -i \eta_{-1,-1} J_{\mu\nu} \\
+								  &= \text{LHS}
+				\end{align*}
+				where we have used $\comm{K_\mu}{K_\nu}=0$.
+			\item if $(a,b,c,d) = (-1,\mu,0,\nu)$
+				\begin{align*}
+					\text{LHS} &= \frac{1}{4} \comm{P_\mu - K_\mu}{P_\nu + K_\nu} \\
+								  &= \frac{1}{4} \comm{P_\mu}{K_\nu} - \frac{1}{4} \comm{K_\mu}{P_\nu} \\
+								  &= -\frac{i}{2} \eta_{\nu\mu} D + \frac{i}{2} L_{\nu\mu} - \frac{i}{2} \eta_{\mu\nu} D + \frac{i}{2} L_{\mu\nu} \\
+								  &= - i \eta_{\mu\nu} D  \\
+								  &= \text{RHS}
+				\end{align*}
+			\item if $(a,b,c,d) = (-1,\mu,\nu,\rho)$
+			\item if $(a,b,c,d) = (0,\mu,-1,\nu)$
+			\item if $(a,b,c,d) = (0,\mu,0,\nu)$
+			\item if $(a,b,c,d) = (0,\mu,\nu,\rho)$
+		\end{itemize}
+\end{enumerate}

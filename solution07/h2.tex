@@ -1,0 +1,190 @@
+\section{The ghost system}
+Ghost action
+\begin{equation}
+	S_g[h, b,c] = - \frac{i}{2\pi} \int \dd[2]{\sigma} \sqrt{-h} h^{\alpha \beta} b_{\beta \gamma} \nabla_\alpha c^\gamma
+\end{equation}
+Throughout this assignment, $h=\hat{h}$
+\begin{enumerate}[label=(\alph*)]
+	\item First consider the variation of the action $S_g$
+		\begin{align*}
+			\delta S_g &= - \frac{i}{2\pi} \int \dd[2]{\sigma} \left( \delta\sqrt{-h} h^{\alpha\beta} b_{\beta\gamma} \nabla_\alpha c^\gamma + \sqrt{-h} \delta h^{\alpha \beta} b_{\beta \gamma} \nabla_\alpha c^\gamma +\sqrt{-h} h^{\alpha \beta} b_{\beta \gamma} \delta(\nabla_\alpha c^\gamma) \right) \\
+						  &= - \frac{i}{4\pi} \int \dd[2]{\sigma} \sqrt{-h} \left[ \left( h^{\alpha\beta} h^{\mu\nu} \delta h_{\mu\nu} + \delta h^{\alpha\beta}\right) b_{\beta\gamma} \nabla_\alpha c^\gamma + \delta h^{\alpha \beta} b_{\alpha\gamma} \nabla_\beta c^\gamma \right] \\
+						  &\quad - \frac{i}{2\pi} \int \dd[2]{\sigma} \sqrt{-h} h^{\alpha \beta} b_{\beta \gamma} \delta \Gamma^\gamma_{\mu \alpha} c^\mu
+		\end{align*}
+		In the last step, we have used that variation in metric is symmetric to "split" the variation in metric.
+
+		Variation of Christoffel symbol is (here $g_{\mu\nu}$ is also the metric)
+		\begin{align*}
+			\delta \Gamma^\rho_{\mu\nu} &= \frac{1}{2} \delta g^{\rho\sigma} (\partial_\mu g_{\nu\sigma} + \partial_\nu g_{\mu\sigma} - \partial_\sigma g_{\mu\nu}) + \frac{1}{2}  g^{\rho\sigma} (\partial_\mu \delta g_{\nu\sigma} + \partial_\nu \delta g_{\mu\sigma} - \partial_\sigma \delta g_{\mu\nu}) \\
+												 &= \frac{1}{2} \delta g^{\rho\sigma} (\Gamma^\alpha_{ \sigma \mu} g_{\nu \alpha} + \Gamma^\alpha_{ \nu \mu} g_{\alpha \sigma} + \Gamma^\alpha_{\nu \mu} g_{\alpha\sigma} + \Gamma^\alpha_{\nu\sigma} g_{\mu \alpha} - \Gamma^\alpha_{\sigma\mu} g_{\alpha \nu} - \Gamma^\alpha_{\sigma\nu} g_{\mu \alpha} ) \\
+												 &\quad + \frac{1}{2}  g^{\rho\sigma} (\partial_\mu \delta g_{\nu\sigma} + \partial_\nu \delta g_{\mu\sigma} - \partial_\sigma \delta g_{\mu\nu}) \\
+												 &= \frac{1}{2} \delta g^{\rho\sigma} (\partial_\mu \delta g_{\nu\sigma} - \Gamma^\alpha_{ \sigma \mu} \delta g_{\nu \alpha} - \Gamma^\alpha_{ \nu \mu}  \delta g_{\alpha \sigma} + \partial_\nu \delta g_{\mu\sigma} - \Gamma^\alpha_{\nu \mu} \delta g_{\alpha\sigma} + \Gamma^\alpha_{\nu\sigma} \delta g_{\mu \alpha} \\
+												 &\quad - \partial_\sigma \delta g_{\mu\nu} + \Gamma^\alpha_{\sigma\mu} \delta g_{\alpha \nu} + \Gamma^\alpha_{\sigma\nu} \delta g_{\mu \alpha}) \\
+												 &= \frac{1}{2}  g^{\rho\sigma}(\nabla_\mu \delta g_{\nu\sigma} + \nabla_\nu \delta g_{\mu\sigma} - \nabla_\sigma \delta g_{\mu\nu})
+		\end{align*}
+		where we have used the metric is covariantly constant and variation of Kronecker delta is zero
+		\begin{align}
+			\nabla_\nu g_{\nu \lambda} &= 0 \label{math:g_nabla}\\
+			g_{\rho\lambda} \delta g^{\mu\rho} + g^{\mu\rho} \delta g_{\rho\lambda} &= \delta (g^{\mu\rho} g_{\rho\lambda}) = 0 \label{math:minus_delta}
+		\end{align}
+		Thus
+		\begin{align*}
+			&- \frac{i}{2\pi} \int \dd[2]{\sigma} \sqrt{-h} h^{\alpha \beta} b_{\beta \gamma} \delta \Gamma^\gamma_{\mu \alpha} c^\mu \\
+			&= - \frac{i}{4\pi} \int \dd[2]{\sigma} \sqrt{-h}  b^{\alpha \rho} c^\mu   (\nabla_\mu \delta h_{\alpha \rho} + \nabla_\alpha \delta h_{\mu\rho} - \nabla_\rho \delta h_{\mu\alpha})
+			\shortintertext{The last two term cancel with each other if we relabel $\rho \leftrightarrow \alpha$ in one of these terms and use the fact that $b_{\alpha\beta}$ is symmetric. Now to integrate by parts}
+			&= \frac{i}{4\pi} \int \dd[2]{\sigma} \sqrt{-h}  \nabla_\mu (b^{\alpha \rho} c^\mu)  \delta h_{\alpha \rho}  \\
+			&= \frac{i}{4\pi} \int \dd[2]{\sigma} \sqrt{-h} \nabla_\mu (b_{\alpha \rho} c^\mu ) \delta h^{\alpha\rho}
+		\end{align*}
+		where equations \eqref{math:g_nabla} and \eqref{math:minus_delta} are used.
+		Variation of the action is now
+		\begin{align*}
+			\delta S_g &= - \frac{i}{4\pi} \int \dd[2]{\sigma} \sqrt{-h} \left[ \left( h^{\alpha\beta} h^{\mu\nu} \delta h_{\mu\nu} + \delta h^{\alpha\beta} \right) b_{\beta\gamma} \nabla_\alpha c^\gamma + \delta h^{\alpha\beta} b_{\alpha\gamma } \nabla_\beta c^\gamma- \frac{1}{2}\nabla_\mu (b_{\alpha\rho}c^\mu)\delta h^{\alpha\rho} \right] \\
+						  &\stackrel{\ref{math:minus_delta}}{=}- \frac{i}{4\pi} \int \dd[2]{\sigma} \sqrt{-h} \left[ \left( -h^{\alpha\beta} h_{\mu\nu} \delta h^{\mu\nu} + \delta h^{\alpha\beta} \right) b_{\beta\gamma} \nabla_\alpha c^\gamma + \delta h^{\alpha\beta} b_{\alpha\gamma } \nabla_\beta c^\gamma- \frac{1}{2} b_{\alpha\rho} \nabla_\mu c^\mu \delta h^{\alpha\rho} \right]
+		\end{align*}
+		In the last step, we have used $\delta (b_{\alpha\rho} h^{\alpha \rho}) = 0$ due to tracelessness and we don't consider $\delta b_{\mu\nu}$ here.
+
+		Thus the energy-momentum tensor is
+		\begin{align}
+			T_{\alpha\beta} &= \frac{4\pi}{\sqrt{-h}} \frac{\delta S_g}{\delta h^{\alpha\beta}} \notag \\
+								 &= -i \left( -h^{\mu\nu} h_{\alpha\beta} b_{\nu \gamma} \nabla_{\mu}c^\gamma + b_{\beta \gamma} \nabla_\alpha c^\gamma + b_{\alpha \gamma} \nabla_\beta c^\gamma- c^\mu \nabla_\mu b_{\alpha\beta} \right) \notag  \\
+								 &= -i \left(  + b_{\beta \gamma} \nabla_\alpha c^\gamma + b_{\alpha \gamma} \nabla_\beta c^\gamma- c^\mu \nabla_\mu b_{\alpha\beta} - h_{\alpha\beta} b_{\nu \gamma} \nabla^{\nu}c^\gamma\right)
+		\end{align}
+
+	\item Equations of motions are with respect to $b_{\alpha\beta}$
+		\begin{align}
+			\pdv{\lag}{b_{\alpha\beta}} - \partial_\mu \pdv{\lag}{(\partial_\mu b_{\alpha\beta})} &= 0 \notag \\
+			\nabla^\alpha c^\beta &= 0 \label{math:eom_c}
+		\end{align}
+		and with respect to $c_\alpha$
+		\begin{align}
+			\pdv{\lag}{c_{\alpha}} - \partial_\mu \pdv{\lag}{(\partial_\mu c^{\alpha})} &= 0 \notag \\
+			\partial_\mu (h^{\mu\beta} b_{\beta \alpha}) &= 0 \label{math:eom_b}
+		\end{align}
+		
+	\item Now we switch to flat metric: $h_{\alpha\beta} = \eta_{\alpha\beta}$. In worldsheet light-cone coordinates, the metric is
+		\begin{equation*}
+			\eta^{+-} = \eta^{-+} = -2
+		\end{equation*}
+		Thus only diagonal entries of $b_{\alpha\beta}$ is non-vanishing, since
+		\begin{align*}
+			\eta^{\alpha \beta} b_{\alpha\beta} &= \eta^{-+} b_{-+} + \eta^{+-} b_{+-} = 0\\
+			b_{-+} &= - b_{+-}
+		\end{align*}
+		and by definition $b_{\alpha\beta}$ is traceless and symmetric.
+
+		The equations of motion are
+		\begin{align}
+			\partial_- b_{++} &= \partial_+ b_{--} = 0 \label{math:eom_b_lc}\\
+			\partial_- c^+ &= \partial_- c^+ = 0 \label{math:eom_c_lc}
+		\end{align}
+
+		We have the energy momentum tensor
+		\begin{align}
+			T_{--}^g &= -i \left( b_{--} \partial_- c^- + b_{--}\partial_- c^- - c^- \partial_- b_{--} - c^+ \partial_+ b_{--} \right)	 \notag \\
+						&\stackrel{\eqref{math:eom_b_lc}}{=} -i (2 b_{--} \partial_- c^- - c^- \partial_- b_{--}) \\
+			T_{++}^g &= -i (2b_{++} \partial_+ c^+ - c^+ \partial_+ b_{++}) \\
+			T_{-+}^g &= -i (b_{--}\partial_+ c^- + b_{++} \partial_{-} c^+ - \eta_{-+} (b_{--}\partial^- c^- + b_{++}\partial^+ c^+)) \notag \\
+						&= 0 \\
+			T_{+-}^g	&=  T_{-+}^g = 0
+		\end{align}
+
+	\item Like always, first to invert  $c^\pm$ and $b_{\pm\pm}$
+		\begin{align}
+			c_{n}^\pm(\sigma,\tau) &= \frac{2\pi}{l^2} \int_0^{l} \dd{\sigma^\pm} c^\pm e^{\frac{2\pi}{l} i n \sigma_\pm} \\
+			b_{n}^\pm (\sigma,\tau)&= \frac{l}{4\pi^2} \int_0^{l} \dd{\sigma^\pm} b_{\pm\pm} e^{\frac{2\pi}{l} i n \sigma_\pm}
+		\end{align}
+		Thus
+		\begin{align}
+			\acomm{b_m}{c_n} &= \acomm{b^-_m}{c^-_n} \notag \\
+								  &= \frac{1}{2\pi l} \int \dd{\sigma^{\pm}} \dd{\sigma'^{\pm}} e^{\frac{2\pi}{l} im \sigma^\pm}e^{\frac{2\pi}{l} in \sigma'^\pm} \acomm{b_{--}(\sigma,\tau)}{c^-(\sigma',\tau)} \notag \\
+								  &= \frac{1}{2\pi l} \int \dd{\sigma^{\pm}} \dd{\sigma'^{\pm}} e^{\frac{2\pi}{l} im \sigma^\pm} e^{\frac{2\pi}{l} in \sigma'^\pm} 2\pi \delta(\sigma-\sigma') \notag \\
+								  &=  l \int_0^l \dd{\sigma^{\pm}}  e^{\frac{2\pi}{l} i(m+n) \sigma^\pm}  \notag \\
+				\acomm{b_m}{c_n}&=  \delta_{m+n}
+		\end{align}
+		Since all other anti-commutation relations vanish, we have
+		\begin{align}
+			\acomm{b_m}{b_n} &= 0 \\
+			\acomm{c_m}{c_n} &= 0
+		\end{align}
+
+	\item The Virasoro generators are
+		\begin{align*}
+			L^g_m &= \frac{-l}{4\pi^2} \int_0^l \dd{\sigma} T^g_{--} e^{- \frac{2\pi}{l} im\sigma}	 \\
+					&= \frac{i l}{4\pi^2} \int_0^l \dd{\sigma}  e^{- \frac{2\pi}{l} im\sigma}	(2b_{--}\partial_- c^- - c^- \partial_- b_{--}) \\ 
+					&= \frac{l}{4\pi^2} \int_0^l \dd{\sigma}  e^{- \frac{2\pi}{l} im\sigma} \left( \frac{2\pi}{l} \right)^2 \sum_{n,k\in\Z}\left[ 2k b_n c_k e^{- \frac{2\pi}{l}i(n+k)\sigma_-}  + n  b_n c_k e^{-\frac{2\pi}{l}i(n+k)\sigma_-}  \right] \\
+					&= \frac{1}{l} \int_0^l \dd{\sigma} e^{- \frac{2\pi}{l} im\sigma} \sum_{n,k\in\Z} b_n c_k e^{-\frac{2\pi}{l}i(n+k)\sigma_-} (2k + n) \\
+					&= \sum_{n,k\in\Z} b_n c_k \delta_{-m+n+k} (2k+n) \\
+					&= \sum_{n\in\Z} (m-n) b_{m+n} c_{-n}
+		\end{align*}
+		Analogously
+		\begin{equation}
+			\bar{L}^g_{m} = \sum_{n\in\Z} (m-n) \bar{b}_{m+n} \bar{c}_{-n}
+		\end{equation}
+
+	\item 
+		For convenience, calculate the commutator of ghost fields first.
+		\begin{align*}
+			\acomm{b_m}{c_n} &= \delta_{m+n} \\
+			\Rightarrow \comm{b_m}{c_n} &= - 2 c_n b_m + \delta_{m+n} \\
+			\Rightarrow \comm{c_n}{b_m} &= - 2  b_m c_n+ \delta_{m+n} \\
+			\acomm{b_m}{b_n} &= 0 \\
+			\Rightarrow\comm{b_m}{b_n} &= 2 b_m b_n \\
+			\comm{c_m}{c_n} &= 2 c_m c_n
+		\end{align*}
+		Thus
+		\begin{align}
+			\comm{L_m}{b_k} &= \sum_{n} (m-n) \left( \comm{b_{m+n}}{b_k} c_{-n} + b_{m+n} \comm{c_{-n}}{b_k} \right) \notag \\
+								 &= \sum_{n} (m-n) b_{m+n} \delta_{k-n} \notag\\
+								 &= (m-k) b_{m + k} \\
+			\comm{L_m}{c_k} &= \sum_n (m-n) \left( \comm{b_{m+n}}{c_k} c_{-n} + b_{m+n} \comm{c_{-n}}{c_k} \right) \notag\\
+								 &= - \sum_n (m-n) c_{-n} \delta_{m+n+k} \notag\\
+								 &= - (2m + k) c_{m+k}
+		\end{align}
+
+		Now in quantum theory, the Virasoro generator get normal ordered, meaning $:b_m c_{-n}:=-c_{-n}b_m$ and $:b_{-m}c_n : = b_{-m}c_n$ for $m,n>0$. To keep discussion general, we for now consider the case $m+n$ can be zero
+		% \begin{align*}
+			% \comm{L^g_{m}}{L^g_n} &=  \sum_{i, k\in\Z} (m-i)(n-k) \comm{b_{m+i}c_{-i}}{ b_{n+k}c_{-k}} \\
+										 % &= \sum_{i, k\in\Z} (m-i)(n-k) \big[ b_{m+i} \comm{c_{-i}}{b_{n+k}} c_{-k} + b_{m+i} b_{n+k} \comm{c_{-i}}{c_{-k}} \\
+										 % &\quad + \comm{b_{m+i}}{b_{n+k}} c_{-i} c_{-k} + b_{n+k} \comm{b_{m+i}}{c_{-k}} c_{-i} \big] \\
+										 % &= \sum_{i, k\in\Z} (m-i)(n-k) \big[ b_{m+i} (\cancel{-2 b_{n+k} c_{-i}} + \delta_{n+k-i})c_{-k} + \cancel{b_{m+i} b_{n+k} 2 c_{-i} c_{-k}} \\
+										 % &\quad + \cancel{2b_{m+i} b_{n+k} c_{-i} c_{-k}} + b_{n+k} (\cancel{2b_{m+i} c_{-k}} - \delta_{m+i-k}) c_{-i} \big] \\
+										 % &= \sum_{i\in\Z} (m-i)(2n-i) b_{m+i} c_{n-i} - \sum_{i\in\Z} (m-i)(n-m-i) b_{n+m+i} c_{-i}  \right] \\
+										 % \shortintertext{shift index of first sum $i\rightarrow i+n$}
+										 % &= \sum_{i\in\Z} \left[ (m-i-n)(n-i) - (m-i)(n-m-i) \right] b_{n+m+i} c_{-i} \\
+										 % &= (m-n) \sum_{i\in\Z} (m+n-i) b_{n+m+i} c_{-i} \\
+										 % &= (m-n) L^g_{m+n}
+		% \end{align*}
+		\begin{align}
+			 &\comm{L_m}{L_n} \notag \\
+			 &= -\sum_{k>0} (n-k) \comm{L_m}{c_{-k}b_{n+k}} + \sum_{k\leq 0} (n-k) \comm{L_m}{b_{n+k}c_{-k}} \notag \\
+								 &= \sum_{k>0} (n-k)(2m-k) c_{m-k} b_{n+k} - \sum_{k>0} (n-k) (m-n-k) c_{-k} b_{m+n+k} \notag \\
+								 &\quad + \sum_{k\leq 0} (n-k) (m-n-k) b_{m+n+k} c_{-k} - \sum_{k\leq 0} (n-k)(2m-k) b_{n+k} c_{m-k} \notag \\
+								 \shortintertext{shift indices of first and last terms $k\rightarrow k+m$}
+								 &= \sum_{k>-m} (n-m-k)(m-k) c_{-k} b_{n+m+k} - \sum_{k>0} (n-k) (m-n-k) c_{-k} b_{m+n+k} \notag \\
+								 &\quad + \sum_{k\leq 0} (n-k) (m-n-k) b_{m+n+k} c_{-k} - \sum_{k\leq -m} (n-m-k)(m-k) b_{n+m+k} c_{-k} \notag \\
+								 \shortintertext{combine first term into second term and third into last term}
+								 &= \sum_{-m<k\leq 0} (n-m-k)(m-k) c_{-k} b_{n+m+k} - \sum_{k>0} (m-n)(m+n-k) c_{-k} b_{m+n+k} \notag \\
+								 &\quad + \sum_{-m < k\leq 0} (n-k)(m-n-k) b_{m+n+k} c_{-k} + \sum_{k \leq -m}(m-n)(m+n-k)  b_{n+m+k} c_{-k} \label{math:LL}
+		\end{align}		
+	
+		When $m+n\neq 0$, the field anti-commute. Thus 
+		\begin{align}
+			\comm{L_m}{L_n} &= \sum_{k\in\Z} (m-n) (m+n-k) b_{m+n+k} c_{-k} = (m - n) L_{m+n}^g
+		\end{align}
+	\item If $m+n = 0$, there are extra contributions in \eqref{math:LL} from first term since it is the only term not normal ordered in this case
+		\begin{align*}
+			\comm{L_m}{L_n} &= (m-n) L^g_0 + \sum_{-m < k \leq 0} (n-m-k)(m-k) \\
+								 &= 2m L_0^g + \sum_{0 < k \leq m} (k^2 - mk - 2m^2) \\
+								 &= 2mL_0^g - \frac{1}{12} m (26m^2 - 2)
+		\end{align*}
+		
+	\item Now to consider the full algebra
+		\begin{equation*}
+			L_m = L_m^X + L_m^g + a \delta_m
+		\end{equation*}
+		We have 
+		\begin{align*}
+			\comm{L_m}{L_n} &= (m-n)L_{m+n} + \delta_{m+n} \left( \frac{d}{12}m(m^2-1) - \frac{m}{12} (26m^2 - 2) -2am \right) 
+		\end{align*}
+		where the last term $-2am$ is due to the shift in $L_{0}$. Thus we see only if $d=26$ and $a=-1$, there is no anomaly.
+\end{enumerate}

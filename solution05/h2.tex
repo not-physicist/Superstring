@@ -1,7 +1,7 @@
 \section{The quantum Virasoro algebra}
 Virasoro algebra is in quantum theory defined as
 \begin{equation}
-	L_m = \frac{1}{2} \sum_{n \in \Z} :\alpha_{m-n} \alpha_{n}:,\quad \bar{L}_m = \frac{1}{2} \sum_{n \in \Z} :\bar\alpha_{n-m} \bar\alpha_{n}:
+	L_m = \frac{1}{2} \sum_{n \in \Z} :\alpha_{m-n} \cdot \alpha_{n}:,\quad \bar{L}_m = \frac{1}{2} \sum_{n \in \Z} :\bar\alpha_{m-n} \cdot \bar\alpha_{n}:
 \end{equation}
 \begin{enumerate}[label=(\alph*)]
 	\item In $L_m$ there are only two terms of interest, since all other vanish due to commutation relation
@@ -29,7 +29,7 @@ Virasoro algebra is in quantum theory defined as
 			2 \comm{L_m}{L_n} &=  \sum_{p<0} -p \alpha^\mu_{m + p} \alpha_{n-p, \mu} + \sum_{p<0} \alpha_{p, \mu} (-n+p) \alpha^\mu_{m+n-p} \\
 									&\quad + \sum_{p \geq 0} (-n+p)\alpha_{m+n-p}^\mu \alpha_{p, \mu} + \sum_{p \geq 0} \alpha_{n-p, \mu} (-p) \alpha_{m+p}^\mu\\
 		\end{align*}
-		Now we realized that I should have expanded $L_m$. Instead, rename indices $n \leftrightarrow m$
+		Now we realized that we should have expanded $L_m$. Instead, rename indices $n \leftrightarrow m$
 		\begin{align*}
 			2 \comm{L_n}{L_m} &=  \sum_{p<0} -p \alpha^\mu_{n + p} \alpha_{m-p, \mu} + \sum_{p<0} \alpha_{p, \mu} (-m+p) \alpha^\mu_{m+n-p} \\
 									&\quad + \sum_{p \geq 0} (-m+p)\alpha_{m+n-p}^\mu \alpha_{p, \mu} + \sum_{p \geq 0} \alpha_{m-p, \mu} (-p) \alpha_{n+p}^\mu\\

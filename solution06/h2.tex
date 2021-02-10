@@ -46,7 +46,7 @@ with $i=1,\dots,d-2$. Light-cone gauge is
 			M^2 &= 2p^+p^- - p^i p_i \\
 				 &= \sum_{i=1}^{d-2} \sum_m \alpha_{-m}^i \alpha_{m}^i - \alpha^i_0 \alpha^i_0 \\
 				 &= \sum_{i=1}^{d-2} \sum_{m \neq 0} \alpha_{-m}^i \alpha_{m}^i \\
-				 &= 2 \sum_{i=1}^{d=2} \sum_{m=1}^{\infty} \alpha^i_{-m} \alpha^i_{m} - 2 a \\
+				 &= 2 \sum_{i=1}^{d=2} \sum_{m=1}^{\infty} :\alpha^i_{-m} \alpha^i_{m}: - 2 a \\
 				 &= 2 (N-a)
 		\end{align*}
 	\item 
@@ -135,7 +135,7 @@ with $i=1,\dots,d-2$. Light-cone gauge is
 		\end{equation*}
 		Then
 		\begin{align*}
-			\comm{x^i}{E^{j-}} &= p^+ \comm{x^i}{E^{j-}} \\
+			\comm{x^i}{E^{j}} &= p^+ \comm{x^i}{E^{j-}} \\
 									 &= -ip^+ \sum_{n>0} \frac{1}{n} \left( \comm{x^i}{\alpha^j_{-n} \alpha^-_{n}} - \comm{x^i}{\alpha^-_{-n} \alpha^j_n} \right) \\
 									 &= \sum_{n>0} \sum_{k=1}^{d-2} \sum_{m} \frac{-i}{2n} \left( \alpha^j_{-n} \comm{x^i}{\alpha^k_{n-m} \alpha^k_{m}} - \comm{x^i}{\alpha^k_{-n-m} \alpha^k_{m} }\alpha^j_n \right)
 									 \shortintertext{$\alpha_{\pm n}^j$ is brought out of the commutator since $n\neq 0$. In order for the commutator not to vanish, $m=0$ or $\pm n - m = 0$ and these two cannot be satisfied simultaneously.}

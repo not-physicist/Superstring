@@ -1,0 +1,47 @@
+\section{The propagator of the free boson}
+\begin{enumerate}[label=(\alph*)]
+	\item The propagator is given by
+		\begin{equation}
+			K(\pmb{x},\pmb{y}) = \expval{\phi(\pmb{x})\phi(\pmb{y})}
+		\end{equation}
+		It obeys
+		\begin{equation}
+			g(-\partial_x^2 + m^2) K(\pmb{x},\pmb{y}) = \delta(\pmb{x} - \pmb{y})
+			\label{math:K_def2}
+		\end{equation}
+		The propagator is only a function of $r=|\pmb{x}-\pmb{y}|$, since one can check if $K(\pmb{x},\pmb{y})$ satisfies \eqref{math:K_def2}, then $K(\pmb{x}+\pmb{a},\pmb{y}+\pmb{a})$ also. Thus these two are equivalent. And more importantly, the action has translational invariance.
+
+		Because of this property, we can ignore $y$ in the following calculation. To integrate \eqref{math:K_def2} over a disk of radius $R$ with $m=0$
+		\begin{align*}
+			-g \int_{C_R} \partial_x^2 K(r) &= 1 \\
+			\shortintertext{in spherical coordinates,}
+			-2\pi g \int_0^R \dd{r} \partial_r(r \partial_r K(r)) &= 1
+		\end{align*}
+		It is satisfied with $K(r) = -\frac{1}{2\pi g }\log r + \text{const}$. To see this,
+		\begin{align*}
+			&\int_0^R \dd{r} \partial_r (r \partial_r \log r) \\
+			&= \lim_{a\rightarrow 0}  \int_0^R \dd{r} \partial_r (r \partial_r \log (r+a)) \\
+			&= \lim_{a\rightarrow 0} \int_0^R \dd{r} \frac{a}{(r+a)^2} \\
+			&= \lim_{a\rightarrow 0} a \cdot \left.\frac{-1}{r+a}\right|_{r=0}^R \\
+			&= \lim_{a\rightarrow 0} a \left( - \frac{1}{R + a} + \frac{1}{a}  \right) \\
+			&= 1
+		\end{align*}
+
+
+	\item The computation in the last part leads to the OPE
+		\begin{equation}
+			\partial_z \phi (z,\bar{z}) \partial_w \phi(w,\bar{w}) \sim - \frac{1}{4\pi g} \frac{1}{(z-w)^2}
+		\end{equation}
+		We want to compute the OPE of $T(z) = -2 \pi g :\partial \phi \partial \phi:$
+		\begin{align*}
+			T(z) V_\alpha (w,\bar{w}) &= -2\pi g \sum_{n=0}^{\infty} \frac{(2\pi i \alpha)^n}{n!} :\partial_z \phi(z) \partial_z \phi(z):  :\phi^n(w): \\
+												  \shortintertext{Obviouly OPE works similar like in QFT, we need to "contract" fields}
+											  &= -2\pi g \sum_{n=0}^{\infty} \frac{(2\pi i \alpha)^n}{n!} \big[ n \partial_z (\partial \phi (z) \phi(w)) \phi^{n-1} (w) \\
+											  &\quad  + n(n-1) \phi^{n-2}(w) \expval{\partial_z \phi(z) \partial_z \phi(z)}^2 \phi(w) \big] \\
+											  &= -2\pi g \sum_{n=1}^{\infty} \frac{(2\pi i \alpha)^{n-1}}{(n-1)!} \phi^{n-1} \frac{-2\partial_z \phi(z)}{4\pi g(z-w)} 2\pi i \alpha \\
+											  &\quad +  -2\pi g \sum_{n=2}^{\infty} \frac{(2\pi i \alpha)^{n-2}}{(n-2)!} \phi^{n-2}(w) \left( \frac{-1}{4\pi g (z-w)} \right)^2 (2\pi i \alpha)^2 \\
+											  &= 2\pi i \alpha \frac{\partial_z \phi(z) V(w)}{z-w} + \frac{\pi \alpha^2}{2g} \frac{V(w)}{(z-w)^2} \\
+											  &=  \frac{\partial_w V(w)}{z-w} + \frac{\pi \alpha^2}{2g} \frac{V(w)}{(z-w)^2}
+		\end{align*}
+		Thus $h=\frac{\pi \alpha^2}{2g}$ and from OPE with $\bar{T}(\bar{z})$ we find $\bar{h}=\frac{\pi \alpha^2}{2g}$.
+\end{enumerate}

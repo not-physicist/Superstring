@@ -1,0 +1,49 @@
+\section{Free fermion}
+The action is 
+\begin{equation}
+	S = \frac{1}{2}g \int \dd[2]{x} \Psi^\dagger \gamma^0 \gamma^\mu \partial_\mu \Psi
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+	\item In terms of two-component spinor $\Psi = (\psi,\bar{\psi})^T $\footnote{$\bar{\psi}$ is to be understood as complex conjugate of $\psi$ instead of conventional notation}, the action becomes
+		\begin{align*}
+			% S &= \frac{1}{2}g \int \dd[2]{x} \begin{pmatrix} \psi^\dagger & \bar\psi^\dagger\end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1& 0 \end{pmatrix} \left[ \begin{pmatrix} 0 & 1 \\ 1& 0 \end{pmatrix}\partial_0 + i\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\partial_1 \right] \begin{pmatrix} \psi \\ \bar{\psi}\end{pmatrix} \\
+			  % &= \frac{1}{2} g\int \dd[2]{x} \left[ \psi^\dagger \partial_0 \psi + \bar{\psi}^\dagger\partial_0 \bar{\psi} +i \psi^\dagger \partial_1 \psi - i \bar{\psi}^\dagger \partial_1 \bar{\psi} \right]
+			  S &= \frac{g}{2} \int \dd[2]{x} \Psi^\dagger\begin{pmatrix} \partial_0 + i\partial_1 & 0 \\ 0 & \partial_0 - i \partial_1 \end{pmatrix} \Psi \\
+				 &= g \int \dd[2]{x} \begin{pmatrix} \bar{\psi} & \psi \end{pmatrix} \begin{pmatrix} \partial_{\bar{z}} & 0 \\ 0 & \partial_z \end{pmatrix} \begin{pmatrix} \psi \\ \bar{\psi}\end{pmatrix} \\
+				 &= g \int \dd[2]{x} \left( {\psi} \partial_{\bar{z}} \psi + \bar{\psi} \partial_z \bar{\psi} \right)
+		\end{align*}
+		where we used the fact that $\Psi$ describes Majorana fermions, thus its components must be real and
+		\begin{align*}
+			z &= x^0+ix^1 \\
+			\bar{z} &= x^0 - ix^1  \\
+			\partial_z &= \frac{1}{2} \left( \partial_0 - \partial_1 \right) \\
+			\partial_{\bar{z}} &= \frac{1}{2} \left( \partial_0 + \partial_1 \right)
+		\end{align*}
+		The equations of motions via Euler-Lagrange-Equations are
+		\begin{align*}
+			2\partial_{\bar{z}} \psi = \partial_0\psi + i \partial_1 \psi &=0	 \\
+			2\partial_{z} \bar\psi = \partial_0 \bar\psi - i \partial_1 \bar\psi &=0	 \\
+		\end{align*}
+		Thus they must be (anti-)holomorphic.
+
+	\item The Lagrangian density can also be written as
+		\begin{align*}
+			\lag &= \int  g \Psi \begin{pmatrix} \partial_{\bar{z}} & 0  \\ 0 & \partial_{z}  \end{pmatrix} \Psi 
+		\end{align*}
+		The operator is
+		\begin{equation}
+			A_{ij} = 2g \begin{pmatrix} \partial_{\bar{z}} & 0 \\ 0 & \partial_z \end{pmatrix} 
+		\end{equation}
+		In analogy with bosonic case, we have the differential equation\footnote{Note that $z=x_0 + ix_1$ and so on.}
+		\begin{equation}
+			A^{ij} G_{jk} = \delta^{i}_{k} \delta(x-y)
+		\end{equation}
+		Use a representation of delta function
+		\begin{equation*}
+			\delta(x-y) = \frac{1}{\pi} \partial_{\bar{z}} \frac{1}{z-w} = \frac{1}{\pi} \partial_{z} \frac{1}{\bar{z}-\bar{w}}
+		\end{equation*}
+		We identify the Green's function as
+		\begin{equation}
+			G_{ij}(z,\bar{z},w,\bar{w}) = \frac{1}{2\pi g} \begin{pmatrix} \frac{1}{z-w} & 0 \\ 0 & \frac{1}{\bar{z}-\bar{w}} \end{pmatrix}
+		\end{equation}
+\end{enumerate}
